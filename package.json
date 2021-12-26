@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export -o docs",
     "start": "next start",
     "svg": "svgr -d src/components/icons src/components/icons/svgs"
   },
