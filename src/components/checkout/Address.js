@@ -15,7 +15,7 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                     inputValue={input?.firstName}
                     required
                     handleOnChange={handleOnChange}
-                    label="First name"
+                    label="Họ"
                     errors={errors}
                     isShipping={isShipping}
                     containerClassNames="w-full overflow-hidden sm:my-2 sm:px-2 md:w-1/2"
@@ -25,7 +25,7 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                     inputValue={input?.lastName}
                     required
                     handleOnChange={handleOnChange}
-                    label="Last name"
+                    label="Tên"
                     errors={errors}
                     isShipping={isShipping}
                     containerClassNames="w-full overflow-hidden sm:my-2 sm:px-2 md:w-1/2"
@@ -35,7 +35,7 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                 name="company"
                 inputValue={input?.company}
                 handleOnChange={handleOnChange}
-                label="Company Name (Optional)"
+                label="Tên công ty (nếu có)"
                 errors={errors}
                 isShipping={isShipping}
                 containerClassNames="mb-4"
@@ -52,28 +52,28 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                 inputValue={input?.address1}
                 required
                 handleOnChange={handleOnChange}
-                label="Street address"
-                placeholder="House number and street name"
+                label="Địa chỉ nhà"
+                placeholder="Số nhà/đường phố/xã phường/thị trấn"
                 errors={errors}
                 isShipping={isShipping}
                 containerClassNames="mb-4"
             />
-            <InputField
+            {/* <InputField
                 name="address2"
                 inputValue={input?.address2}
                 handleOnChange={handleOnChange}
-                label="Street address line two"
+                label="Địa chỉ khác"
                 placeholder="Apartment floor unit building floor etc(optional)"
                 errors={errors}
                 isShipping={isShipping}
                 containerClassNames="mb-4"
-            />
+            /> */}
             <InputField
                 name="city"
                 required
                 inputValue={input?.city}
                 handleOnChange={handleOnChange}
-                label="Town/City"
+                label="Tỉnh/Thành Phố"
                 errors={errors}
                 isShipping={isShipping}
                 containerClassNames="mb-4"
@@ -92,7 +92,7 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                     inputValue={input?.postcode}
                     required
                     handleOnChange={handleOnChange}
-                    label="Post code"
+                    label="Mã ZIP"
                     errors={errors}
                     isShipping={isShipping}
                     containerClassNames="w-full overflow-hidden sm:my-2 sm:px-2 md:w-1/2"
@@ -102,7 +102,7 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                     inputValue={input?.phone}
                     required
                     handleOnChange={handleOnChange}
-                    label="Phone"
+                    label="Điện thoại"
                     errors={errors}
                     isShipping={isShipping}
                     containerClassNames="w-full overflow-hidden sm:my-2 sm:px-2 md:w-1/2"
@@ -114,7 +114,7 @@ const Address = ({input, countries, states, handleOnChange, isFetchingStates, is
                 inputValue={input?.email}
                 required
                 handleOnChange={handleOnChange}
-                label="Email"
+                label="Địa chỉ email"
                 errors={errors}
                 isShipping={isShipping}
                 containerClassNames="mb-4"

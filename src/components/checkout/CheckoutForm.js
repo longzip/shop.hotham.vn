@@ -40,10 +40,10 @@ const defaultCustomerInfo = {
     lastName: '',
     address1: '',
     address2: '',
-    city: '',
-    country: '',
+    city: 'Hà Nội',
+    country: 'VN',
     state: '',
-    postcode: '',
+    postcode: '142010',
     email: '',
     phone: '',
     company: '',
@@ -214,7 +214,7 @@ const CheckoutForm = ({countriesData}) => {
                         <div>
                             {/*Shipping Details*/}
                             <div className="billing-details">
-                                <h2 className="text-xl font-medium mb-4">Shipping Details</h2>
+                                <h2 className="text-xl font-medium mb-4">Địa chỉ nhận hàng</h2>
                                 <Address
                                     states={theShippingStates}
                                     countries={shippingCountries}
@@ -231,14 +231,14 @@ const CheckoutForm = ({countriesData}) => {
                                     type="checkbox"
                                     checked={input?.billingDifferentThanShipping}
                                     handleOnChange={handleOnChange}
-                                    label="Billing different than shipping"
+                                    label="Địa chỉ viết hóa đơn khác địa chỉ nhận hàng"
                                     containerClassNames="mb-4 pt-4"
                                 />
                             </div>
                             {/*Billing Details*/}
                             {input?.billingDifferentThanShipping ? (
                                 <div className="billing-details">
-                                    <h2 className="text-xl font-medium mb-4">Billing Details</h2>
+                                    <h2 className="text-xl font-medium mb-4">Xuất hóa đơn</h2>
                                     <Address
                                         states={theBillingStates}
                                         countries={billingCountries}
@@ -255,7 +255,7 @@ const CheckoutForm = ({countriesData}) => {
                         {/* Order & Payments*/}
                         <div className="your-orders">
                             {/*	Order*/}
-                            <h2 className="text-xl font-medium mb-4">Your Order</h2>
+                            <h2 className="text-xl font-medium mb-4">Đơn hàng</h2>
                             <YourOrder cart={cart}/>
 
                             {/*Payment*/}
@@ -270,13 +270,13 @@ const CheckoutForm = ({countriesData}) => {
                                     )}
                                     type="submit"
                                 >
-                                    Place Order
+                                    Đặt hàng
                                 </button>
                             </div>
 
                             {/* Checkout Loading*/}
-                            {isOrderProcessing && <p>Processing Order...</p>}
-                            {requestError && <p>Error : {requestError} :( Please try again</p>}
+                            {isOrderProcessing && <p>Đang xử lý...</p>}
+                            {requestError && <p>Lỗi : {requestError} :( Vui lòng thử lại sau</p>}
                         </div>
                     </div>
                 </form>

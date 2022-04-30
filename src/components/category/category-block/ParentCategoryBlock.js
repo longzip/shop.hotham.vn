@@ -20,7 +20,7 @@ const ParentCategoryBlock = ( props ) => {
 					/>
 					<div className="product-title-container p-3">
 						<h3 className="product-title text-lg font-medium">{category?.name}</h3>
-						<span className="shop-now text-sm">+ Explore</span>
+						<span className="shop-now text-sm">+ Khám phá</span>
 					</div>
 				</a>
 			</Link>

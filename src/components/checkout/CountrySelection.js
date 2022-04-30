@@ -12,7 +12,7 @@ const CountrySelection = ({input, handleOnChange, countries, isShipping}) => {
     return (
         <div className="mb-3">
             <label className="leading-7 text-sm text-gray-700" htmlFor={inputId}>
-                Country
+                Quốc gia
                 <Abbr required/>
             </label>
             <div className="relative w-full border-none">
@@ -23,7 +23,7 @@ const CountrySelection = ({input, handleOnChange, countries, isShipping}) => {
                     className="bg-gray-100 bg-opacity-50 border border-gray-500 text-gray-500 appearance-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full"
                     id={inputId}
                 >
-                    <option value="">Select a country...</option>
+                    <option value="">Chọn quốc gia...</option>
                     {!isEmpty(countries) &&
                     map(countries, (country) => (
                         <option key={country?.countryCode} data-countrycode={country?.countryCode}

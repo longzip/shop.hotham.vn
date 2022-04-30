@@ -12,8 +12,8 @@ const YourOrder = ( { cart } ) => {
 						<thead>
 						<tr className="woo-next-cart-head-container text-left">
 							<th className="woo-next-cart-heading-el" scope="col"/>
-							<th className="woo-next-cart-heading-el" scope="col">Product</th>
-							<th className="woo-next-cart-heading-el" scope="col">Total</th>
+							<th className="woo-next-cart-heading-el" scope="col">Tên hàng</th>
+							<th className="woo-next-cart-heading-el" scope="col">Thành tiền</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -25,7 +25,7 @@ const YourOrder = ( { cart } ) => {
 						{/*Total*/}
 						<tr className="bg-gray-200">
 							<td className=""/>
-							<td className="woo-next-checkout-total font-normal text-xl">Subtotal</td>
+							<td className="woo-next-checkout-total font-normal text-xl">Tổng cộng</td>
 							<td className="woo-next-checkout-total font-bold text-xl">{ cart.totalProductsPrice }</td>
 						</tr>
 						{/* <tr className="">

@@ -31,7 +31,7 @@ const Nav = () => {
 					<div className="text-sm font-medium uppercase lg:flex-grow">
 					<Link href="/categories">
 						<a className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10">
-							Cửa hàng
+							Danh mục
 						</a>
 					</Link>
 					<Link href="https://www.facebook.com/buudientulap/about/">

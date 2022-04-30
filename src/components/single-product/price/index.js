@@ -23,7 +23,7 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
         const discountPercent = ( ( formattedRegularPrice - formattedSalesPrice ) / formattedRegularPrice ) * 100;
 
         return {
-            discountPercent: formattedSalesPrice !== formattedRegularPrice ? `(${discountPercent.toFixed(2)}%) OFF` : null,
+            discountPercent: formattedSalesPrice !== formattedRegularPrice ? `(${discountPercent.toFixed(2)}%) GIẢM` : null,
             strikeThroughClass: formattedSalesPrice < formattedRegularPrice ? 'product-regular-price mr-2 line-through text-sm text-gray-600 font-normal' : ''
         }
     }
@@ -31,7 +31,7 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
     const productMeta = discountPercent( regularPrice, salesPrice );
 
     return (
-        <h6 className="product-price text-gray-800 font-semibold mr-3 mb-5">
+        <h6 className="product-price text-red-500 font-semibold mr-3 mb-5">
             {/* Regular price */}
             { productMeta?.discountPercent ? <span className="product-price mr-2">{salesPrice}</span> : null }
 

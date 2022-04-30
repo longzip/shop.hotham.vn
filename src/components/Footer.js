@@ -5,8 +5,8 @@ const Footer = () => (
 		<div className="container mx-auto">
 			<div className="footer-text flex-none md:flex items-center justify-between">
 				<p>© Bưu điện văn hóa xã Tự Lập 2022</p>
-				<p className="text-gray">Về các mặt hàng tiêu dùng thiết yếu bình ổn thị trường của Bưu điện Hà Nội</p>
-				<span className="text-gray">Theo dõi chúng tôi trên Fanpage Bưu điện văn hóa xã Tự Lập</span>
+				<p className="text-gray">Được thiết kế bởi <a href="https://lovanlong.ga/">Lỗ Văn Long</a></p>
+				<span className="text-gray">Từ nhà bạn đến chúng tôi ngắn hơn đấy!</span>
 			</div>
 			<ul className="social-links mt-8 flex align-center">
 				<li><a href="https://www.facebook.com/buudientulap" className="fa fa-facebook" target="_blank"><Facebook/></a></li>

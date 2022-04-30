@@ -71,7 +71,7 @@ const AddToCart = (props) => {
             {"ExternalProduct" === product.__typename ? (
                     <a href={product?.externalUrl ?? '/'} target="_blank"
                        className="px-3 py-1 rounded-sm mr-3 text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600">
-						Buy now
+						Mua ngay
                     </a>
                 ) :
                 <button
@@ -83,14 +83,13 @@ const AddToCart = (props) => {
                         {'opacity-50 cursor-not-allowed': addToCartLoading}
                     )}
                 >
-					{ addToCartLoading ? 'Adding to cart...' : 'Add to cart' }
+					{ addToCartLoading ? 'Đang thêm vào giỏ...' : 'Thêm vào giỏ hàng' }
                 </button>
             }
             {showViewCart ? (
                 <Link href="/cart">
                     <button
-                        className="px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600">View
-                        Cart
+                        className="px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600">Xem giỏ hàng
                     </button>
                 </Link>
             ) : ''}

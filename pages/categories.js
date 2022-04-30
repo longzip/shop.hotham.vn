@@ -11,7 +11,7 @@ export default function Categories ( props ) {
 		<Layout>
 			{/*Categories*/}
 			<div className="categories product-categories-container container mx-auto my-32 px-4 xl:px-0">
-				<h2 className="text-2xl mb-5 uppercase">Categories</h2>
+				<h2 className="text-2xl mb-5 uppercase">Danh mục</h2>
 				<ParentCategoriesBlock productCategories={ productCategories }/>
 			</div>
 		</Layout>

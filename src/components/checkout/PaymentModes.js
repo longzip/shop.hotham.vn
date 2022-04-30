@@ -11,51 +11,51 @@ const PaymentModes = ( { input, handleOnChange } ) => {
 			<div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="bacs" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'bacs' === paymentMethod}/>
-					<span className="woo-next-payment-content">Direct Bank Transfer</span>
+					<span className="woo-next-payment-content">Chuyển khoản ngân hàng</span>
 				</label>
 			</div>
 			{/*Pay with Paypal*/}
-			<div className="form-check woo-next-payment-input-container mt-2">
+			{/* <div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="paypal" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'paypal' === paymentMethod}/>
-					<span className="woo-next-payment-content">Pay with Paypal</span>
+					<span className="woo-next-payment-content">Thanh toán qua Paypal</span>
 				</label>
-			</div>
+			</div> */}
 			{/*Check Payments*/}
-			<div className="form-check woo-next-payment-input-container mt-2">
+			{/* <div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="cheque" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'cheque' === paymentMethod}/>
 					<span className="woo-next-payment-content">Check Payments</span>
 				</label>
-			</div>
+			</div> */}
 			{/*Pay with Stripe*/}
 			<div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="cod" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'cod' === paymentMethod}/>
-					<span className="woo-next-payment-content">Cash on Delivery</span>
+					<span className="woo-next-payment-content">Thanh toán khi nhận hàng COD</span>
 				</label>
 			</div>
-			<div className="form-check woo-next-payment-input-container mt-2">
+			{/* <div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="jccpaymentgatewayredirect" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'jccpaymentgatewayredirect' === paymentMethod}/>
 					<span className="woo-next-payment-content">JCC</span>
 				</label>
-			</div>
-			<div className="form-check woo-next-payment-input-container mt-2">
+			</div> */}
+			{/* <div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="ccavenue" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'ccavenue' === paymentMethod}/>
 					<span className="woo-next-payment-content">CC Avenue</span>
 				</label>
-			</div>
-			<div className="form-check woo-next-payment-input-container mt-2">
+			</div> */}
+			{/* <div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="stripe-mode" className="form-check-input mr-3" name="paymentMethod" type="radio" checked={'stripe-mode' === paymentMethod}/>
 					<span className="woo-next-payment-content">Stripe</span>
 				</label>
-			</div>
+			</div> */}
 			{/*	Payment Instructions*/}
 			<div className="woo-next-checkout-payment-instructions mt-2">
-				Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+				Vui lòng thanh toán khi nhận hàng hoặc chuyển khoản trước.
 			</div>
 		</div>
 	);

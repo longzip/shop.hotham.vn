@@ -110,15 +110,15 @@ const CartItemsContainer = () => {
 			{ cart ? (
 				<div className="woo-next-cart-wrapper container">
 					<div className="cart-header grid grid-cols-2 gap-4">
-						<h1 className="text-2xl mb-5 uppercase">Cart</h1>
+						<h1 className="text-2xl mb-5 uppercase">Giỏ hàng</h1>
 						{/*Clear entire cart*/}
 						<div className="clear-cart text-right">
 							<button className="px-4 py-1 bg-gray-500 text-white rounded-sm w-auto" onClick={ ( event ) => handleClearCart( event ) } disabled={ clearCartProcessing }>
-								<span className="woo-next-cart">Clear Cart</span>
+								<span className="woo-next-cart">Xóa giỏ hàng</span>
 								<i className="fa fa-arrow-alt-right"/>
 							</button>
-							{ clearCartProcessing ? <p>Clearing...</p> : '' }
-							{ updateCartProcessing ? <p>Updating...</p> : null }
+							{ clearCartProcessing ? <p>Đang xóa...</p> : '' }
+							{ updateCartProcessing ? <p>Đang cập nhật...</p> : null }
 						</div>
 					</div>
 					<div className="grid grid-cols-1 xl:grid-cols-4 gap-0 xl:gap-4 mb-5">
@@ -127,10 +127,10 @@ const CartItemsContainer = () => {
 								<tr className="woo-next-cart-head-container">
 									<th className="woo-next-cart-heading-el" scope="col"/>
 									<th className="woo-next-cart-heading-el" scope="col"/>
-									<th className="woo-next-cart-heading-el" scope="col">Product</th>
-									<th className="woo-next-cart-heading-el" scope="col">Price</th>
-									<th className="woo-next-cart-heading-el" scope="col">Quantity</th>
-									<th className="woo-next-cart-heading-el" scope="col">Total</th>
+									<th className="woo-next-cart-heading-el" scope="col">Tên hàng</th>
+									<th className="woo-next-cart-heading-el" scope="col">Giá</th>
+									<th className="woo-next-cart-heading-el" scope="col">Số lượng</th>
+									<th className="woo-next-cart-heading-el" scope="col">Thành tiền</th>
 								</tr>
 								</thead>
 								<tbody>
@@ -156,7 +156,7 @@ const CartItemsContainer = () => {
 								<table className="table table-hover mb-5">
 									<tbody>
 									<tr className="table-light flex flex-col">
-										<td className="woo-next-cart-element-total text-2xl font-normal">Subtotal</td>
+										<td className="woo-next-cart-element-total text-2xl font-normal">Tổng cộng</td>
 										<td className="woo-next-cart-element-amt text-2xl font-bold">{ ( 'string' !== typeof cart.totalProductsPrice ) ? cart.totalProductsPrice.toFixed(2) : cart.totalProductsPrice }</td>
 									</tr>
 									{/* <tr className="table-light">
@@ -167,7 +167,7 @@ const CartItemsContainer = () => {
 								</table>
 								<Link href="/checkout">
 									<button className="bg-purple-600 text-white px-5 py-3 rounded-sm w-auto xl:w-full">
-										<span className="woo-next-cart-checkout-txt">Proceed to Checkout</span>
+										<span className="woo-next-cart-checkout-txt">Tiến hành thanh toán</span>
 										<i className="fas fa-long-arrow-alt-right"/>
 									</button>
 								</Link>

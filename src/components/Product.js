@@ -24,17 +24,18 @@ const Product = ( props ) => {
 							defaultImgUrl={DEFAULT_PRODUCT_HOME_IMG_URL}
 							altText={product?.image?.altText ?? product?.slug}
 						/>
+						<div className="product-info">
+							<h3 className="product-title mt-3 font-medium text-gray-800">
+								{ product.name ? product.name : '' }
+							</h3>
+							{/* <div className="product-description text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: (product?.description)}}/> */}
+							<Price salesPrice={product?.price} regularPrice={product?.regularPrice}/>
+						</div>
 					</a>
 				</Link>
 				<div className="product-info">
-					<h3 className="product-title mt-3 font-medium text-gray-800">
-						{ product.name ? product.name : '' }
-					</h3>
-					{!ishome && (<div className="product-description text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: (product?.description)}}/>)}
-					<Price salesPrice={product?.price} regularPrice={product?.regularPrice}/>
 					<AddToCartButton product={ product }/>
 				</div>
-
 			</div>
 		) : (
 			''
