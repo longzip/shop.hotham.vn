@@ -52,7 +52,7 @@ const defaultCustomerInfo = {
 
 const CheckoutForm = ({countriesData}) => {
 
-    const {billingCountries, shippingCountries} = countriesData || {}
+    const {billingCountries = [{countryCode: 'VN', countryName: 'Việt Nam'}], shippingCountries = [{countryCode: 'VN', countryName: 'Việt Nam'}]} = countriesData || {}
 
     const initialState = {
         billing: {

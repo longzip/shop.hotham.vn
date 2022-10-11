@@ -35,7 +35,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
       }
     }
   }
-  products(first: 500) {
+  productOnSales: products(where: {onSale: false, stockStatus: IN_STOCK}) {
     nodes {
       id
       productId: databaseId
@@ -45,7 +45,50 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
       image {
         id
         altText
-        sourceUrl
+        sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
+      }
+      name
+      ... on SimpleProduct {
+        price
+        regularPrice
+        id
+      }
+      ... on VariableProduct {
+        price
+        id
+        regularPrice
+      }
+      ... on ExternalProduct {
+        price
+        id
+        externalUrl
+        regularPrice
+      }
+      ... on GroupProduct {
+        id
+        products {
+          nodes {
+            ... on SimpleProduct {
+              id
+              price
+              regularPrice
+            }
+          }
+        }
+      }
+    }
+  }
+  products(where: {featured: true, stockStatus: IN_STOCK}) {
+    nodes {
+      id
+      productId: databaseId
+      averageRating
+      slug
+      description
+      image {
+        id
+        altText
+        sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
       }
       name
       ... on SimpleProduct {

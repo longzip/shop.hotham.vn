@@ -165,7 +165,7 @@ const CartItemsContainer = () => {
 									</tr> */}
 									</tbody>
 								</table>
-								<Link href="/checkout">
+								<Link href="/thanh-toan">
 									<button className="bg-purple-600 text-white px-5 py-3 rounded-sm w-auto xl:w-full">
 										<span className="woo-next-cart-checkout-txt">Tiến hành thanh toán</span>
 										<i className="fas fa-long-arrow-alt-right"/>

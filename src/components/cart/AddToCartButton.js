@@ -87,7 +87,7 @@ const AddToCart = (props) => {
                 </button>
             }
             {showViewCart ? (
-                <Link href="/cart">
+                <Link href="/gio-hang/">
                     <button
                         className="px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600">Xem giỏ hàng
                     </button>
