@@ -4,6 +4,9 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 	productCategory(id: $slug, idType: SLUG) {
 	  id
 	  name
+	  seo {
+		fullHead
+	  }
 	  products(first: 1000, where: {stockStatus: IN_STOCK}) {
 		nodes {
 		  id

@@ -1,16 +1,23 @@
+import Head from 'next/head'
 import Layout from "../src/components/Layout";
 import Product from "../src/components/Product";
 import client from '../src/components/ApolloClient';
 import ParentCategoriesBlock from "../src/components/category/category-block/ParentCategoriesBlock";
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
 import HeroCarousel from "../src/components/home/hero-carousel";
+import parse from 'html-react-parser';
+
 
 export default function Home (props) {
 
-	const { products, productOnSales, productCategories, heroCarousel } = props || {};
+	const { homePage, products, productOnSales, productCategories, heroCarousel } = props || {};
+	const fullHead = parse(homePage?.seo?.fullHead);
 
 	return (
 			<Layout>
+				<Head>
+					{ fullHead }
+				</Head>
 				{/*Hero Carousel*/}
 				<HeroCarousel heroCarousel={heroCarousel}/>
 				{/*Categories*/ }
@@ -52,7 +59,8 @@ export async function getStaticProps () {
 			productCategories: data?.productCategories?.nodes ? data.productCategories.nodes : [],
 			productOnSales: data?.productOnSales?.nodes ? data.productOnSales.nodes : [],
 			products: data?.products?.nodes ? data.products.nodes : [],
-			heroCarousel: data?.heroCarousel?.nodes[0]?.children?.nodes ? data.heroCarousel.nodes[0].children.nodes : []
+			heroCarousel: data?.heroCarousel?.nodes[0]?.children?.nodes ? data.heroCarousel.nodes[0].children.nodes : [],
+			homePage: data?.pageBy
 		},
 		revalidate: 1
 	}

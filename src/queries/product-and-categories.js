@@ -4,6 +4,11 @@ import { gql } from "@apollo/client";
  * GraphQL categories and products query.
  */
 const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
+  pageBy(uri: "/") {
+    seo {
+      fullHead
+    }
+  }
   heroCarousel: productCategories(where: {slug: "offers"}) {
     nodes {
       id

@@ -1,9 +1,11 @@
+import Head from 'next/head'
 import Layout from "../../src/components/Layout";
 import client from "../../src/components/ApolloClient";
 import Product from "../../src/components/Product";
 import {PRODUCT_BY_CATEGORY_SLUG, PRODUCT_CATEGORIES_SLUGS} from "../../src/queries/product-by-category";
 import {isEmpty} from "lodash";
 import {useRouter} from "next/router";
+import parse from 'html-react-parser';
 
 export default function CategorySingle( props ) {
 
@@ -15,10 +17,15 @@ export default function CategorySingle( props ) {
         return <div>Loading...</div>
     }
 
-    const { categoryName, products } = props;
+    const { categoryName, products, seo } = props;
+
+    const fullHead = parse(seo?.fullHead);
 
     return (
         <Layout>
+            <Head>
+				{ fullHead }
+			</Head>
             <div className="product-categories-container container mx-auto my-32 px-4 xl:px-0">
                 { categoryName ? <h3 className="text-2xl mb-5 uppercase">{ categoryName }</h3> : '' }
                 <div className="product-categories grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
@@ -43,6 +50,7 @@ export async function getStaticProps(context) {
     return {
         props: {
             categoryName: data?.productCategory?.name ?? '',
+            seo: data?.productCategory?.seo ?? '',
             products: data?.productCategory?.products?.nodes ?? []
         },
         revalidate: 1

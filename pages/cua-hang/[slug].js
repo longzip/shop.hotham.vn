@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Layout from '../../src/components/Layout';
 import { useRouter } from 'next/router';
 import client from '../../src/components/ApolloClient';
@@ -6,6 +7,7 @@ import {PRODUCT_BY_SLUG_QUERY, PRODUCT_SLUGS} from '../../src/queries/product-by
 import { isEmpty } from 'lodash';
 import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 import Price from "../../src/components/single-product/price";
+import parse from 'html-react-parser';
 
 export default function Product(props) {
 	const { product } = props;
@@ -18,10 +20,14 @@ export default function Product(props) {
         return <div>Loading...</div>
     }
 
+    const fullHead = parse(product?.seo.fullHead);
 	return (
 		<Layout>
 			{ product ? (
 				<div className="single-product container mx-auto my-32 px-4 xl:px-0">
+                    <Head>
+                        { fullHead }
+                    </Head>
 					<div className="grid md:grid-cols-2 gap-4">
 						<div className="product-images">
 

@@ -27,17 +27,26 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		price
 		id
 		regularPrice
+		seo {
+			fullHead
+		}
 	  }
 	  ... on VariableProduct {
 		price
 		id
 		regularPrice
+		seo {
+			fullHead
+		}
 	  }
 	  ... on ExternalProduct {
 		price
 		id
 		regularPrice
 		externalUrl
+		seo {
+			fullHead
+		  }
 	  }
 	  ... on GroupProduct {
 		products {
@@ -46,6 +55,9 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 			  id
 			  price
 			  regularPrice
+			  seo {
+				fullHead
+			  }
 			}
 		  }
 		}
