@@ -13,7 +13,7 @@ const Product = ( props ) => {
 			<div className="product mb-5">
 
 
-				<Link href={ `/product/${ product?.slug }`} >
+				<Link href={ `/cua-hang/${ product?.slug }`} >
 					<a>
 						<Image
 							className="object-cover bg-gray-100"
