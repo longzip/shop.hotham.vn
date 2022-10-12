@@ -23,7 +23,7 @@ const Product = ( props ) => {
 							src={ product?.image?.sourceUrl ?? '' }
 							// sourceUrl={ product?.image?.sourceUrl ?? '' }
 							// defaultImgUrl={DEFAULT_PRODUCT_HOME_IMG_URL}
-							altText={product?.image?.altText ?? product?.slug}
+							alt={product?.image?.altText ?? product?.slug}
 						/>
 						<div className="product-info p-5">
 							<h3 className="product-title mt-3 font-medium text-gray-800">

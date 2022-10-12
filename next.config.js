@@ -22,4 +22,17 @@ module.exports = {
     images: {
         domains: [ allowedImageWordPressDomain, 'via.placeholder.com', 'i0.wp.com', 'i2.wp.com', 'i1.wp.com' ],
     },
+    async redirects() {
+        return [
+          {
+            source: '/san-pham',
+            destination: '/cua-hang',
+            permanent: true,
+          },{
+            source: '/shop',
+            destination: '/cua-hang',
+            permanent: true,
+          },
+        ]
+      }
 };

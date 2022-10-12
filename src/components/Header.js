@@ -1,9 +1,9 @@
 import Nav from "./Nav";
 
-const Header = () => {
+const Header = ({cmsName, fbPageId}) => {
 	return (
 		<div className="header">
-			<Nav/>
+			<Nav cmsName={cmsName} fbPageId={fbPageId} />
 		</div>
 	)
 };

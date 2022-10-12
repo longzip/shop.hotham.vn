@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import {CMS_NAME,CMS_URL,FB_PAGE_ID} from "../lib/constants"
 import Layout from "../src/components/Layout";
 import Product from "../src/components/Product";
 import client from '../src/components/ApolloClient';
@@ -10,11 +11,11 @@ import parse from 'html-react-parser';
 
 export default function Home (props) {
 
-	const { homePage, products, productOnSales, productCategories, heroCarousel } = props || {};
+	const { homePage, products, productOnSales, productCategories, heroCarousel, cmsName, fbPageId } = props || {};
 	const fullHead = parse(homePage?.seo?.fullHead);
 
 	return (
-			<Layout>
+			<Layout cmsName={cmsName} fbPageId={fbPageId}>
 				<Head>
 					{ fullHead }
 				</Head>
@@ -60,7 +61,9 @@ export async function getStaticProps () {
 			productOnSales: data?.productOnSales?.nodes ? data.productOnSales.nodes : [],
 			products: data?.products?.nodes ? data.products.nodes : [],
 			heroCarousel: data?.heroCarousel?.nodes[0]?.children?.nodes ? data.heroCarousel.nodes[0].children.nodes : [],
-			homePage: data?.pageBy
+			homePage: data?.pageBy,
+			cmsName: CMS_NAME,
+			fbPageId: FB_PAGE_ID
 		},
 		revalidate: 1
 	}

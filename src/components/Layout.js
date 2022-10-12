@@ -7,6 +7,7 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import { ApolloProvider } from "@apollo/client";
 
+
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
@@ -19,7 +20,7 @@ const Layout = (props) => {
           <Head>
             <title>Hàng tiêu dùng thiết yếu bình ổn thị trường ở Bưu điện xã Tự Lập</title>
           </Head>
-          <Header />
+          <Header cmsName={props.cmsName} fbPageId={props.fbPageId} />
           {props.children}
           <Footer />
         </div>
