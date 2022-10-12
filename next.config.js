@@ -25,12 +25,12 @@ module.exports = {
     async redirects() {
         return [
           {
-            source: '/san-pham',
-            destination: '/cua-hang',
+            source: '/san-pham/:path*',
+            destination: '/cua-hang/:path*',
             permanent: true,
           },{
-            source: '/shop',
-            destination: '/cua-hang',
+            source: '/shop/:path*',
+            destination: '/cua-hang/:path*',
             permanent: true,
           },
         ]
