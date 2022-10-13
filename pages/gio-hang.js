@@ -6,7 +6,7 @@ import HEADER_FOOTER_QUERY from "../src/queries/header-footer";
 
 const Cart = ({siteSeo, mainMenu, mobileMenu, footerMenu}) => {
 	return (
-		<Layout  siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
+		<Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
 			<CartItemsContainer/>
 		</Layout>
 	)
