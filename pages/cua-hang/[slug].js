@@ -9,8 +9,7 @@ import GalleryCarousel from "../../src/components/single-product/gallery-carouse
 import Price from "../../src/components/single-product/price";
 import parse from 'html-react-parser';
 
-export default function Product(props) {
-	const { product } = props;
+export default function Product({ product, siteSeo, mainMenu, mobileMenu, footerMenu }) {
 
     const router = useRouter()
 
@@ -22,7 +21,7 @@ export default function Product(props) {
 
     const fullHead = parse(product?.seo.fullHead);
 	return (
-		<Layout>
+		<Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
 			{ product ? (
 				<div className="single-product container mx-auto my-32 px-4 xl:px-0">
                     <Head>
@@ -77,6 +76,10 @@ export async function getStaticProps(context) {
 
     return {
         props: {
+            mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
+			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
+			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
             product: data?.product || {},
         },
         revalidate: 1

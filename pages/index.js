@@ -11,11 +11,11 @@ import parse from 'html-react-parser';
 
 export default function Home (props) {
 
-	const { homePage, products, productOnSales, productCategories, heroCarousel, cmsName, fbPageId } = props || {};
+	const { homePage, products, productOnSales, productCategories, heroCarousel, cmsName, fbPageId, siteSeo, mainMenu, mobileMenu, footerMenu } = props || {};
 	const fullHead = parse(homePage?.seo?.fullHead);
 
 	return (
-			<Layout cmsName={cmsName} fbPageId={fbPageId}>
+			<Layout fbPageId={fbPageId} siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
 				<Head>
 					{ fullHead }
 				</Head>
@@ -57,6 +57,10 @@ export async function getStaticProps () {
 
 	return {
 		props: {
+			mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
+			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
+			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
 			productCategories: data?.productCategories?.nodes ? data.productCategories.nodes : [],
 			productOnSales: data?.productOnSales?.nodes ? data.productOnSales.nodes : [],
 			products: data?.products?.nodes ? data.products.nodes : [],

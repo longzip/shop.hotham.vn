@@ -1,5 +1,6 @@
-import "../src/styles/style.scss";
-import "../src/styles/main.scss";
+import '../styles/globals.css'
+import '../styles/main.scss'
+import '../styles/style.scss'
 
 import Router from 'next/router';
 import NProgress from 'nprogress';

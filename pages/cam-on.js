@@ -69,9 +69,9 @@ const ThankYouContent = () => {
     )
 }
 
-const ThankYou = () => {
+const ThankYou = ({siteSeo, mainMenu, mobileMenu, footerMenu}) => {
     return (
-        <Layout>
+        <Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
             <ThankYouContent/>
         </Layout>
     )

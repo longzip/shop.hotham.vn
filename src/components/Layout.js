@@ -20,9 +20,9 @@ const Layout = (props) => {
           <Head>
             <title>Hàng tiêu dùng thiết yếu bình ổn thị trường ở Bưu điện xã Tự Lập</title>
           </Head>
-          <Header cmsName={props.cmsName} fbPageId={props.fbPageId} />
+          <Header siteSeo={props.siteSeo} fbPageId={props.fbPageId} mainMenu={props.mainMenu} mobileMenu={props.mobileMenu} />
           {props.children}
-          <Footer />
+          <Footer siteSeo={props.siteSeo} fbPageId={props.fbPageId} footerMenu={props.footerMenu} />
         </div>
       </ApolloProvider>
     </AppProvider>

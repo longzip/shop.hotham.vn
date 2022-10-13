@@ -1,6 +1,56 @@
 import {gql} from "@apollo/client";
 
 export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slug: ID!) {
+	mainMenu: menus(where: {location: PRIMARY}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  path
+			  url
+			  label
+			  id
+			}
+		  }
+		  name
+		}
+	  }
+	  mobileMenu: menus(where: {location: HANDHELD}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  footerMenu: menus(where: {location: SECONDARY}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  siteSeo: seo {
+		schema {
+		  logo {
+			id
+			altText
+			sourceUrl(size: THUMBNAIL)
+		  }
+		  siteName
+		  homeUrl
+		}
+	  }
 	productCategory(id: $slug, idType: SLUG) {
 	  id
 	  name

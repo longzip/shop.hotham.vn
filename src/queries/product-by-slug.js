@@ -1,6 +1,56 @@
 import { gql } from "@apollo/client";
 
 export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
+	mainMenu: menus(where: {location: PRIMARY}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  path
+			  url
+			  label
+			  id
+			}
+		  }
+		  name
+		}
+	  }
+	  mobileMenu: menus(where: {location: HANDHELD}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  footerMenu: menus(where: {location: SECONDARY}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  siteSeo: seo {
+		schema {
+		  logo {
+			id
+			altText
+			sourceUrl(size: THUMBNAIL)
+		  }
+		  siteName
+		  homeUrl
+		}
+	  }
 	product(id: $slug, idType: SLUG) {
 	  id
 	  productId: databaseId
@@ -68,6 +118,56 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 `;
 
 export const PRODUCT_SLUGS = gql` query Products {
+	mainMenu: menus(where: {location: PRIMARY}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  path
+			  url
+			  label
+			  id
+			}
+		  }
+		  name
+		}
+	  }
+	  mobileMenu: menus(where: {location: HANDHELD}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  footerMenu: menus(where: {location: SECONDARY}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  siteSeo: seo {
+		schema {
+		  logo {
+			id
+			altText
+			sourceUrl(size: THUMBNAIL)
+		  }
+		  siteName
+		  homeUrl
+		}
+	  }
   products(first: 5000) {
     nodes {
       id

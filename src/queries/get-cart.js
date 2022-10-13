@@ -2,6 +2,56 @@ import { gql } from "@apollo/client";
 
 const GET_CART = gql`
 query GET_CART {
+  mainMenu: menus(where: {location: PRIMARY}) {
+    nodes {
+      menuItems {
+        nodes {
+          path
+          url
+          label
+          id
+        }
+      }
+      name
+    }
+  }
+  mobileMenu: menus(where: {location: HANDHELD}) {
+    nodes {
+      menuItems {
+        nodes {
+          url
+          label
+          id
+          path
+        }
+      }
+      name
+    }
+  }
+  footerMenu: menus(where: {location: SECONDARY}) {
+    nodes {
+      menuItems {
+        nodes {
+          url
+          label
+          id
+          path
+        }
+      }
+      name
+    }
+  }
+  siteSeo: seo {
+    schema {
+      logo {
+        id
+        altText
+        sourceUrl(size: THUMBNAIL)
+      }
+      siteName
+      homeUrl
+    }
+  }
   cart {
     contents {
       nodes {

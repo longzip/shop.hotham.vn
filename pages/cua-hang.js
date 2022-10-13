@@ -3,12 +3,10 @@ import Product from "../src/components/Product";
 import client from '../src/components/ApolloClient';
 import CUA_HANG_QUERY from "../src/queries/cua-hang";
 
-export default function CuaHang (props) {
-
-	const { products } = props || {};
+export default function CuaHang ({ products, siteSeo, mainMenu, mobileMenu, footerMenu }) {
 
 	return (
-			<Layout>
+			<Layout  siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
 				{/*Products*/ }
 				<div className="products container mx-auto my-32 px-4 xl:px-0">
 					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Được khuyến nghị</span></h2>
@@ -31,6 +29,10 @@ export async function getStaticProps () {
 
 	return {
 		props: {
+			mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
+			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
+			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
 			products: data?.products?.nodes ? data.products.nodes : []
 		},
 		revalidate: 1

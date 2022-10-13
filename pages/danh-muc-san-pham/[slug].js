@@ -7,7 +7,7 @@ import {isEmpty} from "lodash";
 import {useRouter} from "next/router";
 import parse from 'html-react-parser';
 
-export default function CategorySingle( props ) {
+export default function CategorySingle( { categoryName, products, seo, siteSeo, mainMenu, mobileMenu, footerMenu } ) {
 
     const router = useRouter()
 
@@ -17,12 +17,10 @@ export default function CategorySingle( props ) {
         return <div>Loading...</div>
     }
 
-    const { categoryName, products, seo } = props;
-
     const fullHead = parse(seo?.fullHead);
 
     return (
-        <Layout>
+        <Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
             <Head>
 				{ fullHead }
 			</Head>
@@ -49,6 +47,10 @@ export async function getStaticProps(context) {
 
     return {
         props: {
+            mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
+			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
+			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
             categoryName: data?.productCategory?.name ?? '',
             seo: data?.productCategory?.seo ?? '',
             products: data?.productCategory?.products?.nodes ?? []
