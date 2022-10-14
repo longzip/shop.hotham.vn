@@ -24,12 +24,23 @@ export default function CategorySingle( { categoryName, products, seo, siteSeo, 
             <Head>
 				{ fullHead }
 			</Head>
-            <div className="product-categories-container container mx-auto my-32 px-4 xl:px-0">
-                { categoryName ? <h3 className="text-2xl mb-5 uppercase">{ categoryName }</h3> : '' }
-                <div className="product-categories grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-                    { undefined !== products && products?.length ? (
-                        products.map( product => <Product key={ product?.id } product={ product } /> )
-                    ) : ''}
+            <div className="mx-auto container px-6 xl:px-0 py-12">
+                <div className="flex flex-col">
+                    { categoryName ? <div className="flex flex-col justify-center">
+                        <div className="relative">
+                            <img className="hidden sm:block w-full" src="https://i.ibb.co/HxXSY0j/jason-wang-Nx-Awry-Abt-Iw-unsplash-1-1.png" alt="sofa" />
+                            <img className="sm:hidden w-full" src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png" alt="sofa" />
+                            <div className="absolute sm:bottom-8 bottom-4 pr-10 sm:pr-0 left-4 sm:left-8 flex justify-start items-start">
+                                <p className="text-3xl sm:text-4xl font-semibold leading-9 text-white">{ categoryName }</p>
+                            </div>
+                        </div>
+                    </div> : '' }
+                    
+                    <div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+                        { undefined !== products && products?.length ? (
+                            products.map( product => <Product key={ product?.id } product={ product } /> )
+                        ) : ''}
+                    </div>
                 </div>
             </div>
         </Layout>

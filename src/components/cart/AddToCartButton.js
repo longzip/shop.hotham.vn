@@ -70,7 +70,7 @@ const AddToCart = (props) => {
             {/*	Check if its an external product then put its external buy link */}
             {"ExternalProduct" === product.__typename ? (
                     <a href={product?.externalUrl ?? '/'} target="_blank"
-                       className="px-3 py-1 rounded-sm mr-3 text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600">
+                       className="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
 						Mua ngay
                     </a>
                 ) :
@@ -78,7 +78,7 @@ const AddToCart = (props) => {
 					disabled={addToCartLoading}
                     onClick={handleAddToCartClick}
                     className={cx(
-                        'px-3 py-1 rounded-sm mr-3 text-sm border-solid border border-current',
+                        'focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6',
                         {'hover:bg-purple-600 hover:text-white hover:border-purple-600': !addToCartLoading},
                         {'opacity-50 cursor-not-allowed': addToCartLoading}
                     )}
@@ -89,7 +89,7 @@ const AddToCart = (props) => {
             {showViewCart ? (
                 <Link href="/gio-hang/">
                     <button
-                        className="px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600">Xem giỏ hàng
+                        className="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">Xem giỏ hàng
                     </button>
                 </Link>
             ) : ''}

@@ -16,14 +16,14 @@ const Layout = (props) => {
   return (
     <AppProvider>
       <ApolloProvider client={client}>
-        <div>
+        <>
           <Head>
             <title>Hàng tiêu dùng thiết yếu bình ổn thị trường ở Bưu điện xã Tự Lập</title>
           </Head>
           <Header siteSeo={props.siteSeo} fbPageId={props.fbPageId} mainMenu={props.mainMenu} mobileMenu={props.mobileMenu} />
           {props.children}
           <Footer siteSeo={props.siteSeo} fbPageId={props.fbPageId} footerMenu={props.footerMenu} />
-        </div>
+        </>
       </ApolloProvider>
     </AppProvider>
   );

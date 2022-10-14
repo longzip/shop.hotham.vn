@@ -57,12 +57,15 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 	  averageRating
 	  slug
 	  description
+	  shortDescription
 	  galleryImages {
           nodes {
             id
             title
             altText
             mediaItemUrl
+			sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
+			url: sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
       }
 	  image {

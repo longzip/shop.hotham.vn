@@ -22,14 +22,16 @@ export default function Home (props) {
 				{/*Hero Carousel*/}
 				<HeroCarousel heroCarousel={heroCarousel}/>
 				{/*Categories*/ }
-				<div className="product-categories-container container mx-auto my-32 px-4 xl:px-0">
-					<h2 className="main-title text-xl mb-5 uppercase"><span className="main-title-inner">Danh mục</span></h2>
-					<ParentCategoriesBlock productCategories={ productCategories }/>
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+						<h2 class="text-2xl font-bold text-gray-900">Danh mục</h2>
+						<ParentCategoriesBlock productCategories={ productCategories }/>
+					</div>
 				</div>
 				{/*Products OnSale*/ }
 				<div className="products container mx-auto my-32 px-4 xl:px-0">
 					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Flash Sale</span></h2>
-					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+					<div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
 						{ productOnSales.length ? (
 							productOnSales.map( product => <Product key={ product.id } product={ product }/> )
 						) : '' }
@@ -38,7 +40,7 @@ export default function Home (props) {
 				{/*Products*/ }
 				<div className="products container mx-auto my-32 px-4 xl:px-0">
 					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Được khuyến nghị</span></h2>
-					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+					<div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
 						{ products.length ? (
 							products.map( product => <Product key={ product.id } product={ product }/> )
 						) : '' }

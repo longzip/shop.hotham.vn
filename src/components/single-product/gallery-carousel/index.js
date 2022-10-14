@@ -46,28 +46,23 @@ const GalleryCarousel = ({gallery}) => {
     };
 
     return (
-        <div className="banner flex flex-col sm:flex-row justify-between overflow-hidden md:mr-4">
-            <div className="banner-img w-full">
+        <div className=" w-full sm:w-96 md:w-8/12  lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
+            <div className=" w-full lg:w-8/12  flex justify-center items-center">
+                <img src={gallery[0].url} alt="Wooden Chair Previw" />
+            </div>
+            <div className=" w-full lg:w-4/12 grid lg:grid-cols-1 sm:grid-cols-4 grid-cols-2 gap-6">
                 {
-                    gallery.map( ( item, index ) => {
-                        const opacity = ( activeIndex === index || 1 === gallery.length ) ? 'opacity-100' : 'opacity-0';
+                    gallery.slice(0,3).map( ( item, index ) => {
+                        
                         return (
-                            <div key={item?.id} className={`${opacity} banner-img-container absolute top-0 left-0`}>
+                            <div key={item?.id} className="bg-gray-100 flex justify-center items-center">
                                 <img
-                                    src={item?.mediaItemUrl} loading="lazy" alt={ item?.altText ? item?.altText : item?.title }
+                                    src={item?.sourceUrl} loading="lazy" alt={ item?.altText ? item?.altText : item?.title }
                                 />
                             </div>
                         )
                     })
                 }
-                <div className="slider-button">
-                    <button className="focus:outline-none" onClick={nextSlide}>
-                        <svg width="25px" className="inline-block mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" /></svg>
-                    </button>
-                    <button className="focus:outline-none" onClick={nextSlide}>
-                        <svg width="25px" className="inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                    </button>
-                </div>
             </div>
         </div>
     )
