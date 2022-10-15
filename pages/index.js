@@ -6,6 +6,7 @@ import client from '../src/components/ApolloClient';
 import ParentCategoriesBlock from "../src/components/category/category-block/ParentCategoriesBlock";
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
 import HeroCarousel from "../src/components/home/hero-carousel";
+import Cta from "../src/components/Cta";
 import parse from 'html-react-parser';
 
 
@@ -21,6 +22,8 @@ export default function Home (props) {
 				</Head>
 				{/*Hero Carousel*/}
 				<HeroCarousel heroCarousel={heroCarousel}/>
+				
+
 				{/*Categories*/ }
 				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
@@ -46,6 +49,8 @@ export default function Home (props) {
 						) : '' }
 					</div>
 				</div>
+
+				<Cta />
 
 			</Layout>
 	)
