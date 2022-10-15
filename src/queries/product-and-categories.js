@@ -73,6 +73,8 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
             id
             sourceUrl
             srcSet
+            title
+            altText
           }
         }
       }

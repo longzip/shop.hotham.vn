@@ -84,7 +84,6 @@ export default function Product({ product, siteSeo, mainMenu, mobileMenu, footer
 
                     <p className=" font-normal text-base leading-6 text-gray-600 mt-7">{ product.shortDescription }</p>
                     <Price salesPrice={product?.price} regularPrice={product?.regularPrice}/>
-                    {/* <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">$ 790.89</p> */}
 
                     <div className="lg:mt-11 mt-10">
                         <div className="flex flex-row justify-between">
@@ -125,18 +124,6 @@ export default function Product({ product, siteSeo, mainMenu, mobileMenu, footer
                             />
                         ) : null }
 						
-						{/* <div className="product-info">
-							<h4 className="products-main-title text-2xl uppercase">{ product.name }</h4>
-							<div
-
-								dangerouslySetInnerHTML={ {
-									__html: product.description,
-								} }
-								className="product-description mb-5"
-							/>
-                            
-							<AddToCartButton product={ product }/>
-						</div> */}
 					</div>
 
 
