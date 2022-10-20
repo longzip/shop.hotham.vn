@@ -7,7 +7,7 @@ import {isEmpty} from "lodash";
 import {useRouter} from "next/router";
 import parse from 'html-react-parser';
 
-export default function CategorySingle( { categoryName, products, seo, siteSeo, mainMenu, mobileMenu, footerMenu } ) {
+export default function CategorySingle( { categoryName, image: {sourceUrl, altText}, products, seo, siteSeo, mainMenu, mobileMenu, footerMenu, footerMenu2 } ) {
 
     const router = useRouter()
 
@@ -20,11 +20,11 @@ export default function CategorySingle( { categoryName, products, seo, siteSeo, 
     const fullHead = parse(seo?.fullHead);
 
     return (
-        <Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
+        <Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu} footerMenu2={footerMenu2}>
             <Head>
 				{ fullHead }
 			</Head>
-            <div className="mx-auto container px-6 xl:px-0 py-12">
+            <div className="mx-auto container px-6 xl:px-0">
                 <div className="flex flex-col">
                     { categoryName ? <div className="flex flex-col justify-center">
                         <div className="relative">
@@ -60,9 +60,11 @@ export async function getStaticProps(context) {
         props: {
             mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
 			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
 			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
 			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
             categoryName: data?.productCategory?.name ?? '',
+            image: data?.productCategory?.image ?? {},
             seo: data?.productCategory?.seo ?? '',
             products: data?.productCategory?.products?.nodes ?? []
         },

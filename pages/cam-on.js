@@ -72,9 +72,9 @@ const ThankYouContent = () => {
     )
 }
 
-const ThankYou = ({siteSeo, mainMenu, mobileMenu, footerMenu}) => {
+const ThankYou = ({siteSeo, mainMenu, mobileMenu, footerMenu, footerMenu2}) => {
     return (
-        <Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
+        <Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu} footerMenu2={footerMenu2}>
             <ThankYouContent/>
         </Layout>
     )
@@ -90,6 +90,7 @@ export async function getStaticProps () {
 		props: {
 			mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
 			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
 			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
 			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {}
 		},

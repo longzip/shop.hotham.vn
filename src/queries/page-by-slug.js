@@ -14,7 +14,7 @@ export const PAGE_BY_SLUG_QUERY = gql` query Page($slug: ID!) {
 		  name
 		}
 	  }
-	  mobileMenu: menus(where: {location: HANDHELD}) {
+	  mobileMenu: menus(where: {location: PRIMARY_MOBILE}) {
 		nodes {
 		  menuItems {
 			nodes {
@@ -27,7 +27,20 @@ export const PAGE_BY_SLUG_QUERY = gql` query Page($slug: ID!) {
 		  name
 		}
 	  }
-	  footerMenu: menus(where: {location: SECONDARY}) {
+	  footerMenu: menus(where: {location: FOOTER}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  footerMenu2: menus(where: {location: FOOTER_MENU_2}) {
 		nodes {
 		  menuItems {
 			nodes {

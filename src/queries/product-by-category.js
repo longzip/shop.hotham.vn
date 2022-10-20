@@ -14,7 +14,7 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 		  name
 		}
 	  }
-	  mobileMenu: menus(where: {location: HANDHELD}) {
+	  mobileMenu: menus(where: {location: PRIMARY_MOBILE}) {
 		nodes {
 		  menuItems {
 			nodes {
@@ -27,7 +27,20 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 		  name
 		}
 	  }
-	  footerMenu: menus(where: {location: SECONDARY}) {
+	  footerMenu: menus(where: {location: FOOTER}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  footerMenu2: menus(where: {location: FOOTER_MENU_2}) {
 		nodes {
 		  menuItems {
 			nodes {
@@ -54,6 +67,10 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 	productCategory(id: $slug, idType: SLUG) {
 	  id
 	  name
+	  image {
+		altText
+		sourceUrl(size: MEDIUM)
+	  }
 	  seo {
 		fullHead
 	  }

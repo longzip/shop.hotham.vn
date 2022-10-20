@@ -10,7 +10,7 @@ import GalleryCarousel from "../../src/components/single-product/gallery-carouse
 import Price from "../../src/components/single-product/price";
 import parse from 'html-react-parser';
 
-export default function Product({ product, siteSeo, mainMenu, mobileMenu, footerMenu }) {
+export default function Product({ product, siteSeo, mainMenu, mobileMenu, footerMenu, footerMenu2 }) {
 
     const [rotate, setRotate] = useState(false);
     const [count, setCount] = useState(1);
@@ -34,7 +34,7 @@ export default function Product({ product, siteSeo, mainMenu, mobileMenu, footer
 
     const fullHead = parse(product?.seo.fullHead);
 	return (
-		<Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
+		<Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu} footerMenu2={footerMenu2}>
 			{ product ? (
 				<div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
                     <Head>
@@ -115,13 +115,15 @@ export default function Product({ product, siteSeo, mainMenu, mobileMenu, footer
                         { !isEmpty( product?.galleryImages?.nodes ) ? (
                             <GalleryCarousel gallery={product?.galleryImages?.nodes}/>
                         ) : !isEmpty( product.image ) ? (
-                            <img
+                            <div className="w-full lg:w-4/12">
+                                <img
                                 src={ product?.image?.sourceUrl }
                                 alt="Product Image"
                                 width="100%"
                                 height="auto"
-                                srcSet={ product?.image?.srcSet }
+                                // srcSet={ product?.image?.srcSet }
                             />
+                            </div>
                         ) : null }
 						
 					</div>
@@ -158,6 +160,7 @@ export async function getStaticProps(context) {
         props: {
             mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
 			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
 			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
 			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
             product: data?.product || {},

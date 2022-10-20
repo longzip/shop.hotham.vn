@@ -1,7 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 
-const Footer1 = ({siteSeo: {logo, siteName, homeUrl}, footerMenu}) => {
+const Footer1 = ({siteSeo: {logo, siteName, homeUrl}, footerMenu, footerMenu2}) => {
     return (
         <div className="mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
@@ -25,8 +25,8 @@ const Footer1 = ({siteSeo: {logo, siteName, homeUrl}, footerMenu}) => {
 								</a>
 							</Link>
                     </div>
-                    <p className="text-sm leading-none text-gray-800 mt-4">Copyright © 2021 {siteName}</p>
-                    <p className="text-sm leading-none text-gray-800 mt-4">All rights reserved</p>
+                    <p className="text-sm leading-none text-gray-800 mt-4">Copyright © 2022 {siteName}</p>
+                    <p className="text-sm leading-none text-gray-800 mt-4">Thiết kế website hiện đại cùng <a href="https://lovanlong.ga/">Lỗ Văn Long</a></p>
                     <div className="flex items-center gap-x-4 mt-12">
                         <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
                             <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,14 +71,11 @@ const Footer1 = ({siteSeo: {logo, siteName, homeUrl}, footerMenu}) => {
                     </div>
                 </div>
                 <div className="sm:ml-0 ml-8">
-                    <h2 className="text-base font-semibold leading-4 text-gray-800">Về {' '} {siteName}</h2>
-                    {/* <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Blog</p> */}
+                    <h2 className="text-base font-semibold leading-4 text-gray-800">{footerMenu[0]?.name ?? 'Footer Menu 1'}</h2>
                     <ul>
-                        
-                    
                     {footerMenu[0]?.menuItems?.nodes ? footerMenu[0].menuItems.nodes.map( menuItem => (
 									<li className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-                                        <Link key={ menuItem.id } href={ menuItem.url }>
+                                        <Link key={ menuItem.id } href={ menuItem.path }>
                                             <a 
                                             dangerouslySetInnerHTML={ { __html: menuItem.label } }/>
                                         </Link>
@@ -88,23 +85,18 @@ const Footer1 = ({siteSeo: {logo, siteName, homeUrl}, footerMenu}) => {
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-base font-semibold leading-4 text-gray-800">Hỗ trợ khách hàng</h2>
+                    <h2 className="text-base font-semibold leading-4 text-gray-800">{footerMenu2[0]?.name ?? 'Footer Menu 2'}</h2>
                     <ul>
-                        <li className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-                            <Link href="/chinh-sach-bao-mat/">
-                                <a>Chính sách bảo mật</a>
-                            </Link>
-                        </li>
-                        <li className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-                            <Link href="/doi-tra-hang/">
-                                <a>Đổi trả hàng</a>
-                            </Link>
-                        </li>
+                    {footerMenu2[0]?.menuItems?.nodes ? footerMenu2[0].menuItems.nodes.map( menuItem => (
+									<li className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
+                                        <Link key={ menuItem.id } href={ menuItem.path }>
+                                            <a 
+                                            dangerouslySetInnerHTML={ { __html: menuItem.label } }/>
+                                        </Link>
+                                    </li>
+								) ) : null}
+                                
                     </ul>
-                    {/* <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Legal policy</p>
-                    <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Status policy</p>
-                    <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Privacy policy</p>
-                    <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Terms of service</p> */}
                 </div>
                 <div className="mt-10 lg:block hidden">
                     <label className="text-xl font-medium leading-5 text-gray-800">Nhận ưu đãi</label>

@@ -12,11 +12,11 @@ import parse from 'html-react-parser';
 
 export default function Home (props) {
 
-	const { homePage, products, productOnSales, productCategories, heroCarousel, cmsName, fbPageId, siteSeo, mainMenu, mobileMenu, footerMenu } = props || {};
+	const { homePage, products, productOnSales, productCategories, heroCarousel, cmsName, fbPageId, siteSeo, mainMenu, mobileMenu, footerMenu, footerMenu2 } = props || {};
 	const fullHead = parse(homePage?.seo?.fullHead);
 
 	return (
-			<Layout fbPageId={fbPageId} siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
+			<Layout fbPageId={fbPageId} siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu} footerMenu2={footerMenu2}>
 				<Head>
 					{ fullHead }
 				</Head>
@@ -50,8 +50,6 @@ export default function Home (props) {
 					</div>
 				</div>
 
-				<Cta />
-
 			</Layout>
 	)
 };
@@ -63,9 +61,11 @@ export async function getStaticProps () {
 	} );
 
 	return {
+		
 		props: {
 			mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
 			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
 			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
 			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
 			productCategories: data?.productCategories?.nodes ? data.productCategories.nodes : [],

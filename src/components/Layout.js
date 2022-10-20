@@ -22,7 +22,7 @@ const Layout = (props) => {
           </Head>
           <Header siteSeo={props.siteSeo} fbPageId={props.fbPageId} mainMenu={props.mainMenu} mobileMenu={props.mobileMenu} />
           {props.children}
-          <Footer siteSeo={props.siteSeo} fbPageId={props.fbPageId} footerMenu={props.footerMenu} />
+          <Footer siteSeo={props.siteSeo} fbPageId={props.fbPageId} footerMenu={props.footerMenu} footerMenu2={props.footerMenu2} />
         </>
       </ApolloProvider>
     </AppProvider>

@@ -5,8 +5,6 @@ export default function Nav({siteSeo: {logo, siteName, homeUrl}, mainMenu, mobil
     const [searchInput, setSearchInput] = useState(true);
     const [mdOptionsToggle, setMdOptionsToggle] = useState(true);
     const [showMenu, setShowMenu] = useState(false);
-    
-    // console.log(mainMenu[0].menuItems)
 
     return (
         <div className="dark:bg-gray-900">
@@ -65,7 +63,7 @@ export default function Nav({siteSeo: {logo, siteName, homeUrl}, mainMenu, mobil
                             <ul className="hidden w-8/12 md:flex items-center justify-center space-x-8">
                                 {mainMenu[0]?.menuItems?.nodes ? mainMenu[0].menuItems.nodes.map( menuItem => (
 									<li>
-                                        <Link key={ menuItem.id } href={ menuItem.url }>
+                                        <Link key={ menuItem.id } href={ menuItem.path }>
                                             <a className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
                                             dangerouslySetInnerHTML={ { __html: menuItem.label } }/>
                                         </Link>
@@ -147,7 +145,7 @@ export default function Nav({siteSeo: {logo, siteName, homeUrl}, mainMenu, mobil
                             <ul className="flex flex-col space-y-6">
                             {mobileMenu[0]?.menuItems?.nodes ? mobileMenu[0].menuItems.nodes.map( menuItem => (
 									<li>
-                                        <Link key={ menuItem.id } href={ menuItem.url }>
+                                        <Link key={ menuItem.id } href={ menuItem.path }>
                                             <a className="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800"
                                             dangerouslySetInnerHTML={ { __html: menuItem.label } }/>
                                         </Link>
@@ -171,8 +169,8 @@ export default function Nav({siteSeo: {logo, siteName, homeUrl}, mainMenu, mobil
                                     </a>
                                     </Link>
                                 </li>
-                                {/* <li>
-                                    <a href="javascript:void(0)" className="dark:text-white text-gray-800 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
+                                <li>
+                                    <a href="#" className="dark:text-white text-gray-800 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
                                         <div>
                                             <svg className="fill-stroke" width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -186,7 +184,7 @@ export default function Nav({siteSeo: {logo, siteName, homeUrl}, mainMenu, mobil
                                         </div>
                                         <p className="text-base">Wishlist</p>
                                     </a>
-                                </li> */}
+                                </li>
                             </ul>
                         </div>
                     </div>

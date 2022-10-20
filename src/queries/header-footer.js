@@ -17,7 +17,7 @@ const HEADER_FOOTER_QUERY = gql`query {
       name
     }
   }
-  mobileMenu: menus(where: {location: HANDHELD}) {
+  mobileMenu: menus(where: {location: PRIMARY_MOBILE}) {
     nodes {
       menuItems {
         nodes {
@@ -30,7 +30,20 @@ const HEADER_FOOTER_QUERY = gql`query {
       name
     }
   }
-  footerMenu: menus(where: {location: SECONDARY}) {
+  footerMenu: menus(where: {location: FOOTER}) {
+    nodes {
+      menuItems {
+        nodes {
+          url
+          label
+          id
+          path
+        }
+      }
+      name
+    }
+  }
+  footerMenu2: menus(where: {location: FOOTER_MENU_2}) {
     nodes {
       menuItems {
         nodes {

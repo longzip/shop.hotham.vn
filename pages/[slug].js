@@ -6,7 +6,7 @@ import {PAGE_BY_SLUG_QUERY, PAGE_SLUGS} from '../src/queries/page-by-slug';
 import { isEmpty } from 'lodash';
 import parse from 'html-react-parser';
 
-export default function Product({ page, siteSeo, mainMenu, mobileMenu, footerMenu }) {
+export default function Product({ page, siteSeo, mainMenu, mobileMenu, footerMenu, footerMenu2 }) {
 
     const router = useRouter()
 
@@ -18,7 +18,7 @@ export default function Product({ page, siteSeo, mainMenu, mobileMenu, footerMen
 
     const fullHead = parse(page.seo.fullHead);
 	return (
-		<Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu}>
+		<Layout siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu} footerMenu2={footerMenu2}>
 			{ page ? (
 				<div className="single-product container mx-auto my-32 px-4 xl:px-0">
                     <Head>
@@ -59,6 +59,7 @@ export async function getStaticProps(context) {
         props: {
             mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
 			footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
+			footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
 			mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
 			siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
             page: data?.page || {},

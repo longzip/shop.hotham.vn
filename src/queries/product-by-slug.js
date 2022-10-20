@@ -14,7 +14,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		  name
 		}
 	  }
-	  mobileMenu: menus(where: {location: HANDHELD}) {
+	  mobileMenu: menus(where: {location: PRIMARY_MOBILE}) {
 		nodes {
 		  menuItems {
 			nodes {
@@ -27,7 +27,20 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		  name
 		}
 	  }
-	  footerMenu: menus(where: {location: SECONDARY}) {
+	  footerMenu: menus(where: {location: FOOTER}) {
+		nodes {
+		  menuItems {
+			nodes {
+			  url
+			  label
+			  id
+			  path
+			}
+		  }
+		  name
+		}
+	  }
+	  footerMenu2: menus(where: {location: FOOTER_MENU_2}) {
 		nodes {
 		  menuItems {
 			nodes {
@@ -73,7 +86,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		uri
 		title
 		srcSet
-		sourceUrl
+		sourceUrl(size: WOOCOMMERCE_SINGLE)
 	  }
 	  name
 	  ... on SimpleProduct {
@@ -121,56 +134,6 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 `;
 
 export const PRODUCT_SLUGS = gql` query Products {
-	mainMenu: menus(where: {location: PRIMARY}) {
-		nodes {
-		  menuItems {
-			nodes {
-			  path
-			  url
-			  label
-			  id
-			}
-		  }
-		  name
-		}
-	  }
-	  mobileMenu: menus(where: {location: HANDHELD}) {
-		nodes {
-		  menuItems {
-			nodes {
-			  url
-			  label
-			  id
-			  path
-			}
-		  }
-		  name
-		}
-	  }
-	  footerMenu: menus(where: {location: SECONDARY}) {
-		nodes {
-		  menuItems {
-			nodes {
-			  url
-			  label
-			  id
-			  path
-			}
-		  }
-		  name
-		}
-	  }
-	  siteSeo: seo {
-		schema {
-		  logo {
-			id
-			altText
-			sourceUrl(size: THUMBNAIL)
-		  }
-		  siteName
-		  homeUrl
-		}
-	  }
   products(first: 5000) {
     nodes {
       id
