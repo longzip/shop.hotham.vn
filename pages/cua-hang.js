@@ -8,9 +8,9 @@ export default function CuaHang ({ products, siteSeo, mainMenu, mobileMenu, foot
 	return (
 			<Layout  siteSeo={siteSeo} mainMenu={mainMenu} mobileMenu={mobileMenu} footerMenu={footerMenu} footerMenu2={footerMenu2}>
 				{/*Products*/ }
-				<div className="products container mx-auto my-32 px-4 xl:px-0">
-					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Được khuyến nghị</span></h2>
-					<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+				<div className="container mx-auto px-1">
+					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Sản phẩm</span></h2>
+					<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
 						{ products.length ? (
 							products.map( product => <Product key={ product.id } product={ product }/> )
 						) : '' }

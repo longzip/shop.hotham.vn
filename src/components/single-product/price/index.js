@@ -23,23 +23,23 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
         const discountPercent = ( ( formattedRegularPrice - formattedSalesPrice ) / formattedRegularPrice ) * 100;
 
         return {
-            discountPercent: formattedSalesPrice !== formattedRegularPrice ? `(${discountPercent.toFixed(2)}%) GIẢM` : null,
-            strikeThroughClass: formattedSalesPrice < formattedRegularPrice ? 'product-regular-price mr-2 line-through text-sm text-gray-600 font-normal' : ''
+            discountPercent: formattedSalesPrice !== formattedRegularPrice ? `${discountPercent.toFixed(0)}% GIẢM` : null,
+            strikeThroughClass: formattedSalesPrice < formattedRegularPrice ? 'line-through' : 'text-red-600 font-bold'
         }
     }
 
     const productMeta = discountPercent( regularPrice, salesPrice );
 
     return (
-        <p className="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">
+        <p className="flex my-4 space-x-3 items-center justify-center">
             {/* Regular price */}
-            { productMeta?.discountPercent ? <span className="product-price mr-2">{salesPrice}</span> : null }
+            { productMeta?.discountPercent ? <span className="text-red-600 font-bold">{salesPrice}</span> : null }
 
             {/* Discounted price */}
             <span className={productMeta?.strikeThroughClass}>{ regularPrice }</span>
 
             {/* Discount percent */}
-            <span className="product-discount text-green-600 font-bold text-sm font-normal">{productMeta?.discountPercent}</span>
+            { productMeta?.discountPercent ? <span className="absolute px-3 py-2 border border-red-600 top-0 right-0 text-red-600 bg-white rounded">{productMeta?.discountPercent}</span> : null}
         </p>
     )
 }

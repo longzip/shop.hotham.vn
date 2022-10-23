@@ -52,7 +52,7 @@ export default function CategorySingle( { categoryName, products, seo, siteSeo, 
                 </button>
             </div> : '' }
                     
-                    <div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         { undefined !== products && products?.length ? (
                             products.map( product => <Product key={ product?.id } product={ product } /> )
                         ) : ''}

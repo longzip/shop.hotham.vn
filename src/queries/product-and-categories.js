@@ -108,7 +108,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
       }
     }
   }
-  productOnSales: products(where: {onSale: false, stockStatus: IN_STOCK}) {
+  productOnSales: products(where: {onSale: true, stockStatus: IN_STOCK}) {
     nodes {
       id
       productId: databaseId

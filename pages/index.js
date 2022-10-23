@@ -32,18 +32,18 @@ export default function Home (props) {
 					</div>
 				</div>
 				{/*Products OnSale*/ }
-				<div className="products container mx-auto my-32 px-4 xl:px-0">
+				<div className="container mx-auto px-1">
 					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Flash Sale</span></h2>
-					<div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+					<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
 						{ productOnSales.length ? (
 							productOnSales.map( product => <Product key={ product.id } product={ product }/> )
 						) : '' }
 					</div>
 				</div>
 				{/*Products*/ }
-				<div className="products container mx-auto my-32 px-4 xl:px-0">
-					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Được khuyến nghị</span></h2>
-					<div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+				<div className="container mx-auto px-1">
+					<h2 className="products-main-title main-title my-5 text-xl uppercase"><span className="main-title-inner">Được khuyến nghị</span></h2>
+					<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
 						{ products.length ? (
 							products.map( product => <Product key={ product.id } product={ product }/> )
 						) : '' }
