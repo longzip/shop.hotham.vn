@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        strongGray: '#898989',
+      },
       fontFamily: {
         sans: ['Avo', 'sans-serif'],
       },
