@@ -82,6 +82,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
           slug
           databaseId
           description
+          slug
           image {
             id
             sourceUrl
@@ -93,14 +94,15 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
       }
     }
   }
-  productCategories(first: 3) {
+  productCategories(where: {hideEmpty: true, hierarchical: true}) {
     nodes {
       id
       name
       slug
+      parentId
       image {
         id
-        sourceUrl
+        sourceUrl(size: WOOCOMMERCE_SINGLE)
         srcSet
         title
       }
@@ -116,7 +118,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
       image {
         id
         altText
-        sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
+        sourceUrl(size: WOOCOMMERCE_SINGLE)
       }
       name
       ... on SimpleProduct {
@@ -159,7 +161,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
       image {
         id
         altText
-        sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
+        sourceUrl(size: WOOCOMMERCE_SINGLE)
       }
       name
       ... on SimpleProduct {

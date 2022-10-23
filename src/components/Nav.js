@@ -52,9 +52,7 @@ export default function Nav({siteSeo: {logo, siteName, homeUrl}, mainMenu, mobil
 								<a>
 									{
 										logo ? (
-											<img className="mr-2" src={ logo.sourceUrl } alt={ `${ siteName } logo` }
-											     width="96"
-											     height="96"/>
+											<img className="mr-2 h-9 w-auto" src={ logo.sourceUrl } alt={ `${ siteName } logo` }/>
 										) : {siteName}
 									}
 								</a>

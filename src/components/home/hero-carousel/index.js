@@ -12,59 +12,46 @@ export default function Index({heroCarousel}) {
     return (
         <>
             {/* Carousel for Small-Sized Screen */}
-            <CarouselProvider className="relative block sm:hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={heroCarousel.length} visibleSlides={1} step={1} infinite={true}>
-                <div className="js-flickity flex justify-center items-center">
+            <CarouselProvider className="relative block" autoPlay={true} naturalSlideWidth={80} isIntrinsicHeight={true} totalSlides={heroCarousel.length} visibleSlides={1} step={1} infinite={true}>
+            <div className="w-full relative flex items-center justify-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
                     <Slider>
                         {
                             heroCarousel.map( ( item, index ) => {
                                 return (
                                     <Slide key={item?.id} index={index}>
-                                        <div className="gallery-cell lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full">
-                                            <div className="relative w-full h-full lg:hidden">
-                                                <img src={item?.image?.sourceUrl} alt={item?.image?.altText} className="object-center object-cover w-full h-full" />
-                                                <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
-                                                    <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{item?.image?.title}</h1>
-                                                </div>
+                                        
+                                        <div class="relative flex w-full">
+                                            <img className="flex object-cover object-center w-full lg:w-3/4" src={item?.image?.sourceUrl} alt={item?.image?.altText} />
+                                            <div className="absolute w-full lg:right-0 bottom-0 lg:h-full lg:w-1/4 lg:px-5 lg:pt-[200px] bg-black text-center py-5">
+                                                <h2 className="uppercase leading-5 text-xl text-white lg:text-2xl lg:leading-9">{item?.image?.title}</h2>
+                                                <p className="text-white pt-2" dangerouslySetInnerHTML={ {
+                                                    __html: item?.description,
+                                                } } />
+                                                <a href={`/danh-muc-san-pham/${item.slug}`} className="mx-2 my-2 bg-white transition duration-150 ease-in-out focus:outline-none rounded text-gray-800 border border-gray-300 px-6 py-2 uppercase text-sm">Mua ngay</a>
                                             </div>
-                                        </div>
+                                        </div>           
                                     </Slide>
                                 )
                             })
                         }
                     </Slider>
-                </div>
+                    </div>
+                        <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
             </CarouselProvider>
 
             {/* Carousel for Medium and Large-Sized Screen */}
-            <CarouselProvider className="relative hidden sm:block" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={3} visibleSlides={1} step={1} infinite={true} currentSlide={1}>
-                <div className="js-flickity flex justify-center items-center">
-                    <Slider className="carousel__sliderLarge">
-                        {
-                            heroCarousel.map( ( item, index ) => {
-                                return (
-                                    <Slide className="carousel__inner-slideLarge" index={index}>
-                                        <div className="gallery-cell w-full h-full">
-                                            <div className="relative w-full h-full lg:block hidden">
-                                                <img src={item?.image?.sourceUrl} alt={item?.image?.altText} className="object-center object-cover w-full h-full" />
-                                                <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
-                                                    <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{item?.image?.title}</h1>
-                                                </div>
-                                            </div>
-                                            <div className="relative w-full h-full lg:hidden">
-                                                <img src={heroCarousel[index+1]?.image?.sourceUrl ?? heroCarousel[0]?.image?.sourceUrl} alt={heroCarousel[index+1]?.image?.altText ?? heroCarousel[0]?.image?.altText} className="object-center object-cover w-full h-full" />
-                                                <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
-                                                    <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{heroCarousel[index+1]?.image?.title ?? heroCarousel[0]?.image?.title}</h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Slide>
-                                )
-                            })
-                        }
-
-                    </Slider>
-                </div>
-            </CarouselProvider>
+            
 
             <style>
                 {`
