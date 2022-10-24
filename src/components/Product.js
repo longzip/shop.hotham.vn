@@ -9,7 +9,7 @@ const Product = (props) => {
   return (
     // @TODO Need to handle Group products differently.
     undefined !== product && "GroupProduct" !== product.__typename ? (
-      <div className="group group-hover:opacity-60 transition duration-500 relative w-full border shadow-2xl">
+      <div className="group group-hover:opacity-60 transition duration-500 relative w-full border shadow-xl">
         <Link href={`/cua-hang/${product?.slug}`}>
           <a className="relative block overflow-hidden">
             <img
@@ -20,7 +20,7 @@ const Product = (props) => {
             />
 
             <div className="mt-4 text-center group-hover:opacity-60 transition duration-500">
-              <h2 className="max-w-sm text-2xl font-medium">
+              <h2 className="max-w-lg text-2xl font-medium">
                 {product.name ? product.name : ""}
               </h2>
               {/* Price Container */}
