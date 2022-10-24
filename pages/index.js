@@ -15,7 +15,6 @@ export default function Home(props) {
     productOnSales,
     productCategories,
     heroCarousel,
-    cmsName,
     fbPageId,
     siteSeo,
     mainMenu,

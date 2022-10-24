@@ -1,13 +1,13 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { FB_PIXEL_ID } from '../lib/fpixel'
-import { FB_PAGE_ID } from '../lib/constants'
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { FB_PIXEL_ID } from "../lib/fpixel";
+import { FB_PAGE_ID } from "../lib/constants";
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="vi">
         <Head>
-        <script
+          <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           />
@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
             <img
               height="1"
               width="1"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
             />
           </noscript>
@@ -36,11 +36,10 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <div id="fb-root"></div>
-          <div id="fb-customer-chat" className="fb-customerchat">
-          </div>
+          <div id="fb-customer-chat" className="fb-customerchat"></div>
           <script
-          dangerouslySetInnerHTML={{
-            __html: `
+            dangerouslySetInnerHTML={{
+              __html: `
             var chatbox = document.getElementById('fb-customer-chat');
             chatbox.setAttribute("page_id", "${FB_PAGE_ID}");
             chatbox.setAttribute("attribution", "biz_inbox");
@@ -60,10 +59,10 @@ export default class MyDocument extends Document {
               fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
             `,
-          }}
-        />
+            }}
+          />
         </body>
       </Html>
-    )
+    );
   }
 }
