@@ -20,7 +20,7 @@ const Product = (props) => {
             />
 
             <div className="mt-4 text-center group-hover:opacity-60 transition duration-500">
-              <h2 className="max-w-lg text-2xl font-medium">
+              <h2 className="text-lg font-semibold">
                 {product.name ? product.name : ""}
               </h2>
               {/* Price Container */}

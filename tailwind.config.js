@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        strongGray: '#898989',
+        strongGray: "#898989",
       },
       fontFamily: {
-        sans: ['Avo', 'sans-serif'],
+        sans: ["Avo", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
+};

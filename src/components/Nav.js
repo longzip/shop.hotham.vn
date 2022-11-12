@@ -3,7 +3,7 @@ import { AppContext } from "../components/context/AppContext";
 import Link from "next/link";
 
 export default function Nav({
-  siteSeo: { logo, siteName, homeUrl },
+  siteSeo: { logo, siteName },
   mainMenu,
   mobileMenu,
 }) {

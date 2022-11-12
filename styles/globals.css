@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: Avo;
-    src: url(../src/fonts/UTM-Avo.ttf);
+  font-family: Avo;
+  src: url(../src/fonts/UTM-Avo.ttf);
 }

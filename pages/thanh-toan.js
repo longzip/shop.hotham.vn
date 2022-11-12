@@ -28,16 +28,6 @@ const Checkout = ({
 export default Checkout;
 
 export async function getStaticProps() {
-  // const { data } = await client.query({
-  // 	query: GET_COUNTRIES
-  // });
-
-  // return {
-  // 	props: {
-  // 		data: data || {}
-  // 	},
-  // 	revalidate: 1
-  // };
   const { data } = await client.query({
     query: HEADER_FOOTER_QUERY,
   });

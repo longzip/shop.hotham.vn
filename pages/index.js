@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { CMS_NAME, CMS_URL, FB_PAGE_ID } from "../lib/constants";
 import Layout from "../src/components/Layout";
 import ProductList from "../src/components/ProductList";
 import client from "../src/components/ApolloClient";
@@ -38,31 +37,49 @@ export default function Home(props) {
       <HeroCarousel heroCarousel={heroCarousel} />
 
       {/*Categories*/}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-          <h2 className="products-main-title main-title mb-5 text-xl uppercase">
-            <span className="main-title-inner">Danh mục sản phẩm</span>
-          </h2>
-          <ParentCategoriesBlock
-            productCategories={productCategories.filter(
-              (c) => c.parentId === null
-            )}
-          />
+      <div className="flex justify-center items-center">
+        <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
+          <div className="flex flex-col jusitfy-center items-center space-y-10">
+            <div className="flex flex-col justify-center items-center space-y-2">
+              <h2 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800">
+                Danh mục sản phẩm
+              </h2>
+            </div>
+            <ParentCategoriesBlock
+              productCategories={productCategories.filter(
+                (c) => c.parentId === null
+              )}
+            />
+          </div>
         </div>
       </div>
+
       {/*Products OnSale*/}
-      <div className="container mx-auto px-1">
-        <h2 className="products-main-title main-title mb-5 text-xl uppercase">
-          <span className="main-title-inner">Flash Sale</span>
-        </h2>
-        <ProductList products={productOnSales} />
+      <div className="flex justify-center items-center">
+        <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
+          <div className="flex flex-col jusitfy-center items-center space-y-10">
+            <div className="flex flex-col justify-center items-center space-y-2">
+              <h2 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800">
+                Flash Sale
+              </h2>
+            </div>
+            <ProductList products={productOnSales} />
+          </div>
+        </div>
       </div>
+
       {/*Products*/}
-      <div className="container mx-auto px-5">
-        <h2 className="products-main-title main-title mt-20 mb-5 text-xl uppercase">
-          <span className="main-title-inner">Chúng tôi đề xuất</span>
-        </h2>
-        <ProductList products={products} />
+      <div className="flex justify-center items-center">
+        <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
+          <div className="flex flex-col jusitfy-center items-center space-y-10">
+            <div className="flex flex-col justify-center items-center space-y-2">
+              <h2 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800">
+                Chúng tôi đề xuất
+              </h2>
+            </div>
+            <ProductList products={products} />
+          </div>
+        </div>
       </div>
     </Layout>
   );
@@ -91,8 +108,6 @@ export async function getStaticProps() {
         ? data.heroCarousel.nodes[0].children.nodes
         : [],
       homePage: data?.pageBy,
-      cmsName: CMS_NAME,
-      fbPageId: FB_PAGE_ID,
     },
     revalidate: 1,
   };
