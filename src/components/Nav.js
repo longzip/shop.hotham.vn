@@ -143,7 +143,7 @@ export default function Nav({
                 {mainMenu[0]?.menuItems?.nodes
                   ? mainMenu[0].menuItems.nodes.map((menuItem) => (
                       <li>
-                        <Link key={menuItem.id} href={menuItem.path}>
+                        <Link key={menuItem.id} href={menuItem.url}>
                           <a
                             className="text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
                             dangerouslySetInnerHTML={{ __html: menuItem.label }}

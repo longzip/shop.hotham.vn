@@ -107,7 +107,7 @@ const Footer1 = ({
             {footerMenu[0]?.menuItems?.nodes
               ? footerMenu[0].menuItems.nodes.map((menuItem) => (
                   <li className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-                    <Link key={menuItem.id} href={menuItem.path}>
+                    <Link key={menuItem.id} href={menuItem.url}>
                       <a dangerouslySetInnerHTML={{ __html: menuItem.label }} />
                     </Link>
                   </li>
@@ -123,7 +123,7 @@ const Footer1 = ({
             {footerMenu2[0]?.menuItems?.nodes
               ? footerMenu2[0].menuItems.nodes.map((menuItem) => (
                   <li className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-                    <Link key={menuItem.id} href={menuItem.path}>
+                    <Link key={menuItem.id} href={menuItem.url}>
                       <a dangerouslySetInnerHTML={{ __html: menuItem.label }} />
                     </Link>
                   </li>

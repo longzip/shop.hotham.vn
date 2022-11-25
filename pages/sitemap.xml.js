@@ -10,15 +10,17 @@ function generateSiteMap(pages, products, productCategories) {
        <url>
          <loc>https://www.noithatzip.vn/</loc>
        </url>
-       ${pages.nodes
-         .map(({ slug }) => {
-           return `
-         <url>
-             <loc>${`https://www.noithatzip.vn/${slug}/`}</loc>
-         </url>
-       `;
          })
          .join("")}
+         ${productCategories.nodes
+           .map(({ slug }) => {
+             return `
+        <url>
+            <loc>${`https://www.noithatzip.vn/${slug}/`}</loc>
+        </url>
+        `;
+           })
+           .join("")}
         ${products.nodes
           .map(({ slug }) => {
             return `
@@ -28,15 +30,7 @@ function generateSiteMap(pages, products, productCategories) {
         `;
           })
           .join("")}
-        ${productCategories.nodes
-          .map(({ slug }) => {
-            return `
-        <url>
-            <loc>${`https://www.noithatzip.vn/danh-muc-san-pham/${slug}/`}</loc>
-        </url>
-        `;
-          })
-          .join("")}
+        
      </urlset>
    `;
 }

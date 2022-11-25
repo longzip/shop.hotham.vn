@@ -35,6 +35,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: "/danh-muc-san-pham/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
         source: "/blog/:slug*",
         destination: "https://blog.noithatzip.com/:slug*",
         permanent: true,
