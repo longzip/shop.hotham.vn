@@ -41,7 +41,7 @@ module.exports = {
       },
       {
         source: "/blog/:slug*",
-        destination: "https://blog.noithatzip.com/:slug*",
+        destination: "https://blog.hotham.vn/:slug*",
         permanent: true,
       },
     ];

@@ -410,7 +410,7 @@ export default function Nav({
                 {mobileMenu[0]?.menuItems?.nodes
                   ? mobileMenu[0].menuItems.nodes.map((menuItem) => (
                       <li>
-                        <Link key={menuItem.id} href={menuItem.path}>
+                        <Link key={menuItem.id} href={menuItem.url}>
                           <a className=" flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
                             {menuItem.label}
                             <div>
