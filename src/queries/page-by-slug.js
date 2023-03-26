@@ -79,7 +79,7 @@ export const PAGE_BY_SLUG_QUERY = gql` query Page($slug: ID!) {
 `;
 
 export const PAGE_SLUGS = gql` query Pages {
-  pages(first: 5000) {
+  pages(where: {notIn: ["cG9zdDo0", "cG9zdDozNDY="]},first: 5000) {
     nodes {
       id
       slug
