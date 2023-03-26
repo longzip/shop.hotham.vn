@@ -34,11 +34,11 @@ module.exports = {
         destination: "/cua-hang/:path*",
         permanent: true,
       },
-      {
-        source: "/danh-muc-san-pham/:path*",
-        destination: "/:path*",
-        permanent: true,
-      },
+      // {
+      //   source: "/danh-muc-san-pham/:path*",
+      //   destination: "/:path*",
+      //   permanent: true,
+      // },
       {
         source: "/blog/:slug*",
         destination: "https://blog.hotham.vn/:slug*",

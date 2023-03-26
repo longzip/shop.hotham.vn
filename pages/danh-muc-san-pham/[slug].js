@@ -1,17 +1,18 @@
 import Head from "next/head";
-import Layout from "../src/components/Layout";
-import client from "../src/components/ApolloClient";
-import ProductList from "../src/components/ProductList";
+import Layout from "../../src/components/Layout";
+import client from "../../src/components/ApolloClient";
+import ProductList from "../../src/components/ProductList";
 import {
-  PAGE_BY_SLUG_QUERY,
-  PAGE_SLUGS,
-} from "../src/queries/page-by-slug";
+  PRODUCT_BY_CATEGORY_SLUG,
+  PRODUCT_CATEGORIES_SLUGS,
+} from "../../src/queries/product-by-category";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 
 export default function CategorySingle({
-  page,
+  categoryName,
+  products,
   seo,
   siteSeo,
   mainMenu,
@@ -40,23 +41,20 @@ export default function CategorySingle({
       <Head>{fullHead}</Head>
       <div className="mx-auto container px-6 xl:px-0">
         <div className="flex flex-col">
-          {page ? (
+          {categoryName ? (
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col justify-start items-start">
                 <p className="text-sm leading-none text-gray-600">
                   {" "}
-                  <a href="/">Trang chủ</a> - {page.title}
+                  <a href="/">Trang chủ</a> - {categoryName}
                 </p>
-                <div className="mt-2 flex flex-col justify-end items-center space-x-3">
+                <div className="mt-2 flex flex-row justify-end items-center space-x-3">
                   <h1 className="text-2xl font-semibold leading-normal text-gray-800">
-                    {page.title}
+                    {categoryName}
                   </h1>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: page.content,
-                    }}
-                    className=""
-                  />
+                  <p className="text-base leading-4 text-gray-600 mt-2">
+                    ({products.length} sản phẩm.)
+                  </p>
                 </div>
               </div>
             </div>
@@ -64,6 +62,7 @@ export default function CategorySingle({
             ""
           )}
 
+          <ProductList products={products} />
         </div>
       </div>
     </Layout>
@@ -76,7 +75,7 @@ export async function getStaticProps(context) {
   } = context;
 
   const { data } = await client.query({
-    query: PAGE_BY_SLUG_QUERY,
+    query: PRODUCT_BY_CATEGORY_SLUG,
     variables: { slug },
   });
 
@@ -87,8 +86,10 @@ export async function getStaticProps(context) {
       footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
       mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
       siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
-      seo: data?.page?.seo ?? "",
-      page: data?.page ?? {},
+      categoryName: data?.productCategory?.name ?? "",
+      image: data?.productCategory?.image ?? {},
+      seo: data?.productCategory?.seo ?? "",
+      products: data?.productCategory?.products?.nodes ?? [],
     },
     revalidate: 1,
   };
@@ -96,15 +97,15 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const { data } = await client.query({
-    query: PAGE_SLUGS,
+    query: PRODUCT_CATEGORIES_SLUGS,
   });
 
   const pathsData = [];
 
-  data?.pages?.nodes &&
-    data?.pages?.nodes.map((page) => {
-      if (!isEmpty(page?.slug)) {
-        pathsData.push({ params: { slug: page?.slug } });
+  data?.productCategories?.nodes &&
+    data?.productCategories?.nodes.map((productCategory) => {
+      if (!isEmpty(productCategory?.slug)) {
+        pathsData.push({ params: { slug: productCategory?.slug } });
       }
     });
 
