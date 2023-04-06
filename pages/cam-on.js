@@ -7,7 +7,7 @@ import { AppContext } from "../src/components/context/AppContext";
 import Loading from "../src/components/icons/Loading";
 import ShoppingCart from "../src/components/icons/ShoppingCart";
 import client from "../src/components/ApolloClient";
-import HEADER_FOOTER_QUERY from "../src/queries/header-footer";
+import NAV_QUERY from "../src/queries/nav";
 
 const ThankYouContent = () => {
   const [cart, setCart] = useContext(AppContext);
@@ -90,6 +90,7 @@ const ThankYou = ({
   mobileMenu,
   footerMenu,
   footerMenu2,
+  productCategories,
 }) => {
   return (
     <Layout
@@ -98,6 +99,7 @@ const ThankYou = ({
       mobileMenu={mobileMenu}
       footerMenu={footerMenu}
       footerMenu2={footerMenu2}
+      productCategories={productCategories}
     >
       <ThankYouContent />
     </Layout>
@@ -105,17 +107,27 @@ const ThankYou = ({
 };
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: HEADER_FOOTER_QUERY,
+  const {
+    data: {
+      mainMenu,
+      footerMenu,
+      footerMenu2,
+      mobileMenu,
+      siteSeo,
+      productCategories,
+    },
+  } = await client.query({
+    query: NAV_QUERY,
   });
 
   return {
     props: {
-      mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
-      footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
-      footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
-      mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
-      siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
+      mainMenu: mainMenu.nodes,
+      footerMenu: footerMenu.nodes,
+      footerMenu2: footerMenu2.nodes,
+      mobileMenu: mobileMenu.nodes,
+      siteSeo: siteSeo.schema,
+      productCategories: productCategories.nodes,
     },
     revalidate: 1,
   };
