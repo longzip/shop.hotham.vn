@@ -234,6 +234,18 @@
   "resolved" "https://registry.npmjs.org/@graphql-typed-document-node/core/-/core-3.1.0.tgz"
   "version" "3.1.0"
 
+"@headlessui/react@^1.7.13":
+  "integrity" "sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg=="
+  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.7.13.tgz"
+  "version" "1.7.13"
+  dependencies:
+    "client-only" "^0.0.1"
+
+"@heroicons/react@^2.0.17":
+  "integrity" "sha512-90GMZktkA53YbNzHp6asVEDevUQCMtxWH+2UK2S8OpnLEu7qckTJPhNxNQG52xIR1WFTwFqtH6bt7a60ZNcLLA=="
+  "resolved" "https://registry.npmjs.org/@heroicons/react/-/react-2.0.17.tgz"
+  "version" "2.0.17"
+
 "@next/env@12.3.1":
   "integrity" "sha512-9P9THmRFVKGKt9DYqeC2aKIxm8rlvkK38V1P1sRE7qyoPBIs8l9oo79QoSdPtOWfzkbDAVUqvbQGgTMsb8BtJg=="
   "resolved" "https://registry.npmjs.org/@next/env/-/env-12.3.1.tgz"
@@ -689,6 +701,11 @@
   "integrity" "sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA=="
   "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.1.tgz"
   "version" "2.3.1"
+
+"client-only@^0.0.1":
+  "integrity" "sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA=="
+  "resolved" "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz"
+  "version" "0.0.1"
 
 "coa@^2.0.2":
   "integrity" "sha512-q5/jG+YQnSy4nRTV4F7lPepBJZ8qBNJJDBuJdoejDyLXgmL7IEo+Le2JDZudFTFt7mrCqIRaSjws4ygRCTCAXA=="
@@ -2296,7 +2313,7 @@
     "iconv-lite" "0.4.19"
     "unpipe" "1.0.0"
 
-"react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.2.0", "react-dom@15.x || 16.x || 17.x || 18.x":
+"react-dom@^16 || ^17 || ^18", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.2.0", "react-dom@15.x || 16.x || 17.x || 18.x":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -2314,7 +2331,7 @@
   "resolved" "https://registry.npmjs.org/react-property/-/react-property-2.0.0.tgz"
   "version" "2.0.0"
 
-"react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@0.14 || 15 || 16 || 17 || 18", "react@15.x || 16.x || 17.x || 18.x":
+"react@^16 || ^17 || ^18", "react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@0.14 || 15 || 16 || 17 || 18", "react@15.x || 16.x || 17.x || 18.x":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
@@ -2599,6 +2616,13 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
+"swr@^2.1.2":
+  "integrity" "sha512-ocfaD2rnYZKqTDplCEX2bH5Z1++n2JSej9oYi7hVfXXWYm+0RP+H6fVrogWB0mtMclv1guk9kEnAzNLygOy9Hw=="
+  "resolved" "https://registry.npmjs.org/swr/-/swr-2.1.2.tgz"
+  "version" "2.1.2"
+  dependencies:
+    "use-sync-external-store" "^1.2.0"
+
 "symbol-observable@^2.0.0":
   "integrity" "sha512-sQV7phh2WCYAn81oAkakC5qjq2Ml0g8ozqz03wOGnx9dDlG1de6yrF+0RAzSJD8fPUow3PTSMf2SAbOGxb93BA=="
   "resolved" "https://registry.npmjs.org/symbol-observable/-/symbol-observable-2.0.3.tgz"
@@ -2712,7 +2736,7 @@
     "querystringify" "^2.1.1"
     "requires-port" "^1.0.0"
 
-"use-sync-external-store@1.2.0":
+"use-sync-external-store@^1.2.0", "use-sync-external-store@1.2.0":
   "integrity" "sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA=="
   "resolved" "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz"
   "version" "1.2.0"

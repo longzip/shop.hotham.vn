@@ -2,9 +2,10 @@ import Head from "next/head";
 import Layout from "../src/components/Layout";
 import ProductList from "../src/components/ProductList";
 import client from "../src/components/ApolloClient";
-import ParentCategoriesBlock from "../src/components/category/category-block/ParentCategoriesBlock";
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
+import NAV_QUERY from "../src/queries/nav";
 import HeroCarousel from "../src/components/home/hero-carousel";
+import ParentCategoriesBlock from "../src/components/category/category-block/ParentCategoriesBlock";
 import parse from "html-react-parser";
 
 export default function Home(props) {
@@ -31,6 +32,7 @@ export default function Home(props) {
       mobileMenu={mobileMenu}
       footerMenu={footerMenu}
       footerMenu2={footerMenu2}
+      productCategories={productCategories}
     >
       <Head>{fullHead}</Head>
       {/*Hero Carousel*/}
@@ -86,20 +88,30 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
+  const {
+    data: {
+      mainMenu,
+      footerMenu,
+      footerMenu2,
+      mobileMenu,
+      siteSeo,
+      productCategories,
+    },
+  } = await client.query({
+    query: NAV_QUERY,
+  });
   const { data } = await client.query({
     query: PRODUCTS_AND_CATEGORIES_QUERY,
   });
 
   return {
     props: {
-      mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
-      footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
-      footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
-      mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
-      siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
-      productCategories: data?.productCategories?.nodes
-        ? data.productCategories.nodes
-        : [],
+      mainMenu: mainMenu.nodes,
+      footerMenu: footerMenu.nodes,
+      footerMenu2: footerMenu2.nodes,
+      mobileMenu: mobileMenu.nodes,
+      siteSeo: siteSeo.schema,
+      productCategories: productCategories.nodes,
       productOnSales: data?.productOnSales?.nodes
         ? data.productOnSales.nodes
         : [],

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { AppProvider } from "./context/AppContext";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -16,13 +15,11 @@ const Layout = (props) => {
     <AppProvider>
       <ApolloProvider client={client}>
         <>
-          <Head>
-            <title>Shop</title>
-          </Head>
           <Header
             siteSeo={props.siteSeo}
             mainMenu={props.mainMenu}
             mobileMenu={props.mobileMenu}
+            productCategories={props.productCategories}
           />
           {props.children}
           <Footer

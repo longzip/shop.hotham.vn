@@ -1,7 +1,7 @@
 import Layout from "../src/components/Layout";
 import CheckoutForm from "../src/components/checkout/CheckoutForm";
 // import GET_COUNTRIES from "../src/queries/get-countries";
-import HEADER_FOOTER_QUERY from "../src/queries/header-footer";
+import NAV_QUERY from "../src/queries/nav";
 import client from "../src/components/ApolloClient";
 
 const Checkout = ({
@@ -10,6 +10,7 @@ const Checkout = ({
   mobileMenu,
   footerMenu,
   footerMenu2,
+  productCategories,
 }) => (
   <Layout
     siteSeo={siteSeo}
@@ -17,6 +18,7 @@ const Checkout = ({
     mobileMenu={mobileMenu}
     footerMenu={footerMenu}
     footerMenu2={footerMenu2}
+    productCategories={productCategories}
   >
     <div className="checkout container mx-auto my-32 px-4 xl:px-0">
       <h1 className="mb-5 text-2xl uppercase">Thanh toán</h1>
@@ -28,17 +30,27 @@ const Checkout = ({
 export default Checkout;
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: HEADER_FOOTER_QUERY,
+  const {
+    data: {
+      mainMenu,
+      footerMenu,
+      footerMenu2,
+      mobileMenu,
+      siteSeo,
+      productCategories,
+    },
+  } = await client.query({
+    query: NAV_QUERY,
   });
 
   return {
     props: {
-      mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
-      footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
-      footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
-      mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
-      siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
+      mainMenu: mainMenu.nodes,
+      footerMenu: footerMenu.nodes,
+      footerMenu2: footerMenu2.nodes,
+      mobileMenu: mobileMenu.nodes,
+      siteSeo: siteSeo.schema,
+      productCategories: productCategories.nodes,
     },
     revalidate: 1,
   };

@@ -5,69 +5,6 @@ import { gql } from "@apollo/client";
  */
 const PRODUCTS_AND_CATEGORIES_QUERY = gql`
   query {
-    mainMenu: menus(where: { location: PRIMARY }) {
-      nodes {
-        menuItems {
-          nodes {
-            path
-            url
-            label
-            id
-          }
-        }
-        name
-      }
-    }
-    mobileMenu: menus(where: { location: PRIMARY_MOBILE }) {
-      nodes {
-        menuItems {
-          nodes {
-            url
-            label
-            id
-            path
-          }
-        }
-        name
-      }
-    }
-    footerMenu: menus(where: { location: FOOTER }) {
-      nodes {
-        menuItems {
-          nodes {
-            url
-            label
-            id
-            path
-          }
-        }
-        name
-      }
-    }
-    footerMenu2: menus(where: { location: FOOTER_MENU_2 }) {
-      nodes {
-        menuItems {
-          nodes {
-            url
-            label
-            id
-            path
-          }
-        }
-        name
-      }
-    }
-    siteSeo: seo {
-      schema {
-        logo {
-          id
-          altText
-          sourceUrl(size: THUMBNAIL)
-        }
-        siteName
-        homeUrl
-      }
-    }
     pageBy(uri: "/") {
       seo {
         fullHead
@@ -92,20 +29,6 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`
               altText
             }
           }
-        }
-      }
-    }
-    productCategories(where: { hideEmpty: true, hierarchical: true }) {
-      nodes {
-        id
-        name
-        slug
-        parentId
-        image {
-          id
-          sourceUrl(size: WOOCOMMERCE_GALLERY_THUMBNAIL)
-          srcSet
-          title
         }
       }
     }

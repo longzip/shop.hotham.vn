@@ -6,6 +6,7 @@ import {
   PRODUCT_BY_CATEGORY_SLUG,
   PRODUCT_CATEGORIES_SLUGS,
 } from "../../src/queries/product-by-category";
+import NAV_QUERY from "../../src/queries/nav";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
@@ -19,6 +20,7 @@ export default function CategorySingle({
   mobileMenu,
   footerMenu,
   footerMenu2,
+  productCategories,
 }) {
   const router = useRouter();
 
@@ -37,6 +39,7 @@ export default function CategorySingle({
       mobileMenu={mobileMenu}
       footerMenu={footerMenu}
       footerMenu2={footerMenu2}
+      productCategories={productCategories}
     >
       <Head>{fullHead}</Head>
       <div className="mx-auto container px-6 xl:px-0">
@@ -79,13 +82,27 @@ export async function getStaticProps(context) {
     variables: { slug },
   });
 
+  const {
+    data: {
+      mainMenu,
+      footerMenu,
+      footerMenu2,
+      mobileMenu,
+      siteSeo,
+      productCategories,
+    },
+  } = await client.query({
+    query: NAV_QUERY,
+  });
+
   return {
     props: {
-      mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
-      footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
-      footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
-      mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
-      siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
+      mainMenu: mainMenu.nodes,
+      footerMenu: footerMenu.nodes,
+      footerMenu2: footerMenu2.nodes,
+      mobileMenu: mobileMenu.nodes,
+      siteSeo: siteSeo.schema,
+      productCategories: productCategories.nodes,
       categoryName: data?.productCategory?.name ?? "",
       image: data?.productCategory?.image ?? {},
       seo: data?.productCategory?.seo ?? "",

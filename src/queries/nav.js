@@ -1,7 +1,10 @@
 import { gql } from "@apollo/client";
 
-export const PRODUCT_BY_SLUG_QUERY = gql`
-  query Product($slug: ID!) {
+/**
+ * GraphQL categories and products query.
+ */
+const NAV_QUERY = gql`
+  query {
     mainMenu: menus(where: { location: PRIMARY }) {
       nodes {
         menuItems {
@@ -60,6 +63,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
           id
           altText
           sourceUrl(size: THUMBNAIL)
+          description
         }
         siteName
         homeUrl
@@ -86,82 +90,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
         }
       }
     }
-    product(id: $slug, idType: SLUG) {
-      id
-      productId: databaseId
-      averageRating
-      slug
-      description
-      shortDescription
-      galleryImages {
-        nodes {
-          id
-          title
-          altText
-          mediaItemUrl
-          sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
-          url: sourceUrl(size: WOOCOMMERCE_SINGLE)
-        }
-      }
-      image {
-        id
-        uri
-        title
-        srcSet
-        sourceUrl(size: WOOCOMMERCE_SINGLE)
-      }
-      name
-      ... on SimpleProduct {
-        price
-        id
-        regularPrice
-        seo {
-          fullHead
-        }
-      }
-      ... on VariableProduct {
-        price
-        id
-        regularPrice
-        seo {
-          fullHead
-        }
-      }
-      ... on ExternalProduct {
-        price
-        id
-        regularPrice
-        externalUrl
-        seo {
-          fullHead
-        }
-      }
-      ... on GroupProduct {
-        products {
-          nodes {
-            ... on SimpleProduct {
-              id
-              price
-              regularPrice
-              seo {
-                fullHead
-              }
-            }
-          }
-        }
-        id
-      }
-    }
   }
 `;
 
-export const PRODUCT_SLUGS = gql`
-  query Products {
-    products(first: 5000) {
-      nodes {
-        id
-        slug
-      }
-    }
-  }
-`;
+export default NAV_QUERY;

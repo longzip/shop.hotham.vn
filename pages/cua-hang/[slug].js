@@ -8,6 +8,7 @@ import {
   PRODUCT_BY_SLUG_QUERY,
   PRODUCT_SLUGS,
 } from "../../src/queries/product-by-slug";
+import NAV_QUERY from "../../src/queries/nav";
 import { isEmpty } from "lodash";
 import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 import Price from "../../src/components/single-product/price";
@@ -20,6 +21,7 @@ export default function Product({
   mobileMenu,
   footerMenu,
   footerMenu2,
+  productCategories,
 }) {
   const [rotate, setRotate] = useState(false);
   const [count, setCount] = useState(1);
@@ -49,6 +51,7 @@ export default function Product({
       mobileMenu={mobileMenu}
       footerMenu={footerMenu}
       footerMenu2={footerMenu2}
+      productCategories={productCategories}
     >
       {product ? (
         <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
@@ -241,19 +244,35 @@ export async function getStaticProps(context) {
     params: { slug },
   } = context;
 
-  const { data } = await client.query({
+  const {
+    data: {
+      mainMenu,
+      footerMenu,
+      footerMenu2,
+      mobileMenu,
+      siteSeo,
+      productCategories,
+    },
+  } = await client.query({
+    query: NAV_QUERY,
+  });
+
+  const {
+    data: { product },
+  } = await client.query({
     query: PRODUCT_BY_SLUG_QUERY,
     variables: { slug },
   });
 
   return {
     props: {
-      mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
-      footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
-      footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
-      mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
-      siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
-      product: data?.product || {},
+      mainMenu: mainMenu.nodes,
+      footerMenu: footerMenu.nodes,
+      footerMenu2: footerMenu2.nodes,
+      mobileMenu: mobileMenu.nodes,
+      siteSeo: siteSeo.schema,
+      productCategories: productCategories.nodes,
+      product: product,
     },
     revalidate: 1,
   };

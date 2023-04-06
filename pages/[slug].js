@@ -1,11 +1,9 @@
 import Head from "next/head";
 import Layout from "../src/components/Layout";
 import client from "../src/components/ApolloClient";
-import ProductList from "../src/components/ProductList";
-import {
-  PAGE_BY_SLUG_QUERY,
-  PAGE_SLUGS,
-} from "../src/queries/page-by-slug";
+
+import { PAGE_BY_SLUG_QUERY, PAGE_SLUGS } from "../src/queries/page-by-slug";
+import NAV_QUERY from "../src/queries/nav";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
@@ -18,6 +16,7 @@ export default function CategorySingle({
   mobileMenu,
   footerMenu,
   footerMenu2,
+  productCategories,
 }) {
   const router = useRouter();
 
@@ -36,6 +35,7 @@ export default function CategorySingle({
       mobileMenu={mobileMenu}
       footerMenu={footerMenu}
       footerMenu2={footerMenu2}
+      productCategories={productCategories}
     >
       <Head>{fullHead}</Head>
       <div className="mx-auto container px-6 xl:px-0">
@@ -63,7 +63,6 @@ export default function CategorySingle({
           ) : (
             ""
           )}
-
         </div>
       </div>
     </Layout>
@@ -71,6 +70,18 @@ export default function CategorySingle({
 }
 
 export async function getStaticProps(context) {
+  const {
+    data: {
+      mainMenu,
+      footerMenu,
+      footerMenu2,
+      mobileMenu,
+      siteSeo,
+      productCategories,
+    },
+  } = await client.query({
+    query: NAV_QUERY,
+  });
   const {
     params: { slug },
   } = context;
@@ -82,11 +93,12 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      mainMenu: data?.mainMenu?.nodes ? data.mainMenu.nodes : {},
-      footerMenu: data?.footerMenu?.nodes ? data.footerMenu.nodes : {},
-      footerMenu2: data?.footerMenu2?.nodes ? data.footerMenu2.nodes : {},
-      mobileMenu: data?.mobileMenu?.nodes ? data.mobileMenu.nodes : {},
-      siteSeo: data?.siteSeo?.schema ? data.siteSeo.schema : {},
+      mainMenu: mainMenu.nodes,
+      footerMenu: footerMenu.nodes,
+      footerMenu2: footerMenu2.nodes,
+      mobileMenu: mobileMenu.nodes,
+      siteSeo: siteSeo.schema,
+      productCategories: productCategories.nodes,
       seo: data?.page?.seo ?? "",
       page: data?.page ?? {},
     },
