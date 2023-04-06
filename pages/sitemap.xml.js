@@ -8,7 +8,7 @@ function generateSiteMap(pages, products, productCategories) {
      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
        <!--We manually set the two URLs we know already-->
        <url>
-         <loc>https://www.noithatzip.vn/</loc>
+         <loc>https://shop.hotham.vn/</loc>
        </url>
          })
          .join("")}
@@ -16,7 +16,7 @@ function generateSiteMap(pages, products, productCategories) {
            .map(({ slug }) => {
              return `
         <url>
-            <loc>${`https://www.noithatzip.vn/${slug}/`}</loc>
+            <loc>${`https://shop.hotham.vn/danh-muc-san=pham/${slug}/`}</loc>
         </url>
         `;
            })
@@ -25,7 +25,7 @@ function generateSiteMap(pages, products, productCategories) {
           .map(({ slug }) => {
             return `
         <url>
-            <loc>${`https://www.noithatzip.vn/cua-hang/${slug}/`}</loc>
+            <loc>${`https://shop.hotham.vn/cua-hang/${slug}/`}</loc>
         </url>
         `;
           })
