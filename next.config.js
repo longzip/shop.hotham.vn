@@ -39,11 +39,11 @@ module.exports = {
       //   destination: "/:path*",
       //   permanent: true,
       // },
-      // {
-      //   source: "/blog/:slug*",
-      //   destination: "https://blog.hotham.vn/:slug*",
-      //   permanent: true,
-      // },
+      {
+        source: "/blog/:slug*",
+        destination: "https://blog.hotham.vn/:slug*",
+        permanent: true,
+      },
     ];
   },
 };
