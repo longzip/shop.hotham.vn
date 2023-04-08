@@ -239,30 +239,55 @@ export default function Product({
   );
 }
 
-export async function getStaticProps(context) {
-  const {
-    params: { slug },
-  } = context;
+async function loadData(slug) {
+  try {
+    const {
+      data: {
+        mainMenu,
+        footerMenu,
+        footerMenu2,
+        mobileMenu,
+        siteSeo,
+        productCategories,
+      },
+    } = await client.query({
+      query: NAV_QUERY,
+    });
 
-  const {
-    data: {
+    const {
+      data: { product },
+    } = await client.query({
+      query: PRODUCT_BY_SLUG_QUERY,
+      variables: { slug },
+    });
+    return {
       mainMenu,
       footerMenu,
       footerMenu2,
       mobileMenu,
       siteSeo,
       productCategories,
-    },
-  } = await client.query({
-    query: NAV_QUERY,
-  });
+      product,
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function getStaticProps(context) {
+  const {
+    params: { slug },
+  } = context;
 
   const {
-    data: { product },
-  } = await client.query({
-    query: PRODUCT_BY_SLUG_QUERY,
-    variables: { slug },
-  });
+    mainMenu,
+    footerMenu,
+    footerMenu2,
+    mobileMenu,
+    siteSeo,
+    productCategories,
+    product,
+  } = await loadData(slug);
 
   return {
     props: {
