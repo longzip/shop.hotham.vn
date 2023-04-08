@@ -87,25 +87,24 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
-  const {
-    data: {
-      mainMenu,
-      footerMenu,
-      footerMenu2,
-      mobileMenu,
-      siteSeo,
-      productCategories,
-    },
-  } = await client.query({
-    query: NAV_QUERY,
-  });
-  const { data } = await client.query({
-    query: PRODUCTS_AND_CATEGORIES_QUERY,
-  });
-
-  return {
-    props: {
+async function loadData() {
+  try {
+    const {
+      data: {
+        mainMenu,
+        footerMenu,
+        footerMenu2,
+        mobileMenu,
+        siteSeo,
+        productCategories,
+      },
+    } = await client.query({
+      query: NAV_QUERY,
+    });
+    const { data } = await client.query({
+      query: PRODUCTS_AND_CATEGORIES_QUERY,
+    });
+    return {
       mainMenu: mainMenu.nodes,
       footerMenu: footerMenu.nodes,
       footerMenu2: footerMenu2.nodes,
@@ -120,7 +119,20 @@ export async function getStaticProps() {
         ? data.heroCarousel.nodes[0].children.nodes
         : [],
       homePage: data?.pageBy,
-    },
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function getStaticProps() {
+  let data = await loadData();
+  if (!data) data = await loadData();
+  if (!data) data = await loadData();
+  if (!data) data = await loadData();
+  if (!data) data = await loadData();
+  return {
+    props: data,
     revalidate: 1,
   };
 }
