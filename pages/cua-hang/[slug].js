@@ -138,9 +138,13 @@ export default function Product({
                 </p>
               </div>
 
-              <p className=" font-normal text-base leading-6 text-gray-600 mt-7">
-                {product.shortDescription}
-              </p>
+              <div
+                className=" font-normal text-base leading-6 text-gray-600 mt-7"
+                dangerouslySetInnerHTML={{
+                  __html: product.shortDescription,
+                }}
+              />
+
               <Price
                 salesPrice={product?.price}
                 regularPrice={product?.regularPrice}
@@ -175,7 +179,7 @@ export default function Product({
                   </div>
                 </div>
                 <hr className=" bg-gray-200 w-full my-2" />
-                <div className=" flex flex-row justify-between items-center mt-4">
+                {/* <div className=" flex flex-row justify-between items-center mt-4">
                   <p className="font-medium text-base leading-4 text-gray-600">
                     Kích thước, màu sắc
                   </p>
@@ -200,11 +204,11 @@ export default function Product({
                       strokeLinejoin="round"
                     />
                   </svg>
-                </div>
-                <hr className=" bg-gray-200 w-full mt-4" />
+                </div> */}
+                {/* <hr className=" bg-gray-200 w-full mt-4" /> */}
               </div>
 
-              <AddToCartButton product={product} />
+              <AddToCartButton product={product} quantity={count} />
               {/* <button className="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">Add to shopping bag</button> */}
             </div>
 
@@ -223,7 +227,7 @@ export default function Product({
             ) : null}
           </div>
 
-          <div className="flex  justify-center items-center w-full">
+          <div className="flex justify-center items-center w-full">
             <div
               dangerouslySetInnerHTML={{
                 __html: product.description,

@@ -69,17 +69,23 @@ const NAV_QUERY = gql`
         homeUrl
       }
     }
-    productCategories(where: { hideEmpty: true, hierarchical: true }) {
+    productCategories(
+      where: {
+        hideEmpty: true
+        hierarchical: true
+        order: DESC
+        orderby: COUNT
+      }
+    ) {
       nodes {
         id
         name
         slug
-        parentId
+        count
         image {
           id
-          sourceUrl(size: WOOCOMMERCE_GALLERY_THUMBNAIL)
-          srcSet
-          title
+          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          altText
         }
         products(where: { stockStatus: IN_STOCK, supportedTypesOnly: true }) {
           nodes {

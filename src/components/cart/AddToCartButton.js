@@ -10,11 +10,12 @@ import GET_CART from "../../queries/get-cart";
 import ADD_TO_CART from "../../mutations/add-to-cart";
 
 const AddToCart = (props) => {
-  const { product } = props;
+  const { product, quantity } = props;
 
   const productQryInput = {
     clientMutationId: v4(), // Generate a unique id.
     productId: product.productId,
+    quantity,
   };
 
   const [cart, setCart] = useContext(AppContext);

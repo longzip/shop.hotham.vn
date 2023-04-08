@@ -30,18 +30,18 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
           : null,
       strikeThroughClass:
         formattedSalesPrice < formattedRegularPrice
-          ? "line-through"
-          : "text-red-600 font-bold",
+          ? " text-sm line-through pl-1"
+          : "font-semibold",
     };
   };
 
   const productMeta = discountPercent(regularPrice, salesPrice);
 
   return (
-    <p className="flex my-4 space-x-3 items-center justify-center">
+    <p className=" lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">
       {/* Regular price */}
       {productMeta?.discountPercent ? (
-        <span className="text-red-600 font-bold">{salesPrice}</span>
+        <span className="font-semibold">{salesPrice}</span>
       ) : null}
 
       {/* Discounted price */}
@@ -49,11 +49,11 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
 
       {/* Discount percent */}
       {/* { productMeta?.discountPercent ? <span className="absolute px-3 py-2 border border-red-600 top-0 right-0 text-red-600 bg-white rounded">{productMeta?.discountPercent}</span> : null} */}
-      {productMeta?.discountPercent ? (
+      {/* {productMeta?.discountPercent ? (
         <span className="border border-red-600 top-0 right-0 text-red-600 bg-white rounded">
           {productMeta?.discountPercent}
         </span>
-      ) : null}
+      ) : null} */}
     </p>
   );
 };
