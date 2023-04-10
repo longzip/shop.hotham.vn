@@ -14,6 +14,7 @@ import GalleryCarousel from "../../src/components/single-product/gallery-carouse
 import Price from "../../src/components/single-product/price";
 import parse from "html-react-parser";
 import ProductList from "../../src/components/ProductList";
+import PostBody from "../../src/components/post-body";
 
 export default function Product({
   product,
@@ -232,14 +233,7 @@ export default function Product({
               ) : null}
             </div>
 
-            <div className="flex justify-center items-center w-full">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: product.description,
-                }}
-                className="w-full sm:w-96 md:w-8/12 lg:w-full grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:gap-28 sm:gap-x-6 sm:gap-y-12 gap-y-12 sm:mt-14 mt-10"
-              />
-            </div>
+            <PostBody content={product.description} />
           </div>
           <ProductList products={otheProducts} />
         </>
