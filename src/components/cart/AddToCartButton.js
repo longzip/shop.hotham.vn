@@ -27,7 +27,7 @@ const AddToCart = (props) => {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
-      const updatedCart = getFormattedCart(data);
+      const { cart: updatedCart } = data;
       localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
 
       // Update cart data in React Context.
@@ -36,19 +36,18 @@ const AddToCart = (props) => {
   });
 
   // Add to Cart Mutation.
-  const [
-    addToCart,
-    { data: addToCartRes, loading: addToCartLoading, error: addToCartError },
-  ] = useMutation(ADD_TO_CART, {
+  const [addToCart, { loading: addToCartLoading }] = useMutation(ADD_TO_CART, {
     variables: {
       input: productQryInput,
     },
-    onCompleted: () => {
-      // On Success:
-      // 1. Make the GET_CART query to update the cart with new values in React context.
-      refetch();
+    update: (cache, { data: addToCartRes }) => {
+      const { cart: updatedCart } = addToCartRes.addToCart;
+      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
 
-      // 2. Show View Cart Button
+      // Update cart data in React Context.
+      setCart(updatedCart);
+    },
+    onCompleted: () => {
       setShowViewCart(true);
     },
     onError: (error) => {

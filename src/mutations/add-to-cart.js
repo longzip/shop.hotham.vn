@@ -1,66 +1,73 @@
 import { gql } from "@apollo/client";
 
 const ADD_TO_CART = gql`
-    mutation ADD_TO_CART($input: AddToCartInput!) {
-      addToCart(input: $input) {
-        cartItem {
-          key
-          product {
-            node {
-              id
-              productId: databaseId
-              name
-              description
-              type
-              onSale
-              slug
-              averageRating
-              reviewCount
-              image {
+  mutation ADD_TO_CART($input: AddToCartInput!) {
+    addToCart(input: $input) {
+      cart {
+        contents {
+          itemCount
+          nodes {
+            key
+            product {
+              node {
                 id
-                sourceUrl
-                altText
-              }
-              galleryImages {
-                nodes {
+                databaseId
+                name
+                type
+                image {
                   id
                   sourceUrl
+                  srcSet
                   altText
+                  title
                 }
               }
             }
-          }
-          variation {
-            node {
-              id
-              variationId: databaseId
-              name
-              description
-              type
-              onSale
-              price
-              regularPrice
-              salePrice
-              image {
+            variation {
+              node {
                 id
-                sourceUrl
-                altText
+                databaseId
+                name
+                description
+                type
+                onSale
+                price
+                regularPrice
+                salePrice
+                featuredImage {
+                  node {
+                    id
+                    sourceUrl
+                  }
+                }
+                attributes {
+                  nodes {
+                    id
+                    name
+                    value
+                  }
+                }
               }
             }
-            attributes {
-              id
-              attributeId
-              name
-              value
-            }
+            quantity
+            total
+            subtotal
+            subtotalTax
           }
-          quantity
-          total
-          subtotal
-          subtotalTax
         }
+        subtotal
+        subtotalTax
+        shippingTax
+        shippingTotal
+        total
+        totalTax
+        feeTax
+        feeTotal
+        discountTax
+        discountTotal
       }
     }
+  }
 `;
 
 export default ADD_TO_CART;

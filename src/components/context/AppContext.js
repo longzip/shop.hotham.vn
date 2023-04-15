@@ -8,7 +8,7 @@ export const AppProvider = (props) => {
     // @TODO Will add option to show the cart with localStorage later.
     if (process.browser) {
       let cartData = localStorage.getItem("woo-next-cart");
-      cartData = null !== cartData ? JSON.parse(cartData) : "";
+      cartData = null !== cartData ? JSON.parse(cartData) : null;
       setCart(cartData);
     }
   }, []);

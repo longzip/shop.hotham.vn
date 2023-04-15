@@ -4,6 +4,7 @@ const GET_CART = gql`
   query GET_CART {
     cart {
       contents {
+        itemCount
         nodes {
           key
           product {
