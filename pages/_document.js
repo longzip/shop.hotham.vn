@@ -7,13 +7,16 @@ export default class MyDocument extends Document {
     return (
       <Html lang="vi">
         <Head>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+            />
+          ) : null}
+          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -21,25 +24,30 @@ export default class MyDocument extends Document {
               page_path: window.location.pathname,
             });
           `,
-            }}
-          />
-          <noscript>
-            <img
-              height="1"
-              width="1"
-              style={{ display: "none" }}
-              src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+              }}
             />
-          </noscript>
+          ) : null}
+
+          {FB_PIXEL_ID ? (
+            <noscript>
+              <img
+                height="1"
+                width="1"
+                style={{ display: "none" }}
+                src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+              />
+            </noscript>
+          ) : null}
         </Head>
         <body>
           <Main />
           <NextScript />
           <div id="fb-root"></div>
           <div id="fb-customer-chat" className="fb-customerchat"></div>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+          {FB_PAGE_ID ? (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
             var chatbox = document.getElementById('fb-customer-chat');
             chatbox.setAttribute("page_id", "${FB_PAGE_ID}");
             chatbox.setAttribute("attribution", "biz_inbox");
@@ -59,8 +67,9 @@ export default class MyDocument extends Document {
               fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
             `,
-            }}
-          />
+              }}
+            />
+          ) : null}
         </body>
       </Html>
     );

@@ -1,9 +1,10 @@
 import Layout from "../src/components/Layout";
-import client from "../src/components/ApolloClient";
+import CheckoutForm from "../src/components/checkout/CheckoutForm";
+// import GET_COUNTRIES from "../src/queries/get-countries";
 import NAV_QUERY from "../src/queries/nav";
-import CheckoutForm2 from "../src/components/checkout/CheckoutForm2";
+import client from "../src/components/ApolloClient";
 
-const Checkout3 = ({
+const Checkout = ({
   siteSeo,
   mainMenu,
   mobileMenu,
@@ -19,11 +20,14 @@ const Checkout3 = ({
     footerMenu2={footerMenu2}
     productCategories={productCategories}
   >
-    <CheckoutForm2 />
+    <div className="checkout container mx-auto my-32 px-4 xl:px-0">
+      <h1 className="mb-5 text-2xl uppercase">Thanh toán</h1>
+      <CheckoutForm />
+    </div>
   </Layout>
 );
 
-export default Checkout3;
+export default Checkout;
 
 export async function getStaticProps() {
   const {
