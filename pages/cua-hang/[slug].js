@@ -9,12 +9,13 @@ import {
   PRODUCT_SLUGS,
 } from "../../src/queries/product-by-slug";
 import NAV_QUERY from "../../src/queries/nav";
-import { isEmpty } from "lodash";
+import { forEach, isEmpty } from "lodash";
 import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 import Price from "../../src/components/single-product/price";
 import parse from "html-react-parser";
 import ProductList from "../../src/components/ProductList";
 import PostBody from "../../src/components/post-body";
+import { node } from "prop-types";
 
 export default function Product({
   product,
@@ -46,9 +47,16 @@ export default function Product({
   }
 
   const fullHead = parse(product?.seo.fullHead);
-  const otheProducts = product.productCategories.nodes
+  const otheProductsRaw = product.productCategories.nodes
     .map(({ products }) => products.nodes)
     .flat();
+
+  const getProductOthers = new Map();
+  otheProductsRaw.forEach((node) => {
+    if (product.productId !== node.productId)
+      getProductOthers.set(node.productId, node);
+  });
+  const otheProducts = [...getProductOthers.values()];
   return (
     <Layout
       siteSeo={siteSeo}
@@ -185,37 +193,9 @@ export default function Product({
                     </div>
                   </div>
                   <hr className=" bg-gray-200 w-full my-2" />
-                  {/* <div className=" flex flex-row justify-between items-center mt-4">
-                  <p className="font-medium text-base leading-4 text-gray-600">
-                    Kích thước, màu sắc
-                  </p>
-                  <svg
-                    onClick={() => setRotate(!rotate)}
-                    id="rotateSVG"
-                    className={
-                      "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer transform " +
-                      (rotate ? "rotate-180" : "rotate-0")
-                    }
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9 1L5 5L1 1"
-                      stroke="#4B5563"
-                      strokeWidth="1.25"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div> */}
-                  {/* <hr className=" bg-gray-200 w-full mt-4" /> */}
                 </div>
 
                 <AddToCartButton product={product} quantity={count} />
-                {/* <button className="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">Add to shopping bag</button> */}
               </div>
 
               {!isEmpty(product?.galleryImages?.nodes) ? (

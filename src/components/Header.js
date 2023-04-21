@@ -35,7 +35,7 @@ const Header = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [cart] = useContext(AppContext);
-  const productsCount = null !== cart ? cart.contents.itemCount : "";
+  const productsCount = null !== cart ? cart?.contents?.itemCount : "";
 
   return (
     <div className="bg-white">
