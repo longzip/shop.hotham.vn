@@ -14,11 +14,12 @@ const CLEAR_CART_MUTATION = gql`
                 databaseId
                 name
                 type
-                featuredImage {
-                  node {
-                    id
-                    sourceUrl
-                  }
+                image {
+                  id
+                  sourceUrl
+                  srcSet
+                  altText
+                  title
                 }
               }
             }
