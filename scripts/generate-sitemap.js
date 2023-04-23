@@ -84,6 +84,8 @@ async function generateSitemap() {
     "pages/**/*{.js,.mdx}",
     "!pages/_*.js",
     "!pages/[slug].js",
+    "!pages/cua-hang/[slug].js",
+    "!pages/danh-muc-san-pham/[slug].js",
     "!pages/api",
   ]);
   let allProducts = await getAllProductsWithSlug();

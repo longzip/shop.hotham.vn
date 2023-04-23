@@ -38,7 +38,7 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
   const productMeta = discountPercent(regularPrice, salesPrice);
 
   return (
-    <p className=" lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">
+    <p className=" lg:text-2xl text-lg lg:leading-6 leading-5 font-medium text-gray-900 mt-2">
       {/* Regular price */}
       {productMeta?.discountPercent ? (
         <span className="font-semibold">{salesPrice}</span>
@@ -46,14 +46,6 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
 
       {/* Discounted price */}
       <span className={productMeta?.strikeThroughClass}>{regularPrice}</span>
-
-      {/* Discount percent */}
-      {/* { productMeta?.discountPercent ? <span className="absolute px-3 py-2 border border-red-600 top-0 right-0 text-red-600 bg-white rounded">{productMeta?.discountPercent}</span> : null} */}
-      {/* {productMeta?.discountPercent ? (
-        <span className="border border-red-600 top-0 right-0 text-red-600 bg-white rounded">
-          {productMeta?.discountPercent}
-        </span>
-      ) : null} */}
     </p>
   );
 };

@@ -47,9 +47,12 @@ export default function CategorySingle({
           {categoryName ? (
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col justify-start items-start">
-                <p className="text-sm leading-none text-gray-600">
+                {/* <p className="text-sm leading-none text-gray-600">
                   {" "}
                   <a href="/">Trang chủ</a> - {categoryName}
+                </p> */}
+                <p className="mt-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
+                  Trang chủ / {categoryName}
                 </p>
                 <div className="mt-2 flex flex-row justify-end items-center space-x-3">
                   <h1 className="text-2xl font-semibold leading-normal text-gray-800">

@@ -15,7 +15,6 @@ import Price from "../../src/components/single-product/price";
 import parse from "html-react-parser";
 import ProductList from "../../src/components/ProductList";
 import PostBody from "../../src/components/post-body";
-import { node } from "prop-types";
 
 export default function Product({
   product,
@@ -73,7 +72,7 @@ export default function Product({
             <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
               Trang chủ / Cửa hàng / {product.name}
             </p>
-            <div className="flex justify-center items-center lg:flex-row flex-col gap-8">
+            <div className="flex justify-center items-center lg:flex-row flex-col gap-8 mt-6">
               {!isEmpty(product?.galleryImages?.nodes) ? (
                 <GalleryCarousel gallery={product?.galleryImages?.nodes} />
               ) : !isEmpty(product.image) ? (
