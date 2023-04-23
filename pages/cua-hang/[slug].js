@@ -70,11 +70,24 @@ export default function Product({
         <>
           <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
             <Head>{fullHead}</Head>
+            <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
+              Trang chủ / Cửa hàng / {product.name}
+            </p>
             <div className="flex justify-center items-center lg:flex-row flex-col gap-8">
-              <div className="  w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
-                <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
-                  Trang chủ / Cửa hàng / {product.name}
-                </p>
+              {!isEmpty(product?.galleryImages?.nodes) ? (
+                <GalleryCarousel gallery={product?.galleryImages?.nodes} />
+              ) : !isEmpty(product.image) ? (
+                <div className="w-full lg:w-4/12">
+                  <img
+                    src={product?.image?.sourceUrl}
+                    alt="Product Image"
+                    width="100%"
+                    height="auto"
+                    // srcSet={ product?.image?.srcSet }
+                  />
+                </div>
+              ) : null}
+              <div className=" w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
                 <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
                   {product.name}
                 </h2>
@@ -197,20 +210,6 @@ export default function Product({
 
                 <AddToCartButton product={product} quantity={count} />
               </div>
-
-              {!isEmpty(product?.galleryImages?.nodes) ? (
-                <GalleryCarousel gallery={product?.galleryImages?.nodes} />
-              ) : !isEmpty(product.image) ? (
-                <div className="w-full lg:w-4/12">
-                  <img
-                    src={product?.image?.sourceUrl}
-                    alt="Product Image"
-                    width="100%"
-                    height="auto"
-                    // srcSet={ product?.image?.srcSet }
-                  />
-                </div>
-              ) : null}
             </div>
 
             <PostBody content={product.description} />
