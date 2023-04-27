@@ -78,10 +78,10 @@ const CheckoutForm2 = () => {
     const checkOutData = {
       paymentMethod: "cod",
       billing: {
-        address1: "tự lập, mê linh",
+        address1,
         email,
-        phone: "0374638603",
-        lastName: "Long",
+        phone,
+        lastName,
         //   firstName: "Lỗ ",
         //   country: "VN",
         //   city: "Hà Nội",
@@ -142,7 +142,7 @@ const CheckoutForm2 = () => {
   return (
     <div className="lg:container lg:mx-auto grid grid-cols-9 lg:grid-cols-12">
       <div className="col-span-9 lg:col-span-8 xl:col-span-9 bg-white h-auto lg:h-screen relative lg:px-10 p-6 lg:py-12">
-        <p>
+        {/* <p>
           <svg
             className="inline"
             width="6"
@@ -162,7 +162,7 @@ const CheckoutForm2 = () => {
           <span className="cursor-pointer text-gray-500 font-normal text-base ml-2.5">
             Quay lại
           </span>
-        </p>
+        </p> */}
         <h3 className="font-semibold text-gray-800 text-4xl mt-2">
           Thanh toán
         </h3>
@@ -219,6 +219,16 @@ const CheckoutForm2 = () => {
             {checkoutLoading && <p>Đang xử lý...</p>}
             <p className="text-red-500 text-xs italic">{requestError}</p>
           </form>
+          <p font-normal text-sm text-gray-600 mb-3>
+            Quý khách có thể thanh toán bằng hình thức chuyển khoản hoặc giao
+            hàng thu tiền tại nhà! <br />
+            Vui lòng kiểm tra kỹ các thông tin một lần nữa, sau đó nhấn nút "
+            ĐẶT HÀNG " để gửi đơn đặt hàng của quý khách.
+            <br />
+            Chú ý I: Nhân viên sẽ liên hệ để xác minh đơn hàng một lần nữa, vì
+            vậy Quý khách vui lòng chú ý điện thoại. Chi phí giao hàng sẽ được
+            nhân viên thông báo khi liên hệ.
+          </p>
         </div>
       </div>
       <div className="relative col-span-9 lg:col-span-4 xl:col-span-3 bg-gray-100 lg:h-auto xl:h-screen px-8 py-14 xl:px-12 xl:py-20">

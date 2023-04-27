@@ -48,7 +48,7 @@ module.exports = {
       // },
       {
         source: "/blog/:slug*",
-        destination: "https://blog.hotham.vn/:slug*",
+        destination: `https://${allowedImageWordPressDomain}/blog/:slug*`,
         permanent: true,
       },
     ];

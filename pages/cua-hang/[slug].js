@@ -283,7 +283,7 @@ export async function getStaticProps(context) {
       productCategories: productCategories.nodes,
       product: product,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 

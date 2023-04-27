@@ -7,6 +7,7 @@ import NAV_QUERY from "../src/queries/nav";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
+import PostBody from "../src/components/post-body";
 
 export default function CategorySingle({
   page,
@@ -27,6 +28,7 @@ export default function CategorySingle({
   }
 
   const fullHead = parse(seo?.fullHead);
+  if (!page) return null;
 
   return (
     <Layout
@@ -38,32 +40,14 @@ export default function CategorySingle({
       productCategories={productCategories}
     >
       <Head>{fullHead}</Head>
-      <div className="mx-auto container px-6 xl:px-0">
-        <div className="flex flex-col">
-          {page ? (
-            <div className="flex justify-between items-center w-full">
-              <div className="flex flex-col justify-start items-start">
-                <p className="text-sm leading-none text-gray-600">
-                  {" "}
-                  <a href="/">Trang chủ</a> - {page.title}
-                </p>
-                <div className="mt-2 flex flex-col justify-end items-center space-x-3">
-                  <h1 className="text-2xl font-semibold leading-normal text-gray-800">
-                    {page.title}
-                  </h1>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: page.content,
-                    }}
-                    className=""
-                  />
-                </div>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
+      <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
+        <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
+          Trang chủ / {page.title}
+        </p>
+        <h1 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
+          {page.title}
+        </h1>
+        <PostBody content={page.content} />
       </div>
     </Layout>
   );
@@ -102,7 +86,7 @@ export async function getStaticProps(context) {
       seo: data?.page?.seo ?? "",
       page: data?.page ?? {},
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 

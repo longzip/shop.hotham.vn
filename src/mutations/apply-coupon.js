@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-const CLEAR_CART_MUTATION = gql`
-  mutation CLEAR_CART_MUTATION($input: RemoveItemsFromCartInput!) {
-    removeItemsFromCart(input: $input) {
+const APPLY_COUPON = gql`
+  mutation APPLY_COUPON($input: ApplyCouponInput!) {
+    applyCoupon(input: $input) {
       cart {
         appliedCoupons {
           code
@@ -73,4 +73,4 @@ const CLEAR_CART_MUTATION = gql`
   }
 `;
 
-export default CLEAR_CART_MUTATION;
+export default APPLY_COUPON;

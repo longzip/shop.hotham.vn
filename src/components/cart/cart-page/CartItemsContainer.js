@@ -11,12 +11,18 @@ import { v4 } from "uuid";
 import { useMutation, useQuery } from "@apollo/client";
 import UPDATE_CART from "../../../mutations/update-cart";
 import CLEAR_CART_MUTATION from "../../../mutations/clear-cart";
+import APPLY_COUPON from "../../../mutations/apply-coupon";
 import { isEmpty } from "lodash";
+import InputField2 from "../../checkout/form-elements/InputField2";
 
 const CartItemsContainer = () => {
   // @TODO wil use it in future variations of the project.
   const [cart, setCart] = useContext(AppContext);
-  const [requestError, setRequestError] = useState(null);
+  const [requestError, setRequestError] = useState(
+    "Nhập mã ưu đãi và nhấn Enter để áp dụng."
+  );
+  const [code, setCode] = useState(null);
+  const [errors, setErrors] = useState({});
 
   // Update Cart Mutation.
   const [
@@ -27,13 +33,28 @@ const CartItemsContainer = () => {
       error: updateCartError,
     },
   ] = useMutation(UPDATE_CART, {
-    onCompleted: () => {
-      refetch();
-    },
     onError: (error) => {
       if (error) {
         const errorMessage = error?.graphQLErrors?.[0]?.message
           ? error.graphQLErrors[0].message
+          : "";
+        setRequestError(errorMessage);
+      }
+    },
+  });
+
+  const [applyCoupon] = useMutation(APPLY_COUPON, {
+    update: (cache, { data: removeItemsFromCartRes }) => {
+      const { cart: updatedCart } = removeItemsFromCartRes.applyCoupon;
+      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+
+      // Update cart data in React Context.
+      setCart(updatedCart);
+    },
+    onError: (error) => {
+      if (error) {
+        const errorMessage = !isEmpty(error?.graphQLErrors?.[0])
+          ? error.graphQLErrors[0]?.message
           : "";
         setRequestError(errorMessage);
       }
@@ -104,6 +125,32 @@ const CartItemsContainer = () => {
         },
       },
     });
+  };
+
+  const handleOnChange = async (event) => {
+    const { target } = event || {};
+    console.log(event.key);
+
+    const newValue = !isEmpty(target.value) ? target.value : "";
+    setCode(newValue);
+    if (event.key === "Enter") {
+      console.log(code);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      const { target } = event || {};
+      const newValue = !isEmpty(target.value) ? target.value : "";
+      setCode(newValue);
+      applyCoupon({
+        variables: {
+          input: {
+            code: newValue,
+          },
+        },
+      });
+    }
   };
 
   return cart ? (
@@ -179,7 +226,20 @@ const CartItemsContainer = () => {
           <p>Tạm tính</p>
           <p>{cart.subtotal}</p>
         </div>
-        <p className="mt-0.5 text-sm text-gray-500"></p>
+        <div className="flex justify-between text-base font-medium text-gray-900">
+          <p>
+            Mã giảm giá:{" "}
+            <strong>
+              {cart.appliedCoupons?.map(({ code }) => code).join()}
+            </strong>
+          </p>
+          <p>{cart.discountTotal}</p>
+        </div>
+        <div className="flex justify-between text-base font-medium text-gray-900">
+          <p>Còn phải thanh toán</p>
+          <p>{cart.total}</p>
+        </div>
+
         <div className="mt-6">
           <a
             href="/thanh-toan"
@@ -189,136 +249,22 @@ const CartItemsContainer = () => {
           </a>
         </div>
         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-          <p>
-            hoặc
-            <button
-              type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-              onClick={() => {}}
-            >
-              Tiếp tục mua hàng
-              <span aria-hidden="true"> &rarr;</span>
-            </button>
-          </p>
+          <input
+            onKeyPress={handleKeyPress}
+            placeholder="Mã ưu đãi"
+            className="w-full border-b-2 border-gray-300 pb-3 text-base text-gray-600 font-normal placeholder-gray-600 focus:outline-none"
+          />
+          {/* <button
+            class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+            type="button"
+          >
+            Áp dụng
+          </button> */}
         </div>
+        <p className="text-red-500 text-xs italic">{requestError}</p>
       </div>
     </div>
   ) : null;
-
-  // return (
-  //   <div className="cart product-cart-container container mx-auto my-32 px-4 xl:px-0">
-  //     {cart ? (
-  //       <div className="woo-next-cart-wrapper container">
-  //         <div className="cart-header grid grid-cols-2 gap-4">
-  //           <h1 className="text-2xl mb-5 uppercase">Giỏ hàng</h1>
-  //           {/*Clear entire cart*/}
-  //           <div className="clear-cart text-right">
-  //             <button
-  //               className="px-4 py-1 bg-gray-500 text-white rounded-sm w-auto"
-  //               onClick={(event) => handleClearCart(event)}
-  //               disabled={clearCartProcessing}
-  //             >
-  //               <span className="woo-next-cart">Xóa giỏ hàng</span>
-  //               <i className="fa fa-arrow-alt-right" />
-  //             </button>
-  //             {clearCartProcessing ? <p>Đang xóa...</p> : ""}
-  //             {updateCartProcessing ? <p>Đang cập nhật...</p> : null}
-  //           </div>
-  //         </div>
-  //         <div className="grid grid-cols-1 xl:grid-cols-4 gap-0 xl:gap-4 mb-5">
-  //           <table className="cart-products table-auto col-span-3 mb-5">
-  //             <thead className="text-left">
-  //               <tr className="woo-next-cart-head-container">
-  //                 <th className="woo-next-cart-heading-el" scope="col" />
-  //                 <th className="woo-next-cart-heading-el" scope="col" />
-  //                 <th className="woo-next-cart-heading-el" scope="col">
-  //                   Tên hàng
-  //                 </th>
-  //                 <th className="woo-next-cart-heading-el" scope="col">
-  //                   Giá
-  //                 </th>
-  //                 <th className="woo-next-cart-heading-el" scope="col">
-  //                   Số lượng
-  //                 </th>
-  //                 <th className="woo-next-cart-heading-el" scope="col">
-  //                   Thành tiền
-  //                 </th>
-  //               </tr>
-  //             </thead>
-  //             <tbody>
-  //               {cart.products.length &&
-  //                 cart.products.map((item) => (
-  //                   <CartItem
-  //                     key={item.productId}
-  //                     item={item}
-  //                     updateCartProcessing={updateCartProcessing}
-  //                     products={cart.products}
-  //                     handleRemoveProductClick={handleRemoveProductClick}
-  //                     updateCart={updateCart}
-  //                   />
-  //                 ))}
-  //             </tbody>
-  //           </table>
-
-  //           {/*Cart Total*/}
-  //           <div className="row woo-next-cart-total-container border p-5 bg-gray-200">
-  //             <div className="">
-  //               {/* <h2 className="text-2xl">Cart Total</h2> */}
-  //               <table className="table table-hover mb-5">
-  //                 <tbody>
-  //                   <tr className="table-light flex flex-col">
-  //                     <td className="woo-next-cart-element-total text-2xl font-normal">
-  //                       Tổng cộng
-  //                     </td>
-  //                     <td className="woo-next-cart-element-amt text-2xl font-bold">
-  //                       {"string" !== typeof cart.totalProductsPrice
-  //                         ? cart.totalProductsPrice.toFixed(2)
-  //                         : cart.totalProductsPrice}
-  //                     </td>
-  //                   </tr>
-  //                   {/* <tr className="table-light">
-  // 									<td className="woo-next-cart-element-total">Total</td>
-  // 									<td className="woo-next-cart-element-amt">{ ( 'string' !== typeof cart.totalProductsPrice ) ? cart.totalProductsPrice.toFixed(2) : cart.totalProductsPrice }</td>
-  // 								</tr> */}
-  //                 </tbody>
-  //               </table>
-  //               <Link href="/thanh-toan">
-  //                 <button className="bg-purple-600 text-white px-5 py-3 rounded-sm w-auto xl:w-full">
-  //                   <span className="woo-next-cart-checkout-txt">
-  //                     Tiến hành thanh toán
-  //                   </span>
-  //                   <i className="fas fa-long-arrow-alt-right" />
-  //                 </button>
-  //               </Link>
-  //             </div>
-  //           </div>
-  //         </div>
-
-  //         {/* Display Errors if any */}
-  //         {requestError ? (
-  //           <div className="row woo-next-cart-total-container mt-5">
-  //             {" "}
-  //             {requestError}{" "}
-  //           </div>
-  //         ) : (
-  //           ""
-  //         )}
-  //       </div>
-  //     ) : (
-  //       <div className="container mx-auto my-32 px-4 xl:px-0">
-  //         <h2 className="text-2xl mb-5">No items in the cart</h2>
-  //         <Link href="/">
-  //           <button className="bg-purple-600 text-white px-5 py-3 rounded-sm">
-  //             <span className="woo-next-cart-checkout-txt">
-  //               Add New Products
-  //             </span>
-  //             <i className="fas fa-long-arrow-alt-right" />
-  //           </button>
-  //         </Link>
-  //       </div>
-  //     )}
-  //   </div>
-  // );
 };
 
 export default CartItemsContainer;
