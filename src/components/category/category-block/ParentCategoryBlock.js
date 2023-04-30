@@ -13,10 +13,10 @@ const ParentCategoryBlock = (props) => {
           src={category?.image?.sourceUrl ?? ""}
           alt={category?.image?.altText ?? category.slug}
         />
-        <h3 class="text-sm text-gray-500">
+        <h3 className="text-sm text-gray-500">
           <Link href={`/danh-muc-san-pham/${category?.slug}`}>
             <a>
-              <span class="absolute inset-0"></span>
+              <span className="absolute inset-0"></span>
               {category?.name}
             </a>
           </Link>

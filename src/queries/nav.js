@@ -64,6 +64,7 @@ const NAV_QUERY = gql`
           altText
           sourceUrl(size: THUMBNAIL)
           description
+          caption
         }
         siteName
         homeUrl

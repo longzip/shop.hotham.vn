@@ -21,7 +21,7 @@ const CartItemsContainer = () => {
   const [requestError, setRequestError] = useState(
     "Nhập mã ưu đãi và nhấn Enter để áp dụng."
   );
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState("");
   const [errors, setErrors] = useState({});
 
   // Update Cart Mutation.
@@ -43,23 +43,28 @@ const CartItemsContainer = () => {
     },
   });
 
-  const [applyCoupon] = useMutation(APPLY_COUPON, {
-    update: (cache, { data: removeItemsFromCartRes }) => {
-      const { cart: updatedCart } = removeItemsFromCartRes.applyCoupon;
-      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+  const [applyCoupon, { loading: applyCouponLoading }] = useMutation(
+    APPLY_COUPON,
+    {
+      update: (cache, { data: removeItemsFromCartRes }) => {
+        const { cart: updatedCart } = removeItemsFromCartRes.applyCoupon;
+        localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
 
-      // Update cart data in React Context.
-      setCart(updatedCart);
-    },
-    onError: (error) => {
-      if (error) {
-        const errorMessage = !isEmpty(error?.graphQLErrors?.[0])
-          ? error.graphQLErrors[0]?.message
-          : "";
-        setRequestError(errorMessage);
-      }
-    },
-  });
+        // Update cart data in React Context.
+        setCart(updatedCart);
+        setCode("");
+        setRequestError("");
+      },
+      onError: (error) => {
+        if (error) {
+          const errorMessage = !isEmpty(error?.graphQLErrors?.[0])
+            ? error.graphQLErrors[0]?.message
+            : "";
+          setRequestError(errorMessage);
+        }
+      },
+    }
+  );
 
   // Update Cart Mutation.
   const [clearCart, { loading: clearCartProcessing }] = useMutation(
@@ -129,13 +134,8 @@ const CartItemsContainer = () => {
 
   const handleOnChange = async (event) => {
     const { target } = event || {};
-    console.log(event.key);
-
     const newValue = !isEmpty(target.value) ? target.value : "";
     setCode(newValue);
-    if (event.key === "Enter") {
-      console.log(code);
-    }
   };
 
   const handleKeyPress = (e) => {
@@ -151,6 +151,19 @@ const CartItemsContainer = () => {
         },
       });
     }
+  };
+
+  const handleSubmit = async (event) => {
+    // Stop the form from submitting and refreshing the page.
+    event.preventDefault();
+    if (isEmpty(code)) return;
+    applyCoupon({
+      variables: {
+        input: {
+          code: code,
+        },
+      },
+    });
   };
 
   return cart ? (
@@ -202,14 +215,24 @@ const CartItemsContainer = () => {
                         <p className="text-gray-500">Số lượng {quantity}</p>
 
                         <div className="flex">
-                          <button
-                            type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={(event) => handleClearCart(event, key)}
-                            disabled={clearCartProcessing}
-                          >
-                            Loại bỏ
-                          </button>
+                          {clearCartProcessing ? (
+                            <button
+                              type="button"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                              onClick={(event) => handleClearCart(event, key)}
+                              disabled
+                            >
+                              Đang xử lý...
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                              onClick={(event) => handleClearCart(event, key)}
+                            >
+                              Loại bỏ
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -239,7 +262,36 @@ const CartItemsContainer = () => {
           <p>Còn phải thanh toán</p>
           <p>{cart.total}</p>
         </div>
-
+        <form
+          onSubmit={handleSubmit}
+          className="mt-6 flex justify-center text-center text-sm text-gray-500"
+        >
+          <input
+            value={code}
+            type="text"
+            name="code"
+            id="code"
+            onChange={handleOnChange}
+            placeholder="Mã ưu đãi"
+            className="w-full border-b-2 border-gray-300 pb-3 text-base text-gray-600 font-normal placeholder-gray-600 focus:outline-none"
+          />
+          {applyCouponLoading ? (
+            <button
+              className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              type="submit"
+              disabled
+            >
+              Đang áp dụng..
+            </button>
+          ) : (
+            <button
+              className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              type="submit"
+            >
+              Áp dụng
+            </button>
+          )}
+        </form>
         <div className="mt-6">
           <a
             href="/thanh-toan"
@@ -248,19 +300,7 @@ const CartItemsContainer = () => {
             Tiến hành thanh toán
           </a>
         </div>
-        <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-          <input
-            onKeyPress={handleKeyPress}
-            placeholder="Mã ưu đãi"
-            className="w-full border-b-2 border-gray-300 pb-3 text-base text-gray-600 font-normal placeholder-gray-600 focus:outline-none"
-          />
-          {/* <button
-            class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-            type="button"
-          >
-            Áp dụng
-          </button> */}
-        </div>
+
         <p className="text-red-500 text-xs italic">{requestError}</p>
       </div>
     </div>

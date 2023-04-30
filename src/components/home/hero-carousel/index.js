@@ -54,7 +54,7 @@ export default function Index({ heroCarousel }) {
             {heroCarousel.map((item, index) => {
               return (
                 <Slide key={item?.id} index={index}>
-                  <div class="relative flex w-full">
+                  <div className="relative flex w-full">
                     <img
                       className="flex object-cover object-center w-full md:w-3/4"
                       src={item?.image?.sourceUrl}
