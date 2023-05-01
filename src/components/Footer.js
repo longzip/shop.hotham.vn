@@ -11,7 +11,7 @@ import {
   YOUTUBE_PAGE_URL,
   ZALO_PAGE_URL,
 } from "../../lib/constants";
-import Script from "next/script";
+// import Script from "next/script";
 
 const Footer1 = ({
   siteSeo: { logo, siteName, homeUrl },
@@ -286,10 +286,10 @@ const Footer1 = ({
           Lỗ Văn Long
         </a>
       </p>
-      <Script
+      {/* <Script
         id="mcjs"
         strategy="afterInteractive"
-      >{`!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","${MAILCHIMP_FORM_CONN}");`}</Script>
+      >{`!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","${MAILCHIMP_FORM_CONN}");`}</Script> */}
     </div>
   );
 };
