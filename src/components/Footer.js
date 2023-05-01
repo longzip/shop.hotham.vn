@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import isEmpty from "../validator/isEmpty";
+import {
+  FB_PAGE_URL,
+  INPUT_SECRET,
+  INSTAGRAM_PAGE_URL,
+  MAILCHIMP_FORM_CONN,
+  MAILCHIMP_FORM_URL,
+  TIKTOK_PAGE_URL,
+  YOUTUBE_PAGE_URL,
+  ZALO_PAGE_URL,
+} from "../../lib/constants";
+import Script from "next/script";
 
 const Footer1 = ({
   siteSeo: { logo, siteName, homeUrl },
@@ -26,7 +37,7 @@ const Footer1 = ({
           />
           <div className="flex items-center gap-x-4 mt-12">
             <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <a href="/facebook" target="_blank">
+              <a href={FB_PAGE_URL} target="_blank">
                 <svg
                   width="18"
                   height="18"
@@ -44,7 +55,7 @@ const Footer1 = ({
               </a>
             </div>
             <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <a href="/tiktok" target="_blank">
+              <a href={TIKTOK_PAGE_URL} target="_blank">
                 <svg
                   width="17"
                   height="18"
@@ -62,7 +73,7 @@ const Footer1 = ({
               </a>
             </div>
             <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <a href="/youtube" target="_blank">
+              <a href={YOUTUBE_PAGE_URL} target="_blank">
                 <svg
                   width="18"
                   height="18"
@@ -80,7 +91,7 @@ const Footer1 = ({
               </a>
             </div>
             <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <a href="/instagram" target="_blank">
+              <a href={INSTAGRAM_PAGE_URL} target="_blank">
                 <svg
                   width="18"
                   height="18"
@@ -98,7 +109,7 @@ const Footer1 = ({
               </a>
             </div>
             <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <a href="/zalo" target="_blank">
+              <a href={ZALO_PAGE_URL} target="_blank">
                 <svg
                   width="24"
                   height="24"
@@ -157,7 +168,7 @@ const Footer1 = ({
         </div>
         <div className="mt-10 lg:block hidden">
           <form
-            action={process.env.MAILCHIMP_FORM_URL}
+            action={MAILCHIMP_FORM_URL}
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
@@ -169,7 +180,7 @@ const Footer1 = ({
             <input
               className="invisible"
               type="text"
-              name={process.env.INPUT_SECRET}
+              name={INPUT_SECRET}
               tabIndex="-1"
               value=""
               readOnly
@@ -210,7 +221,7 @@ const Footer1 = ({
       </div>
       <div className="mt-10 lg:hidden">
         <form
-          action={process.env.MAILCHIMP_FORM_URL}
+          action={MAILCHIMP_FORM_URL}
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
@@ -222,7 +233,7 @@ const Footer1 = ({
           <input
             className="invisible"
             type="text"
-            name={process.env.INPUT_SECRET}
+            name={INPUT_SECRET}
             tabIndex="-1"
             value=""
             readOnly
@@ -275,6 +286,10 @@ const Footer1 = ({
           Lỗ Văn Long
         </a>
       </p>
+      <Script
+        id="mcjs"
+        strategy="afterInteractive"
+      >{`!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","${MAILCHIMP_FORM_CONN}");`}</Script>
     </div>
   );
 };
