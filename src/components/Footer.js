@@ -5,7 +5,6 @@ import {
   FB_PAGE_URL,
   INPUT_SECRET,
   INSTAGRAM_PAGE_URL,
-  MAILCHIMP_FORM_CONN,
   MAILCHIMP_FORM_URL,
   TIKTOK_PAGE_URL,
   YOUTUBE_PAGE_URL,
@@ -273,15 +272,14 @@ const Footer1 = ({
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <p className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
         © 2023{" "}
-        <a href={homeUrl} class="hover:underline">
+        <a href={homeUrl} className="hover:underline">
           {siteName}™
         </a>
         . All Rights Reserved. Thiết kế website hiện đại cùng{" "}
         <a
-          className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500"
+          className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
           href="https://lovanlong.ga/"
-          class="hover:underline"
         >
           Lỗ Văn Long
         </a>
