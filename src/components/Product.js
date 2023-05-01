@@ -10,7 +10,7 @@ const Product = (props) => {
     // @TODO Need to handle Group products differently.
     undefined !== product && "GroupProduct" !== product.__typename ? (
       <div className="group group-hover:opacity-60 transition duration-500 relative w-full border shadow-xl">
-        <Link href={`/cua-hang/${product?.slug}`}>
+        <Link href={`/cua-hang/${product?.slug}/`}>
           <a className="relative block overflow-hidden">
             <img
               className="group-hover:opacity-60 transition duration-500 block h-full w-full object-cover object-center cursor-pointer"

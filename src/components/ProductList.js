@@ -10,7 +10,7 @@ export default function ProductList({ products }) {
           {products.map((product) => (
             <a
               key={product.id}
-              href={`/cua-hang/${product?.slug}`}
+              href={`/cua-hang/${product?.slug}/`}
               className="group"
             >
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
