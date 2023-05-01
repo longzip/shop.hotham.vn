@@ -111,7 +111,7 @@ export async function getStaticProps(context) {
       seo: data?.productCategory?.seo ?? "",
       products: data?.productCategory?.products?.nodes ?? [],
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }
 

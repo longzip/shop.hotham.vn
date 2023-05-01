@@ -31,6 +31,9 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
         price
         id
         regularPrice
+        stockStatus
+        stockQuantity
+        sku
         seo {
           fullHead
         }
@@ -39,6 +42,9 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
         price
         id
         regularPrice
+        stockStatus
+        stockQuantity
+        sku
         seo {
           fullHead
         }

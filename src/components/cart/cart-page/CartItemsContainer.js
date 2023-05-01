@@ -18,9 +18,7 @@ import InputField2 from "../../checkout/form-elements/InputField2";
 const CartItemsContainer = () => {
   // @TODO wil use it in future variations of the project.
   const [cart, setCart] = useContext(AppContext);
-  const [requestError, setRequestError] = useState(
-    "Nhập mã ưu đãi và nhấn Enter để áp dụng."
-  );
+  const [requestError, setRequestError] = useState("");
   const [code, setCode] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -292,6 +290,7 @@ const CartItemsContainer = () => {
             </button>
           )}
         </form>
+        <p className="text-red-500 text-xs italic">{requestError}</p>
         <div className="mt-6">
           <a
             href="/thanh-toan"
@@ -300,8 +299,6 @@ const CartItemsContainer = () => {
             Tiến hành thanh toán
           </a>
         </div>
-
-        <p className="text-red-500 text-xs italic">{requestError}</p>
       </div>
     </div>
   ) : null;

@@ -31,6 +31,7 @@ const AddToCart = (props) => {
 
       // Update cart data in React Context.
       setCart(updatedCart);
+      setRequestError("");
     },
     onCompleted: () => {
       setShowViewCart(true);
@@ -49,6 +50,12 @@ const AddToCart = (props) => {
 
   return (
     <div>
+      <div
+        className="text-red-500 text-xs italic"
+        dangerouslySetInnerHTML={{
+          __html: requestError,
+        }}
+      />
       {/*	Check if its an external product then put its external buy link */}
       {"ExternalProduct" === product.__typename ? (
         <a
