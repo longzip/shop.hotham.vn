@@ -135,34 +135,18 @@ const CheckoutForm2 = () => {
     );
   if (!cart?.contents?.itemCount)
     return (
-      <h1 className="mb-5 text-2xl uppercase">
-        Bạn không có sản phẩm nào cần thanh toán!
-      </h1>
+      <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
+        <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
+          Trang chủ / Thanh Toán
+        </p>
+        <h1 className="mb-5 text-2xl uppercase">
+          Hãy thêm sản phẩm vào giỏ hàng trước khi thanh toán đơn hàng.
+        </h1>
+      </div>
     );
   return (
     <div className="lg:container lg:mx-auto grid grid-cols-9 lg:grid-cols-12">
       <div className="col-span-9 lg:col-span-8 xl:col-span-9 bg-white h-auto lg:h-screen relative lg:px-10 p-6 lg:py-12">
-        {/* <p>
-          <svg
-            className="inline"
-            width="6"
-            height="10"
-            viewBox="0 0 6 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 1L1 5L5 9"
-              stroke="#4B5563"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className="cursor-pointer text-gray-500 font-normal text-base ml-2.5">
-            Quay lại
-          </span>
-        </p> */}
         <h3 className="font-semibold text-gray-800 text-4xl mt-2">
           Thanh toán
         </h3>
