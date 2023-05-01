@@ -10,7 +10,7 @@ import {
   YOUTUBE_PAGE_URL,
   ZALO_PAGE_URL,
 } from "../../lib/constants";
-// import Script from "next/script";
+import Script from "next/script";
 
 const Footer1 = ({
   siteSeo: { logo, siteName, homeUrl },
@@ -30,6 +30,10 @@ const Footer1 = ({
           <h2 className="text-base font-semibold leading-4 text-gray-800">
             {siteName}
           </h2>
+          <div
+            className="mt-1 zalo-follow-only-button"
+            data-oaid="907870636305349915"
+          ></div>
           <div
             className="mt-5"
             dangerouslySetInnerHTML={{ __html: logo.caption }}
@@ -284,6 +288,7 @@ const Footer1 = ({
           Lỗ Văn Long
         </a>
       </p>
+      <Script src="https://sp.zalo.me/plugins/sdk.js"></Script>
       {/* <Script
         id="mcjs"
         strategy="afterInteractive"
