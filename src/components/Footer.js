@@ -157,7 +157,7 @@ const Footer1 = ({
         </div>
         <div className="mt-10 lg:block hidden">
           <form
-            action="https://buudienxatulap.us5.list-manage.com/subscribe/post?u=03e33e3cdd5e422de02a01d6e&amp;id=5eb6c62783&amp;f_id=00e87aebf0"
+            action={process.env.MAILCHIMP_FORM_URL}
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
@@ -169,7 +169,7 @@ const Footer1 = ({
             <input
               className="invisible"
               type="text"
-              name="b_03e33e3cdd5e422de02a01d6e_5eb6c62783"
+              name={process.env.INPUT_SECRET}
               tabIndex="-1"
               value=""
               readOnly
@@ -210,7 +210,7 @@ const Footer1 = ({
       </div>
       <div className="mt-10 lg:hidden">
         <form
-          action="https://buudienxatulap.us5.list-manage.com/subscribe/post?u=03e33e3cdd5e422de02a01d6e&amp;id=5eb6c62783&amp;f_id=00e87aebf0"
+          action={process.env.MAILCHIMP_FORM_URL}
           method="post"
           id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
@@ -222,7 +222,7 @@ const Footer1 = ({
           <input
             className="invisible"
             type="text"
-            name="b_03e33e3cdd5e422de02a01d6e_5eb6c62783"
+            name={process.env.INPUT_SECRET}
             tabIndex="-1"
             value=""
             readOnly
