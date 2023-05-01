@@ -24,9 +24,9 @@ export default function CuaHang({
     >
       {/*Products*/}
       <div className="container mx-auto px-1">
-        <h2 className="products-main-title main-title mb-5 text-xl uppercase">
+        <h1 className="products-main-title main-title mb-5 text-xl uppercase">
           <span className="main-title-inner">Sản phẩm</span>
-        </h2>
+        </h1>
         <ProductList products={products} />
       </div>
     </Layout>

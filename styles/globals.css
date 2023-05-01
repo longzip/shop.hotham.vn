@@ -92,3 +92,18 @@
 .wp-block-media-text {
   @apply grid grid-cols-2 gap-4;
 }
+.wp-block-columns {
+  @apply flex  flex-wrap;
+}
+
+.wp-block-column {
+  @apply w-full md:flex-1 text-gray-700 text-center px-4 py-2 m-2;
+}
+
+.wp-block-embed .wp-block-embed__wrapper {
+  @apply aspect-w-16 aspect-h-9;
+}
+
+.wp-block-embed-tiktok .wp-block-embed__wrapper {
+  @apply aspect-w-9 aspect-h-16;
+}

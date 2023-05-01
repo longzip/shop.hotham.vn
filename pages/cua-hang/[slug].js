@@ -87,9 +87,9 @@ export default function Product({
                 </div>
               ) : null}
               <div className=" w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
-                <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
+                <h1 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
                   {product.name}
-                </h2>
+                </h1>
 
                 <div className=" flex flex-row justify-between  mt-5">
                   <div className=" flex flex-row space-x-3">
