@@ -127,7 +127,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
 
 export const PRODUCT_SLUGS = gql`
   query Products {
-    products(first: 5000) {
+    products(first: 500, where: { stockStatus: IN_STOCK }) {
       nodes {
         id
         slug
