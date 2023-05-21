@@ -96,7 +96,7 @@ const Header = ({
                           {section.products.nodes.map((item) => (
                             <li key={item.name} className="flow-root">
                               <a
-                                href={`/cua-hang/${item.slug}`}
+                                href={`/cua-hang/${item.slug}/`}
                                 className="-m-2 block p-2 text-gray-500"
                               >
                                 {item.name}
@@ -111,7 +111,11 @@ const Header = ({
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   {mainMenu[0].menuItems.nodes.map((menuItem) => (
                     <div key={menuItem.id} className="flow-root">
-                      <Link href={menuItem.path}>
+                      <Link
+                        href={`/danh-muc-san-pham/${
+                          menuItem.path.split("/").reverse()[1]
+                        }/`}
+                      >
                         <a
                           className="-m-2 block p-2 font-medium text-gray-900"
                           dangerouslySetInnerHTML={{ __html: menuItem.label }}
@@ -120,39 +124,6 @@ const Header = ({
                     </div>
                   ))}
                 </div>
-
-                {/* <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Sign in
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Create account
-                    </a>
-                  </div>
-                </div> */}
-
-                {/* <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="#" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div> */}
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -253,7 +224,7 @@ const Header = ({
                                                   className="flex"
                                                 >
                                                   <a
-                                                    href={`/cua-hang/${item.slug}`}
+                                                    href={`/cua-hang/${item.slug}/`}
                                                     className="hover:text-gray-800"
                                                     dangerouslySetInnerHTML={{
                                                       __html: item.name,
@@ -276,7 +247,12 @@ const Header = ({
                   </Popover>
 
                   {mainMenu[0].menuItems.nodes.map((menuItem) => (
-                    <Link key={menuItem.id} href={menuItem.path}>
+                    <Link
+                      key={menuItem.id}
+                      href={`/danh-muc-san-pham/${
+                        menuItem.path.split("/").reverse()[1]
+                      }/`}
+                    >
                       <a
                         key={menuItem.id}
                         className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"

@@ -16,8 +16,12 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
       return null;
     }
 
-    const formattedRegularPrice = parseInt(regularPrice?.substring(1));
-    const formattedSalesPrice = parseInt(salesPrice?.substring(1));
+    const formattedRegularPrice = parseInt(
+      regularPrice?.substring(1).replaceAll(".", "")
+    );
+    const formattedSalesPrice = parseInt(
+      salesPrice?.substring(1).replaceAll(".", "")
+    );
 
     const discountPercent =
       ((formattedRegularPrice - formattedSalesPrice) / formattedRegularPrice) *
@@ -26,7 +30,7 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
     return {
       discountPercent:
         formattedSalesPrice !== formattedRegularPrice
-          ? `${discountPercent.toFixed(0)}% GIẢM`
+          ? `-${discountPercent.toFixed(0)}%`
           : null,
       strikeThroughClass:
         formattedSalesPrice < formattedRegularPrice
@@ -46,6 +50,9 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
 
       {/* Discounted price */}
       <span className={productMeta?.strikeThroughClass}>{regularPrice}</span>
+      <span className="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-pink-700 ring-1 ring-inset ring-pink-700/10">
+        {productMeta?.discountPercent}
+      </span>
     </p>
   );
 };
