@@ -187,14 +187,14 @@ export default function Product({
                       />
                     </svg>
                   </div>
-                  <div
+                  {/* <div
                     className="zalo-share-button"
                     data-href={`${WEBSITE_URL}/cua-hang/${router.query.slug}/`}
                     data-oaid="907870636305349915"
                     data-layout="1"
                     data-color="blue"
                     data-customize="false"
-                  ></div>
+                  ></div> */}
                 </div>
 
                 <div
@@ -285,12 +285,12 @@ export default function Product({
             </div>
 
             <PostBody content={product.description} />
-            <div
+            {/* <div
               className="mt-5 zalo-comment-plugin"
               data-appid="4012174264882708298"
               data-size="5"
               data-href=""
-            ></div>
+            ></div> */}
           </div>
           <ProductList products={otheProducts} />
         </>

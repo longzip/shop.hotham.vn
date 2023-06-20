@@ -6,6 +6,7 @@ yarn-error.log
 build/
 node_modules/
 dist/
+out/
 .cache
 .next
 .env

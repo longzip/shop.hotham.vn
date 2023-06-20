@@ -30,10 +30,10 @@ const Footer1 = ({
           <h2 className="text-base font-semibold leading-4 text-gray-800">
             {siteName}
           </h2>
-          <div
+          {/* <div
             className="mt-1 zalo-follow-only-button"
             data-oaid="907870636305349915"
-          ></div>
+          ></div> */}
           <div
             className="mt-5"
             dangerouslySetInnerHTML={{ __html: logo.caption }}
@@ -283,12 +283,12 @@ const Footer1 = ({
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://lovanlong.ga/"
+          href="https://lamwebsite.hotham.vn/"
         >
           Lỗ Văn Long
         </a>
       </p>
-      <Script src="https://sp.zalo.me/plugins/sdk.js"></Script>
+      {/* <Script src="https://sp.zalo.me/plugins/sdk.js"></Script> */}
       {/* <Script
         id="mcjs"
         strategy="afterInteractive"
