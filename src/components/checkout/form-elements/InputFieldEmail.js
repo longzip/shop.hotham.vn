@@ -1,7 +1,7 @@
 import Error2 from "../Error2";
 import PropTypes from "prop-types";
 
-const InputField2 = ({
+const InputFieldEmail = ({
   handleOnChange,
   inputValue,
   name,
@@ -19,14 +19,13 @@ const InputField2 = ({
         name={name}
         className="w-full border-b-2 border-gray-300 pb-3 text-base text-gray-600 font-normal placeholder-gray-600 focus:outline-none"
         id={name}
-        required
       />
       <Error2 errors={errors} fieldName={name} />
     </div>
   );
 };
 
-InputField2.propTypes = {
+InputFieldEmail.propTypes = {
   handleOnChange: PropTypes.func,
   inputValue: PropTypes.string,
   name: PropTypes.string,
@@ -38,7 +37,7 @@ InputField2.propTypes = {
   containerClassNames: PropTypes.string,
 };
 
-InputField2.defaultProps = {
+InputFieldEmail.defaultProps = {
   handleOnChange: () => null,
   inputValue: "",
   name: "",
@@ -50,4 +49,4 @@ InputField2.defaultProps = {
   containerClassNames: "",
 };
 
-export default InputField2;
+export default InputFieldEmail;

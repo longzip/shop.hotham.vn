@@ -283,7 +283,7 @@ const Footer1 = ({
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://lamwebsite.hotham.vn/"
+          href="https://www.facebook.com/lovanlongvn"
         >
           Lỗ Văn Long
         </a>

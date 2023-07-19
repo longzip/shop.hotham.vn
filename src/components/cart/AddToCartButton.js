@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import Link from "next/link";
 import { v4 } from "uuid";
 import cx from "classnames";
 
 import { AppContext } from "../context/AppContext";
 import ADD_TO_CART from "../../mutations/add-to-cart";
+import GET_CART from "../../queries/get-cart";
 
 const AddToCart = (props) => {
   const { product, quantity } = props;
@@ -19,6 +20,18 @@ const AddToCart = (props) => {
   const [cart, setCart] = useContext(AppContext);
   const [showViewCart, setShowViewCart] = useState(false);
   const [requestError, setRequestError] = useState(null);
+
+  const { data } = useQuery(GET_CART, {
+    notifyOnNetworkStatusChange: true,
+    onCompleted: () => {
+      // Update cart in the localStorage.
+      const { cart: updatedCart } = data;
+      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+
+      // Update cart data in React Context.
+      setCart(updatedCart);
+    },
+  });
 
   // Add to Cart Mutation.
   const [addToCart, { loading: addToCartLoading }] = useMutation(ADD_TO_CART, {

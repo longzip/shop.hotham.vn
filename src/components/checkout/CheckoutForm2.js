@@ -4,6 +4,7 @@ import CHECKOUT_MUTATION from "../../mutations/checkout";
 import GET_CART from "../../queries/get-cart";
 import isEmpty from "../../validator/isEmpty";
 import InputField2 from "./form-elements/InputField2";
+import InputFieldEmail from "./form-elements/InputFieldEmail";
 import validator from "validator";
 import DonHang from "../DonHang";
 import { AppContext } from "../context/AppContext";
@@ -65,7 +66,7 @@ const CheckoutForm2 = () => {
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
-    const { email, phone, address1, lastName } = input;
+    const { email = "info@noithatzip.vn", phone, address1, lastName } = input;
     if (!validator.isEmail(email)) {
       const newErrors = { ...errors, email: "Địa chỉ email không hợp lệ" };
       setErrors(newErrors);
@@ -165,7 +166,7 @@ const CheckoutForm2 = () => {
                 type="text"
                 inputValue={input?.lastName}
                 name="lastName"
-                placeholder="Họ và tên"
+                placeholder="Tên người nhận hàng"
                 handleOnChange={handleOnChange}
                 errors={errors}
               />
@@ -173,7 +174,7 @@ const CheckoutForm2 = () => {
                 type="text"
                 inputValue={input?.phone}
                 name="phone"
-                placeholder="Số điện thoại"
+                placeholder="Số điện thoại nhận hàng"
                 handleOnChange={handleOnChange}
                 errors={errors}
               />
@@ -181,15 +182,15 @@ const CheckoutForm2 = () => {
                 type="text"
                 inputValue={input?.address1}
                 name="address1"
-                placeholder="Địa chỉ"
+                placeholder="Địa chỉ nhận hàng"
                 handleOnChange={handleOnChange}
                 errors={errors}
               />
-              <InputField2
+              <InputFieldEmail
                 type="email"
                 inputValue={input?.email}
                 name="email"
-                placeholder="Email"
+                placeholder="Email nhận hóa đơn (nếu có)."
                 handleOnChange={handleOnChange}
                 errors={errors}
               />
