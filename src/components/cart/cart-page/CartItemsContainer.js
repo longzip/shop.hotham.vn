@@ -14,6 +14,7 @@ import CLEAR_CART_MUTATION from "../../../mutations/clear-cart";
 import APPLY_COUPON from "../../../mutations/apply-coupon";
 import { isEmpty } from "lodash";
 import InputField2 from "../../checkout/form-elements/InputField2";
+import GET_CART from "../../../queries/get-cart";
 
 const CartItemsContainer = () => {
   // @TODO wil use it in future variations of the project.
@@ -21,6 +22,18 @@ const CartItemsContainer = () => {
   const [requestError, setRequestError] = useState("");
   const [code, setCode] = useState("");
   const [errors, setErrors] = useState({});
+
+  // const { data } = useQuery(GET_CART, {
+  //   notifyOnNetworkStatusChange: true,
+  //   onCompleted: () => {
+  //     // Update cart in the localStorage.
+  //     const { cart: updatedCart } = data;
+  //     localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+
+  //     // Update cart data in React Context.
+  //     setCart(updatedCart);
+  //   },
+  // });
 
   // Update Cart Mutation.
   const [
