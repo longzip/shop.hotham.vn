@@ -14,16 +14,20 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
           id
           title
           altText
+          description
           mediaItemUrl
-          sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
-          url: sourceUrl(size: WOOCOMMERCE_SINGLE)
+          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          url: sourceUrl(size: LARGE)
         }
       }
       image {
         id
         uri
+        altText
+        description
         title
         srcSet
+        url: sourceUrl(size: LARGE)
         sourceUrl(size: WOOCOMMERCE_SINGLE)
       }
       name

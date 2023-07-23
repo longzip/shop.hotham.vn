@@ -75,7 +75,10 @@ export default function Product({
             </p>
             <div className="flex justify-center items-center lg:flex-row flex-col gap-8 mt-6">
               {!isEmpty(product?.galleryImages?.nodes) ? (
-                <GalleryCarousel gallery={product?.galleryImages?.nodes} />
+                <GalleryCarousel
+                  gallery={product?.galleryImages?.nodes}
+                  image={product?.image}
+                />
               ) : !isEmpty(product.image) ? (
                 <div className="w-full lg:w-4/12">
                   <img
