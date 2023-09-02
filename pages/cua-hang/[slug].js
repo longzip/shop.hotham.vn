@@ -16,6 +16,7 @@ import parse from "html-react-parser";
 import ProductList from "../../src/components/ProductList";
 import PostBody from "../../src/components/post-body";
 import { WEBSITE_URL } from "../../lib/constants";
+import MailChimpForm from "../../src/components/MailchimpForm";
 
 export default function Product({
   product,
@@ -294,6 +295,9 @@ export default function Product({
               data-size="5"
               data-href=""
             ></div> */}
+            <div>
+              <MailChimpForm />
+            </div>
           </div>
           <ProductList products={otheProducts} />
         </>
