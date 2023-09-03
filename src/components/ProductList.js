@@ -1,13 +1,16 @@
 import Price from "./single-product/price";
 
-export default function ProductList({ products, title = "Sản phẩm" }) {
+export default function ProductList({ products, title = "" }) {
   // console.log(products);
+  if (products.length == 0) return;
   return (
     <div className="bg-gray-100">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="font-semibold lg:text-4xl text-center text-3xl lg:leading-9 leading-7 text-gray-800">
-          {title}
-        </h2>
+        {title ? (
+          <h2 className="font-semibold lg:text-4xl text-center text-3xl lg:leading-9 leading-7 text-gray-800">
+            {title}
+          </h2>
+        ) : null}
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <a

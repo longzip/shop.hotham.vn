@@ -43,7 +43,7 @@ const MailChimpForm = () => {
           onChange={handleOnChange}
           name="EMAIL"
           required
-          className="border-b-2 border-gray-300 text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-900 placeholder-gray-600"
+          className="border border-gray-300 text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-900 placeholder-gray-600"
           placeholder="Email *"
         />
         <input
@@ -52,8 +52,8 @@ const MailChimpForm = () => {
           onChange={handleOnChange}
           name="FNAME"
           required
-          className="border-b-2 border-gray-300 text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-900 placeholder-gray-600"
-          placeholder="Tên"
+          className="border border-gray-300 text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-900 placeholder-gray-600"
+          placeholder="Tên *"
         />
         <input
           type="text"
@@ -61,8 +61,8 @@ const MailChimpForm = () => {
           onChange={handleOnChange}
           name="PHONE"
           required
-          className="border-b-2 border-gray-300 text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-900 placeholder-gray-600"
-          placeholder="Điện thoại"
+          className="border border-gray-300 text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-900 placeholder-gray-600"
+          placeholder="Điện thoại *"
         />
         <button
           type="submit"

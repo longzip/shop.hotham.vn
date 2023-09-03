@@ -282,9 +282,9 @@ const Footer1 = ({
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://www.facebook.com/lovanlongvn"
+          href="https://www.hotham.vn/"
         >
-          Lỗ Văn Long
+          Hồ Thị Thắm
         </a>
       </p>
       {/* <Script src="https://sp.zalo.me/plugins/sdk.js"></Script> */}
