@@ -10,6 +10,7 @@ import parse from "html-react-parser";
 import ProductCategoriesList from "../src/components/ProductCategoriesList";
 import { PAGE_BY_SLUG_QUERY } from "../src/queries/page-by-slug";
 import PostBody from "../src/components/post-body";
+import Video from "../src/components/Video";
 
 export default function Home(props) {
   const {
@@ -42,19 +43,25 @@ export default function Home(props) {
       {/*Hero Carousel*/}
       <HeroCarousel heroCarousel={heroCarousel} />
       {/*Products OnSale*/}
-      <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
+      {/* <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
         <h1 className="font-semibold lg:text-4xl text-center text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
           {page.title}
         </h1>
         <PostBody content={page.content} />
-      </div>
-      <ProductList products={productOnSales} />
+      </div> */}
 
       {/*Categories*/}
       <ProductCategoriesList productCategories={productCategories} />
+      <Video
+        videos={heroCarousel
+          .map((v) => ({ video: v.image.description }))
+          .filter((v) => v.video)}
+      />
+
+      <ProductList products={productOnSales} title="Flash Sale" />
 
       {/*Products*/}
-      <ProductList products={products} />
+      <ProductList products={products} title="Sản phẩm bán chạy" />
     </Layout>
   );
 }

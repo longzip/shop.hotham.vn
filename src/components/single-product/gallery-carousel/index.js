@@ -15,7 +15,7 @@ const GalleryCarousel = ({ gallery, image }) => {
         <div
           className="aspect-w-16 aspect-h-9"
           dangerouslySetInnerHTML={{
-            __html: image.description.slice(3).slice(0, -4),
+            __html: image.description.slice(3).slice(0, -5),
           }}
         />
       ) : (

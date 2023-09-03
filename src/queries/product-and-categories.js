@@ -27,6 +27,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`
               srcSet
               title
               altText
+              description
             }
           }
         }

@@ -10,7 +10,6 @@ import {
   YOUTUBE_PAGE_URL,
   ZALO_PAGE_URL,
 } from "../../lib/constants";
-import Script from "next/script";
 
 const Footer1 = ({
   siteSeo: { logo, siteName, homeUrl },
