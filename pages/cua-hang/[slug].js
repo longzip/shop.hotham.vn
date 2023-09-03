@@ -295,11 +295,11 @@ export default function Product({
               data-size="5"
               data-href=""
             ></div> */}
-            <div>
+            <div className="bg-gray-300 p-5 ">
               <MailChimpForm />
             </div>
           </div>
-          <ProductList products={otheProducts} />
+          <ProductList products={otheProducts} title="Sản phẩm khác" />
         </>
       ) : (
         ""
