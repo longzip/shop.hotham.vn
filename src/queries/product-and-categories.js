@@ -43,7 +43,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`
         image {
           id
           altText
-          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          sourceUrl
         }
         name
         ... on SimpleProduct {
@@ -86,7 +86,7 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`
         image {
           id
           altText
-          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          sourceUrl
         }
         name
         ... on SimpleProduct {

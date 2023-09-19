@@ -16,7 +16,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
           altText
           description
           mediaItemUrl
-          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          sourceUrl
           url: sourceUrl(size: LARGE)
         }
       }
@@ -28,7 +28,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
         title
         srcSet
         url: sourceUrl(size: LARGE)
-        sourceUrl(size: WOOCOMMERCE_SINGLE)
+        sourceUrl
       }
       name
       ... on SimpleProduct {
@@ -91,7 +91,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
                 uri
                 title
                 srcSet
-                sourceUrl(size: WOOCOMMERCE_SINGLE)
+                sourceUrl
               }
               name
               ... on SimpleProduct {
