@@ -58,6 +58,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
         id
         regularPrice
         externalUrl
+        buttonText
         seo {
           fullHead
         }
@@ -108,6 +109,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
                 id
                 regularPrice
                 externalUrl
+                buttonText
               }
               ... on GroupProduct {
                 products {
