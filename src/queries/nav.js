@@ -85,7 +85,7 @@ const NAV_QUERY = gql`
         count
         image {
           id
-          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          sourceUrl
           altText
         }
         products(where: { stockStatus: IN_STOCK, supportedTypesOnly: true }) {
