@@ -281,10 +281,10 @@ export default function Product({
                   </div>
                   <hr className=" bg-gray-200 w-full my-2" />
                 </div>
-
-                {product.stockStatus === "IN_STOCK" && (
-                  <AddToCartButton product={product} quantity={count} />
-                )}
+                <AddToCartButton product={product} quantity={count} />
+                {/* {product.stockStatus === "IN_STOCK" && (
+                  
+                )} */}
               </div>
             </div>
 

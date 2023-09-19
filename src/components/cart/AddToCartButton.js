@@ -90,9 +90,7 @@ const AddToCart = (props) => {
             { "opacity-50 cursor-not-allowed": addToCartLoading }
           )}
         >
-          {addToCartLoading
-            ? "Đang kiểm tra số lượng tồn kho..."
-            : "Thêm vào giỏ hàng"}
+          {addToCartLoading ? "Đang thêm vào giỏ hàng..." : "Thêm vào giỏ hàng"}
         </button>
       )}
       {showViewCart ? (

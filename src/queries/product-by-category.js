@@ -24,7 +24,7 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql`
             uri
             title
             srcSet
-            sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
+            sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
           name
           ... on SimpleProduct {

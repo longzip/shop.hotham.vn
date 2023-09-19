@@ -90,7 +90,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
                 uri
                 title
                 srcSet
-                sourceUrl(size: WOOCOMMERCE_THUMBNAIL)
+                sourceUrl(size: WOOCOMMERCE_SINGLE)
               }
               name
               ... on SimpleProduct {
