@@ -15,7 +15,7 @@ import Price from "../../src/components/single-product/price";
 import parse from "html-react-parser";
 import ProductList from "../../src/components/ProductList";
 import PostBody from "../../src/components/post-body";
-import { WEBSITE_URL } from "../../lib/constants";
+import { WEBSITE_URL, WORDPRESS_URL } from "../../lib/constants";
 import MailChimpForm from "../../src/components/MailchimpForm";
 
 export default function Product({
@@ -164,9 +164,12 @@ export default function Product({
                       />
                     </svg>
                   </div>
-                  <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 duration-100 cursor-pointer">
+                  <a
+                    href={`https://${WORDPRESS_URL}?p=${product.productId}`}
+                    className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 duration-100 cursor-pointer"
+                  >
                     {product.productId} reviews
-                  </p>
+                  </a>
                 </div>
                 <div className=" flex flex-row justify-between  mt-5">
                   <div className="flex item-center">

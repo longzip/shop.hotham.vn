@@ -177,7 +177,7 @@ const Footer1 = ({
             target="_self"
           >
             <label className="text-xl font-medium leading-5 text-gray-800">
-              Nhận ưu đãi
+              Đăng Ký Trở Thành Khách Hàng Thân Thiết
             </label>
             <input
               className="invisible"
@@ -230,7 +230,7 @@ const Footer1 = ({
           target="_self"
         >
           <label className="text-xl font-medium leading-5 text-gray-800">
-            Nhận ưu đãi
+            Đăng Ký Trở Thành Khách Hàng Thân Thiết
           </label>
           <input
             className="invisible"
@@ -272,6 +272,7 @@ const Footer1 = ({
           </div>
         </form>
       </div>
+
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <p className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
         © 2023{" "}
@@ -285,13 +286,16 @@ const Footer1 = ({
           href="https://www.hotham.vn/"
         >
           Hồ Thị Thắm
+        </a>{" "}
+        |{" "}
+        <a
+          className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
+          target="_blank"
+          href="https://www.amycos.shop/"
+        >
+          Mỹ phẩm Amycos
         </a>
       </p>
-      {/* <Script src="https://sp.zalo.me/plugins/sdk.js"></Script> */}
-      {/* <Script
-        id="mcjs"
-        strategy="afterInteractive"
-      >{`!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","${MAILCHIMP_FORM_CONN}");`}</Script> */}
     </div>
   );
 };

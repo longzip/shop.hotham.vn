@@ -60,6 +60,6 @@ export async function getStaticProps() {
       productCategories: productCategories.nodes,
       products: data?.products?.nodes ? data.products.nodes : [],
     },
-    revalidate: 600,
+    revalidate: 604800,
   };
 }

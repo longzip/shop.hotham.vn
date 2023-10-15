@@ -73,7 +73,7 @@ export async function getStaticProps() {
       productCategories: productCategories.nodes,
       seo: data?.page?.seo ?? "",
     },
-    revalidate: 1200,
+    revalidate: 604800,
   };
 }
 
