@@ -15,7 +15,7 @@ const CUA_HANG_QUERY = gql`
         image {
           id
           altText
-          sourceUrl
+          sourceUrl(size: WOOCOMMERCE_SINGLE)
         }
         name
         ... on SimpleProduct {
