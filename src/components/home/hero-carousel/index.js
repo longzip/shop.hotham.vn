@@ -60,19 +60,22 @@ export default function Index({ heroCarousel }) {
                       src={item?.image?.sourceUrl}
                       alt={item?.image?.altText}
                     />
-                    <div className="absolute w-full md:right-0 bottom-0 md:h-full md:w-1/4 md:px-5 md:pt-[120px] bg-strongGray text-center py-1">
+                    <div className="absolute w-full invisible md:visible md:right-0  md:h-full md:w-1/4 md:px-5 md:pt-[10px] lg:pt-[120px] bg-[#01529b] text-center py-1">
                       <h2 className="uppercase leading-none md:leading-7 text-xl text-white md:text-2xl font-semibold">
                         {item?.name}
                       </h2>
                       <div
-                        className="text-white py-1 md:py-5 leading-none md:leading-5 text-sm md:text-base"
+                        className="text-white py-1 md:py-5 truncate leading-none md:leading-5 text-sm md:text-base"
                         dangerouslySetInnerHTML={{
                           __html: item?.description,
                         }}
                       />
-                      <a href={`/danh-muc-san-pham/${item.slug}`}>
+                      <a
+                        target="_blank"
+                        href={`https://blog.hotham.vn/${item.slug}/`}
+                      >
                         <button className="mx-2 my-0 md:my-5 bg-white transition duration-150 ease-in-out focus:outline-none rounded text-gray-800 border border-gray-300 px-6 py-1 md:py-2 uppercase text-sm md:text-base">
-                          Mua ngay
+                          Xem thêm
                         </button>
                       </a>
                     </div>

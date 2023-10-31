@@ -129,7 +129,7 @@ export default function Nav({
                   <a>
                     {logo ? (
                       <img
-                        className="mr-2 h-16 w-auto"
+                        className="mr-2 h-24 w-auto"
                         src={logo.sourceUrl}
                         alt={`${siteName} logo`}
                       />

@@ -62,7 +62,7 @@ const NAV_QUERY = gql`
         logo {
           id
           altText
-          sourceUrl(size: THUMBNAIL)
+          sourceUrl
           description
           caption
         }
