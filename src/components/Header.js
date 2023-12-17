@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState, useContext } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
@@ -132,7 +118,7 @@ const Header = ({
 
       <header className="relative bg-white">
         <div
-          className="flex h-10 items-center justify-center px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
+          className="flex items-center justify-center py-2 text-sm font-medium bg-colors-secondary text-primary sm:px-6 lg:px-8"
           dangerouslySetInnerHTML={{
             __html: logo.description,
           }}

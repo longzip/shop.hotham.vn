@@ -177,7 +177,7 @@ const Footer1 = ({
             target="_self"
           >
             <label className="text-xl font-medium leading-5 text-gray-800">
-              Đăng Ký Trở Thành Khách Hàng Thân Thiết
+              Đăng ký email để nhận ưu đãi *
             </label>
             <input
               className="invisible"
@@ -230,7 +230,7 @@ const Footer1 = ({
           target="_self"
         >
           <label className="text-xl font-medium leading-5 text-gray-800">
-            Đăng Ký Trở Thành Khách Hàng Thân Thiết
+            Đăng ký email để nhận ưu đãi *
           </label>
           <input
             className="invisible"
@@ -248,7 +248,7 @@ const Footer1 = ({
               name="EMAIL"
               required
               className="text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-800 placeholder-gray-800"
-              placeholder="Nhập email để nhận ưu đãi"
+              placeholder="Email"
             />
             <button
               type="submit"
@@ -283,15 +283,15 @@ const Footer1 = ({
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://www.hotham.vn/"
+          href="https://www.facebook.com/lovanlongvn"
         >
-          Hồ Thị Thắm
+          Lỗ Văn Long
         </a>{" "}
         |{" "}
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://www.amycos.shop/"
+          href="https://store.amycos.vn/"
         >
           Mỹ phẩm Amycos
         </a>

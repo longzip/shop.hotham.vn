@@ -32,6 +32,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/cua-hang/",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/san-pham/:path*",
         destination: "/cua-hang/:path*",
         permanent: true,

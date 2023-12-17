@@ -7,10 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        strongGray: "#898989",
+        colors: {
+          primary: "#0a5596",
+          secondary: "#f8b817",
+          strongGray: "#898989",
+        },
       },
       fontFamily: {
-        sans: ["Avo", "sans-serif"],
+        sans: ["Roboto", "sans-serif"],
       },
     },
   },

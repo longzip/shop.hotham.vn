@@ -47,10 +47,6 @@ export default function CategorySingle({
           {categoryName ? (
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col justify-start items-start">
-                {/* <p className="text-sm leading-none text-gray-600">
-                  {" "}
-                  <a href="/">Trang chủ</a> - {categoryName}
-                </p> */}
                 <p className="mt-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
                   Trang chủ / {categoryName}
                 </p>
@@ -64,9 +60,7 @@ export default function CategorySingle({
                 </div>
               </div>
             </div>
-          ) : (
-            ""
-          )}
+          ) : null}
 
           <ProductList products={products} />
         </div>
@@ -111,7 +105,7 @@ export async function getStaticProps(context) {
       seo: data?.productCategory?.seo ?? "",
       products: data?.productCategory?.products?.nodes ?? [],
     },
-    revalidate: 600,
+    revalidate: 7200,
   };
 }
 

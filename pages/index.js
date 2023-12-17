@@ -120,6 +120,6 @@ export async function getStaticProps() {
   if (!data) data = await loadData();
   return {
     props: data,
-    revalidate: 3600,
+    revalidate: 7200,
   };
 }

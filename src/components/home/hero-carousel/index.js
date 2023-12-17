@@ -55,30 +55,16 @@ export default function Index({ heroCarousel }) {
               return (
                 <Slide key={item?.id} index={index}>
                   <div className="relative flex w-full">
-                    <img
-                      className="flex object-cover object-center w-full md:w-3/4"
-                      src={item?.image?.sourceUrl}
-                      alt={item?.image?.altText}
-                    />
-                    <div className="absolute w-full invisible md:visible md:right-0  md:h-full md:w-1/4 md:px-5 md:pt-[10px] lg:pt-[120px] bg-[#01529b] text-center py-1">
-                      <h2 className="uppercase leading-none md:leading-7 text-xl text-white md:text-2xl font-semibold">
-                        {item?.name}
-                      </h2>
-                      <div
-                        className="text-white py-1 md:py-5 truncate leading-none md:leading-5 text-sm md:text-base"
-                        dangerouslySetInnerHTML={{
-                          __html: item?.description,
-                        }}
+                    <a
+                      target="_blank"
+                      href={`https://blog.hotham.vn/${item.slug}/`}
+                    >
+                      <img
+                        className="flex object-cover object-center w-full"
+                        src={item?.image?.sourceUrl}
+                        alt={item?.image?.altText}
                       />
-                      <a
-                        target="_blank"
-                        href={`https://blog.hotham.vn/${item.slug}/`}
-                      >
-                        <button className="mx-2 my-0 md:my-5 bg-white transition duration-150 ease-in-out focus:outline-none rounded text-gray-800 border border-gray-300 px-6 py-1 md:py-2 uppercase text-sm md:text-base">
-                          Xem thêm
-                        </button>
-                      </a>
-                    </div>
+                    </a>
                   </div>
                 </Slide>
               );
@@ -88,7 +74,7 @@ export default function Index({ heroCarousel }) {
         <ButtonNext
           role="button"
           aria-label="slide forward"
-          className="absolute z-30 right-0 md:right-1/4 mr-8 focus:outline-none focus:bg-strongGray focus:ring-2 focus:ring-offset-2 focus:ring-strongGray"
+          className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-strongGray focus:ring-2 focus:ring-offset-2 focus:ring-strongGray"
           id="next"
         >
           <svg

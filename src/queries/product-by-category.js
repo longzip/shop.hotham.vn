@@ -6,6 +6,7 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql`
       id
       name
       image {
+        id
         altText
         sourceUrl(size: MEDIUM)
       }
