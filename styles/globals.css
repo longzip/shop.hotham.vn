@@ -8,6 +8,10 @@
 
 /* Your own custom utilities */
 
+.hs-form__virality-link {
+  @apply invisible;
+}
+
 .has-text-align-left {
   @apply text-left;
 }

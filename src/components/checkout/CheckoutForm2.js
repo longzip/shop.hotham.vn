@@ -66,7 +66,7 @@ const CheckoutForm2 = () => {
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
-    const { email = "info@noithatzip.vn", phone, address1, lastName } = input;
+    const { email, phone, address1, lastName } = input;
     if (!validator.isEmail(email)) {
       const newErrors = { ...errors, email: "Địa chỉ email không hợp lệ" };
       setErrors(newErrors);
@@ -77,12 +77,12 @@ const CheckoutForm2 = () => {
     if (!isEmpty(errors)) return null;
 
     const checkOutData = {
-      paymentMethod: "cod",
+      paymentMethod: "bacs",
       billing: {
         address1,
         email,
         phone,
-        lastName,
+        firstName: lastName,
         //   firstName: "Lỗ ",
         //   country: "VN",
         //   city: "Hà Nội",
