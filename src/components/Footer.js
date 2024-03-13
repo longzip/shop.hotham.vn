@@ -187,7 +187,7 @@ const Footer1 = ({
               value=""
               readOnly
             ></input>
-            <div className="cursor-pointer flex items-center justify-between border border-gray-800 mt-4">
+            <div className="cursor-pointer flex items-center justify-between border border-gray-800 mt-4 bg-gray-200">
               <input
                 type="email"
                 value={email}
@@ -240,7 +240,7 @@ const Footer1 = ({
             value=""
             readOnly
           ></input>
-          <div className="flex items-center justify-between border border-gray-800 mt-4">
+          <div className="flex items-center justify-between border border-gray-800 mt-4 bg-gray-200">
             <input
               type="email"
               value={email}

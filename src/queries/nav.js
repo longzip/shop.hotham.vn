@@ -85,7 +85,7 @@ const NAV_QUERY = gql`
         count
         image {
           id
-          sourceUrl
+          sourceUrl(size: MEDIUM_LARGE)
           altText
         }
         products(where: { stockStatus: IN_STOCK, supportedTypesOnly: true }) {

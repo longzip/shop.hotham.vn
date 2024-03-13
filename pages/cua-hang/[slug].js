@@ -258,7 +258,7 @@ export default function Product({
                     <div className="flex">
                       <span
                         onClick={minusCount}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1"
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-11 h-11 flex items-center justify-center pb-1"
                       >
                         -
                       </span>
@@ -272,7 +272,7 @@ export default function Product({
                       />
                       <span
                         onClick={addCount}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1 "
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-11 h-11 flex items-center justify-center pb-1 "
                       >
                         +
                       </span>

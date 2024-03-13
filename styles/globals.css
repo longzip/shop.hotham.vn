@@ -116,6 +116,42 @@
   @apply aspect-w-9 aspect-h-16;
 }
 
+.wc-block-grid__products {
+  @apply w-fit mx-auto grid grid-cols-1 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5;
+}
+.wc-block-grid__product {
+  @apply w-72  list-none bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl;
+}
+
+.wc-block-grid__product-add-to-cart {
+  @apply hidden;
+}
+.wc-block-grid__product-onsale {
+  @apply hidden;
+}
+.wc-block-grid__product-image img {
+  @apply h-80 w-72 object-cover rounded-t-xl;
+}
+
+.wc-block-grid__product-title {
+  @apply px-4 py-3 text-lg font-bold text-black block capitalize;
+}
+
+.wc-block-grid__product-price {
+  @apply px-4  flex items-center;
+}
+
+.wc-block-grid__product-price ins {
+  @apply text-2xl no-underline	 font-semibold text-black cursor-auto my-3 ml-2;
+}
+.wc-block-grid__product-price del {
+  @apply text-sm text-gray-600 cursor-auto;
+}
+
+.wc-block-grid__product-link {
+  @apply no-underline !important;
+}
+
 .hs-form-private {
   @apply w-full max-w-lg;
 }
