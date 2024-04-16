@@ -1,6 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { FB_PIXEL_ID } from "../lib/fpixel";
-import { FB_PAGE_ID, MAILCHIMP_FORM_CONN } from "../lib/constants";
 
 export default class MyDocument extends Document {
   render() {
@@ -30,6 +28,14 @@ export default class MyDocument extends Document {
               }}
             />
           ) : null}
+
+          <script
+            type="text/javascript"
+            id="hs-script-loader"
+            async
+            defer
+            src="//js-na1.hs-scripts.com/24073916.js"
+          />
         </body>
       </Html>
     );
