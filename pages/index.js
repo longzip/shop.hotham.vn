@@ -103,10 +103,7 @@ async function loadData() {
 
 export async function getStaticProps() {
   let data = await loadData();
-  if (!data) data = await loadData();
-  if (!data) data = await loadData();
-  if (!data) data = await loadData();
-  if (!data) data = await loadData();
+  // if (!data) data = await loadData();
   return {
     props: data,
     revalidate: 7200,

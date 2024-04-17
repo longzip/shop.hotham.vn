@@ -20,7 +20,14 @@ export const PAGE_SLUGS = gql`
   query Pages {
     pages(
       where: {
-        notIn: ["cG9zdDoxMA==", "cG9zdDo5", "cG9zdDo3", "cG9zdDo1", "cG9zdDo2"]
+        notIn: [
+          "cG9zdDoxMA=="
+          "cG9zdDo5"
+          "cG9zdDo3"
+          "cG9zdDo1"
+          "cG9zdDo2"
+          "cG9zdDo0"
+        ]
       }
       first: 100
     ) {
