@@ -382,7 +382,7 @@ export async function getStaticProps(context) {
       productCategories: productCategories.nodes,
       product: product,
     },
-    revalidate: 7200,
+    revalidate: 3600,
   };
 }
 

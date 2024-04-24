@@ -41,7 +41,7 @@ export default function Home(props) {
       {/*Hero Carousel*/}
       <HeroCarousel heroCarousel={heroCarousel} />
       {/*Categories*/}
-      <ProductCategoriesList productCategories={productCategories} />
+      {/* <ProductCategoriesList productCategories={productCategories} /> */}
       <Video
         videos={heroCarousel
           .map((v) => ({ video: v.image.description }))
@@ -52,6 +52,9 @@ export default function Home(props) {
 
       {/*Products*/}
       <ProductList products={products} title="Sản phẩm bán chạy" />
+      {productCategories.map(({ name, products }) => (
+        <ProductList products={products.nodes} title={name}></ProductList>
+      ))}
     </Layout>
   );
 }
@@ -106,6 +109,6 @@ export async function getStaticProps() {
   // if (!data) data = await loadData();
   return {
     props: data,
-    revalidate: 7200,
+    revalidate: 1800,
   };
 }

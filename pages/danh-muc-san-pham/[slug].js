@@ -10,10 +10,11 @@ import NAV_QUERY from "../../src/queries/nav";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
+import PRODUCTS_QUERY from "../../src/queries/get-products";
+import deepmerge from "deepmerge";
 
 export default function CategorySingle({
-  categoryName,
-  products,
+  name,
   seo,
   siteSeo,
   mainMenu,
@@ -21,6 +22,8 @@ export default function CategorySingle({
   footerMenu,
   footerMenu2,
   productCategories,
+  count,
+  products,
 }) {
   const router = useRouter();
 
@@ -29,8 +32,6 @@ export default function CategorySingle({
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  const fullHead = parse(seo?.fullHead);
 
   return (
     <Layout
@@ -41,26 +42,28 @@ export default function CategorySingle({
       footerMenu2={footerMenu2}
       productCategories={productCategories}
     >
-      <Head>{fullHead}</Head>
+      <Head>{parse(seo?.fullHead || "")}</Head>
       <div className="mx-auto container px-6 xl:px-0">
         <div className="flex flex-col">
-          {categoryName ? (
+          {name ? (
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col justify-start items-start">
                 <p className="mt-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
-                  Trang chủ / {categoryName}
+                  Trang chủ / {name}
                 </p>
                 <div className="mt-2 flex flex-row justify-end items-center space-x-3">
                   <h1 className="text-2xl font-semibold leading-normal text-gray-800">
-                    {categoryName}
+                    {name}
                   </h1>
                   <p className="text-base leading-4 text-gray-600 mt-2">
-                    ({products.length} sản phẩm.)
+                    ({count} sản phẩm.)
                   </p>
                 </div>
               </div>
             </div>
-          ) : null}
+          ) : (
+            ""
+          )}
 
           <ProductList products={products} />
         </div>
@@ -74,7 +77,9 @@ export async function getStaticProps(context) {
     params: { slug },
   } = context;
 
-  const { data } = await client.query({
+  const {
+    data: { productCategory },
+  } = await client.query({
     query: PRODUCT_BY_CATEGORY_SLUG,
     variables: { slug },
   });
@@ -92,20 +97,47 @@ export async function getStaticProps(context) {
     query: NAV_QUERY,
   });
 
+  let after = "";
+  let hasNextPage = true;
+  let data = {
+    products: {
+      pageInfo: {
+        hasNextPage: true,
+        endCursor: null,
+      },
+      nodes: [],
+    },
+  };
+
+  while (hasNextPage) {
+    const { data: next } = await client.query({
+      query: PRODUCTS_QUERY,
+      variables: {
+        first: 100,
+        after,
+        where: {
+          category: productCategory?.name,
+        },
+      },
+    });
+
+    data = deepmerge(data, next);
+    after = next.products?.pageInfo.endCursor || "";
+    hasNextPage = next.products?.pageInfo?.hasNextPage || false;
+  }
+
   return {
     props: {
+      ...productCategory,
       mainMenu: mainMenu.nodes,
       footerMenu: footerMenu.nodes,
       footerMenu2: footerMenu2.nodes,
       mobileMenu: mobileMenu.nodes,
       siteSeo: siteSeo.schema,
       productCategories: productCategories.nodes,
-      categoryName: data?.productCategory?.name ?? "",
-      image: data?.productCategory?.image ?? {},
-      seo: data?.productCategory?.seo ?? "",
-      products: data?.productCategory?.products?.nodes ?? [],
+      products: data.products?.nodes ?? [],
     },
-    revalidate: 7200,
+    revalidate: 3600,
   };
 }
 
@@ -117,9 +149,9 @@ export async function getStaticPaths() {
   const pathsData = [];
 
   data?.productCategories?.nodes &&
-    data?.productCategories?.nodes.map((productCategory) => {
-      if (!isEmpty(productCategory?.slug)) {
-        pathsData.push({ params: { slug: productCategory?.slug } });
+    data?.productCategories?.nodes.map((c) => {
+      if (!isEmpty(c?.slug)) {
+        pathsData.push({ params: { slug: c?.slug } });
       }
     });
 
