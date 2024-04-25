@@ -3,7 +3,7 @@ const PRODUCTS_QUERY = gql`
   query GetProducts(
     $first: Int
     $after: String
-    $where: RootQueryToProductUnionConnectionWhereArgs
+    $where: RootQueryToProductConnectionWhereArgs
   ) {
     products(first: $first, after: $after, where: $where) {
       pageInfo {

@@ -19,7 +19,7 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql`
 
 export const PRODUCT_CATEGORIES_SLUGS = gql`
   query PRODUCT_CATEGORIES_SLUGS {
-    productCategories(where: { orderby: COUNT, hideEmpty: true }, first: 5) {
+    productCategories(where: { orderby: COUNT, hideEmpty: true }, first: 1) {
       nodes {
         id
         slug

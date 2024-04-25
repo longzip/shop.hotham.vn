@@ -90,7 +90,7 @@ const NAV_QUERY = gql`
         }
         products(
           where: { stockStatus: IN_STOCK, supportedTypesOnly: true }
-          first: 8
+          first: 10
         ) {
           nodes {
             id

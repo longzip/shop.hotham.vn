@@ -69,6 +69,5 @@ export async function getStaticProps() {
       productCategories: productCategories.nodes,
       seo: data?.page?.seo ?? "",
     },
-    revalidate: 604800,
   };
 }
