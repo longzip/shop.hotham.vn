@@ -151,35 +151,3 @@
 .wc-block-grid__product-link {
   @apply no-underline !important;
 }
-
-.hs-form-private {
-  @apply w-full max-w-lg;
-}
-
-/* One Line Inputs */
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-input[type="file"],
-textarea,
-select {
-  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
-}
-
-.hs-button,
-a.hs-button,
-input[type="submit"],
-input[type="button"] {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
-}

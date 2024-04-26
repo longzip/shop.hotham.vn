@@ -26,9 +26,13 @@ const Footer1 = ({
     <div className="mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
         <div className="flex flex-col flex-shrink-0">
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
-            {siteName}
+          <h2 className="text-base font-semibold leading-4 text-secondary font-playfair">
+            Thông tin liên hệ
           </h2>
+          <div
+            className="mt-1 zalo-follow-only-button"
+            data-oaid="907870636305349915"
+          ></div>
           <div
             className="mt-5"
             dangerouslySetInnerHTML={{ __html: logo.caption }}
@@ -127,7 +131,7 @@ const Footer1 = ({
           </div>
         </div>
         <div className="sm:ml-0 ml-8">
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
+          <h2 className="text-base font-semibold leading-4 text-secondary font-playfair">
             {footerMenu[0]?.name ?? "Footer Menu 1"}
           </h2>
           <ul>
@@ -135,10 +139,13 @@ const Footer1 = ({
               ? footerMenu[0].menuItems.nodes.map((menuItem) => (
                   <li
                     key={menuItem.id}
-                    className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer"
+                    className="hover:text-gray-800 text-base leading-4 mt-6 text-gray-500 cursor-pointer"
                   >
                     <Link key={menuItem.id} href={menuItem.path}>
-                      <a dangerouslySetInnerHTML={{ __html: menuItem.label }} />
+                      <a
+                        dangerouslySetInnerHTML={{ __html: menuItem.label }}
+                        target="_blank"
+                      />
                     </Link>
                   </li>
                 ))
@@ -146,7 +153,7 @@ const Footer1 = ({
           </ul>
         </div>
         <div>
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
+          <h2 className="text-base font-semibold leading-4 text-secondary font-playfair">
             {footerMenu2[0]?.name ?? "Footer Menu 2"}
           </h2>
           <ul>
@@ -154,10 +161,13 @@ const Footer1 = ({
               ? footerMenu2[0].menuItems.nodes.map((menuItem) => (
                   <li
                     key={menuItem.id}
-                    className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer"
+                    className="hover:text-gray-800 text-base leading-4 mt-6 text-gray-500 cursor-pointer"
                   >
                     <Link key={menuItem.id} href={menuItem.path}>
-                      <a dangerouslySetInnerHTML={{ __html: menuItem.label }} />
+                      <a
+                        dangerouslySetInnerHTML={{ __html: menuItem.label }}
+                        target="_blank"
+                      />
                     </Link>
                   </li>
                 ))
@@ -172,7 +182,7 @@ const Footer1 = ({
             name="mc-embedded-subscribe-form"
             target="_self"
           >
-            <label className="text-xl font-medium leading-5 text-gray-800">
+            <label className="text-xl font-medium leading-5 text-secondary font-playfair">
               Đăng ký email để nhận ưu đãi *
             </label>
             <input
@@ -183,7 +193,7 @@ const Footer1 = ({
               value=""
               readOnly
             ></input>
-            <div className="cursor-pointer flex items-center justify-between border border-gray-800 mt-4 bg-gray-200">
+            <div className="cursor-pointer flex items-center justify-between border border-gray-800 mt-4">
               <input
                 type="email"
                 value={email}
@@ -225,7 +235,7 @@ const Footer1 = ({
           name="mc-embedded-subscribe-form"
           target="_self"
         >
-          <label className="text-xl font-medium leading-5 text-gray-800">
+          <label className="text-xl font-medium leading-5 text-secondary font-playfair">
             Đăng ký email để nhận ưu đãi *
           </label>
           <input
@@ -236,7 +246,7 @@ const Footer1 = ({
             value=""
             readOnly
           ></input>
-          <div className="flex items-center justify-between border border-gray-800 mt-4 bg-gray-200">
+          <div className="flex items-center justify-between border border-gray-800 mt-4">
             <input
               type="email"
               value={email}
@@ -244,7 +254,7 @@ const Footer1 = ({
               name="EMAIL"
               required
               className="text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-800 placeholder-gray-800"
-              placeholder="Email"
+              placeholder="Nhập email để nhận ưu đãi"
             />
             <button
               type="submit"
@@ -281,15 +291,33 @@ const Footer1 = ({
           target="_blank"
           href="https://longwebstudio.amycos.vn/"
         >
-          Lỗ Văn Long
+          Long Web Studio
         </a>{" "}
-        |{" "}
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://store.amycos.vn/"
+          href="https://www.amycos.vn/"
         >
-          Mỹ phẩm Amycos
+          Mỹ Phẩm Amycos
+        </a>{" "}
+        <a
+          className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
+          target="_blank"
+          href="https://www.dienmaythoantrong.vn/"
+        >
+          Điện máy Thoan Trọng
+        </a>
+        <a
+          target="_blank"
+          href="//www.dmca.com/Protection/Status.aspx?ID=05132829-ac23-4042-a235-aaf408f2e350"
+          title="DMCA.com Protection Status"
+          className="dmca-badge"
+        >
+          {" "}
+          <img
+            src="https://images.dmca.com/Badges/dmca_protected_sml_120l.png?ID=05132829-ac23-4042-a235-aaf408f2e350"
+            alt="DMCA.com Protection Status"
+          />
         </a>
       </p>
     </div>

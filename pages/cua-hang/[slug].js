@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Layout from "../../src/components/Layout";
 import { useRouter } from "next/router";
@@ -9,13 +9,14 @@ import {
   PRODUCT_SLUGS,
 } from "../../src/queries/product-by-slug";
 import NAV_QUERY from "../../src/queries/nav";
-import { forEach, isEmpty } from "lodash";
+import { isEmpty } from "lodash";
 import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 import Price from "../../src/components/single-product/price";
 import parse from "html-react-parser";
 import ProductList from "../../src/components/ProductList";
 import PostBody from "../../src/components/post-body";
 import { WEBSITE_URL, WORDPRESS_URL } from "../../lib/constants";
+// import MailChimpForm from "../../src/components/MailchimpForm";
 
 export default function Product({
   product,
@@ -26,9 +27,7 @@ export default function Product({
   footerMenu2,
   productCategories,
 }) {
-  const [rotate, setRotate] = useState(false);
   const [count, setCount] = useState(1);
-  const [isClient, setIsClient] = useState(false);
 
   const addCount = () => {
     setCount((prev) => prev + 1);
@@ -59,9 +58,6 @@ export default function Product({
   });
   const otheProducts = [...getProductOthers.values()];
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
   return (
     <Layout
       siteSeo={siteSeo}
@@ -75,7 +71,7 @@ export default function Product({
         <>
           <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
             <Head>{fullHead}</Head>
-            <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
+            <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600 font-playfair">
               Trang chủ / Cửa hàng / {product.name}
             </p>
             <div className="flex justify-center items-center lg:flex-row flex-col gap-8 mt-6">
@@ -95,8 +91,8 @@ export default function Product({
                   />
                 </div>
               ) : null}
-              <div className=" w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
-                <h1 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
+              <div className="relative w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
+                <h1 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4 font-playfair">
                   {product.name}
                 </h1>
 
@@ -175,7 +171,7 @@ export default function Product({
                     {product.productId} reviews
                   </a>
                 </div>
-                <div className=" flex flex-row justify-between  mt-5">
+                <div className=" flex flex-row justify-between mt-5">
                   <div className="flex item-center">
                     Mã sản phẩm: {product.sku}
                     <svg
@@ -200,19 +196,12 @@ export default function Product({
                   </div>
                 </div>
 
-                <div
-                  className=" font-normal text-base leading-6 text-gray-600 mt-7"
-                  dangerouslySetInnerHTML={{
-                    __html: product.shortDescription,
-                  }}
-                />
-
                 <Price
                   salesPrice={product?.price}
                   regularPrice={product?.regularPrice}
                 />
                 {product?.stockQuantity && (
-                  <div className="mt-5 flex items-center text-green-600">
+                  <div className="mt-5 flex items-center text-orange-600">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -222,8 +211,8 @@ export default function Product({
                       className="w-6 h-6"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
                         d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
                       />
                     </svg>
@@ -250,46 +239,53 @@ export default function Product({
                   </div>
                 )}
 
-                <div className="lg:mt-11 mt-10">
-                  <div className="flex flex-row justify-between">
-                    <p className=" font-medium text-base leading-4 text-gray-600">
-                      Chọn số lượng
-                    </p>
-                    <div className="flex">
-                      <span
-                        onClick={minusCount}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-11 h-11 flex items-center justify-center pb-1"
-                      >
-                        -
-                      </span>
-                      <input
-                        id="counter"
-                        aria-label="input"
-                        className="border border-gray-300 h-full text-center w-14 pb-1"
-                        type="text"
-                        value={count}
-                        onChange={(e) => e.target.value}
-                      />
-                      <span
-                        onClick={addCount}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-11 h-11 flex items-center justify-center pb-1 "
-                      >
-                        +
-                      </span>
+                {product.stockStatus === "IN_STOCK" && (
+                  <>
+                    <div className="lg:mt-11 mt-10">
+                      <div className="flex flex-row justify-between">
+                        <p className=" font-medium text-base leading-4 text-gray-600">
+                          Chọn số lượng
+                        </p>
+                        <div className="flex">
+                          <span
+                            onClick={minusCount}
+                            className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-8 h-8 flex items-center justify-center pb-1"
+                          >
+                            -
+                          </span>
+                          <input
+                            id="counter"
+                            aria-label="input"
+                            className="border border-gray-300 h-full text-center w-12 pb-1"
+                            type="text"
+                            value={count}
+                            onChange={(e) => e.target.value}
+                          />
+                          <span
+                            onClick={addCount}
+                            className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-8 h-8 flex items-center justify-center pb-1 "
+                          >
+                            +
+                          </span>
+                        </div>
+                      </div>
+                      <hr className=" bg-gray-200 w-full my-2" />
                     </div>
-                  </div>
-                  <hr className=" bg-gray-200 w-full my-2" />
-                </div>
-                <AddToCartButton product={product} quantity={count} />
-                {/* {product.stockStatus === "IN_STOCK" && (
-                  
-                )} */}
+                    <AddToCartButton product={product} quantity={count} />
+                  </>
+                )}
+                <div
+                  className=" font-normal text-base leading-6 text-gray-600 mt-7"
+                  dangerouslySetInnerHTML={{
+                    __html: product.shortDescription,
+                  }}
+                />
               </div>
             </div>
 
             <PostBody content={product.description} />
-
-            {isClient ? (
+            {/*  */}
+            {
               <>
                 <div
                   className="zalo-follow-only-button"
@@ -297,7 +293,7 @@ export default function Product({
                 ></div>
                 <div
                   className="zalo-share-button"
-                  data-href={`${WEBSITE_URL}/cua-hang/${router.query.slug}/`}
+                  data-href={`https://www.amycos.vn/cua-hang/${router.query.slug}/`}
                   data-oaid="939846860985963068"
                   data-layout="1"
                   data-color="blue"
@@ -310,13 +306,11 @@ export default function Product({
                   data-href={`${WEBSITE_URL}/cua-hang/${router.query.slug}/`}
                 ></div>
               </>
-            ) : null}
+            }
           </div>
           <ProductList products={otheProducts} title="Sản phẩm khác" />
         </>
-      ) : (
-        ""
-      )}
+      ) : null}
     </Layout>
   );
 }
