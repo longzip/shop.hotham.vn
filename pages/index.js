@@ -36,13 +36,17 @@ export default function Home({
       <HeroCarousel heroCarousel={heroCarousel} />
       {productCategories.map(({ name, image, products, slug }) => (
         <div key={slug}>
-          <div className="mx-auto max-w-2xl lg:max-w-6xl">
-            <img
-              src={image?.sourceUrl}
-              alt={image?.altText}
-              className="h-full w-full object-cover object-center group-hover:opacity-75"
-            />
-          </div>
+          {image && (
+            <a href={`/danh-muc-san-pham/${slug}/`}>
+              <div className="mx-auto max-w-2xl lg:max-w-6xl">
+                <img
+                  src={image?.sourceUrl}
+                  alt={image?.altText}
+                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                />
+              </div>
+            </a>
+          )}
           <ProductList
             products={products.nodes}
             title={name}
