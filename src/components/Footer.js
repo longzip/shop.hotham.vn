@@ -137,18 +137,18 @@ const Footer1 = ({
           <ul>
             {footerMenu[0]?.menuItems?.nodes
               ? footerMenu[0].menuItems.nodes.map((menuItem) => (
-                  <li
-                    key={menuItem.id}
-                    className="hover:text-gray-800 text-base leading-4 mt-6 text-gray-500 cursor-pointer"
-                  >
-                    <Link key={menuItem.id} href={menuItem.path}>
-                      <a
-                        dangerouslySetInnerHTML={{ __html: menuItem.label }}
-                        target="_blank"
-                      />
-                    </Link>
-                  </li>
-                ))
+                <li
+                  key={menuItem.id}
+                  className="hover:text-gray-800 text-base leading-4 mt-6 text-gray-500 cursor-pointer"
+                >
+                  <Link key={menuItem.id} href={menuItem.path}>
+                    <a
+                      dangerouslySetInnerHTML={{ __html: menuItem.label }}
+                      target="_blank"
+                    />
+                  </Link>
+                </li>
+              ))
               : null}
           </ul>
         </div>
@@ -159,18 +159,18 @@ const Footer1 = ({
           <ul>
             {footerMenu2[0]?.menuItems?.nodes
               ? footerMenu2[0].menuItems.nodes.map((menuItem) => (
-                  <li
-                    key={menuItem.id}
-                    className="hover:text-gray-800 text-base leading-4 mt-6 text-gray-500 cursor-pointer"
-                  >
-                    <Link key={menuItem.id} href={menuItem.path}>
-                      <a
-                        dangerouslySetInnerHTML={{ __html: menuItem.label }}
-                        target="_blank"
-                      />
-                    </Link>
-                  </li>
-                ))
+                <li
+                  key={menuItem.id}
+                  className="hover:text-gray-800 text-base leading-4 mt-6 text-gray-500 cursor-pointer"
+                >
+                  <Link key={menuItem.id} href={menuItem.path}>
+                    <a
+                      dangerouslySetInnerHTML={{ __html: menuItem.label }}
+                      target="_blank"
+                    />
+                  </Link>
+                </li>
+              ))
               : null}
           </ul>
         </div>
@@ -289,7 +289,7 @@ const Footer1 = ({
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
-          href="https://longwebstudio.amycos.vn/"
+          href="https://www.longwebstudio.net/"
         >
           Long Web Studio
         </a>{" "}
