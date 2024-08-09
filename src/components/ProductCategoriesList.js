@@ -28,7 +28,7 @@ export default function ProductCategoriesList({ productCategories }) {
                 <div key={category.id} className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
-                      src={category.image?.sourceUrl}
+                      src={category.image?.sourceUrl.replace("https://", "https://i0.wp.com/")}
                       alt={category.image?.altText}
                       className="h-full w-full object-cover object-center"
                     />

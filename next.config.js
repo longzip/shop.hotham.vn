@@ -32,6 +32,41 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/giahanbhyt/",
+        destination: "https://bhyt.hotham.vn/",
+        permanent: true,
+      },
+      {
+        source: "/ho-thi-tham/",
+        destination: "/gioi-thieu/",
+        permanent: true,
+      },
+      {
+        source: "/mua-hang-tieu-dung/",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tu-van-dich-vu-tiet-kiem-buu-dien/",
+        destination: "https://blog.hotham.vn/gui-tiet-kiem-tai-buu-dien-lai-suat-tot-nhat-va-nhan-ngan-qua-tang/",
+        permanent: true,
+      },
+      {
+        source: "/tra-thoi-han-bao-hiem-y-te/",
+        destination: "https://bhyt.hotham.vn/",
+        permanent: true,
+      },
+      {
+        source: "/bao-hiem-y-te-bo-tro-mic/",
+        destination: "/cua-hang/bao-hiem-y-te-bo-tro-mic/",
+        permanent: true,
+      },
+      {
+        source: "/gia-han-the-bhyt-tai-nha/",
+        destination: "https://bhyt.hotham.vn/",
+        permanent: true,
+      },
+      {
         source: "/cua-hang/",
         destination: "/",
         permanent: true,

@@ -8,7 +8,7 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql`
       image {
         id
         altText
-        sourceUrl(size: MEDIUM)
+        sourceUrl
       }
       seo {
         fullHead

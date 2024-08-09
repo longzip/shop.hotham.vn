@@ -61,7 +61,7 @@ const HEADER_FOOTER_QUERY = gql`query {
       logo {
         id
         altText
-        sourceUrl(size: THUMBNAIL)
+        sourceUrl
       }
       siteName
       homeUrl

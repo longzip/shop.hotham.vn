@@ -19,7 +19,7 @@ const PRODUCTS_QUERY = gql`
         image {
           id
           altText
-          sourceUrl(size: WOOCOMMERCE_SINGLE)
+          sourceUrl
         }
         name
         ... on SimpleProduct {

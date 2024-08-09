@@ -85,7 +85,7 @@ const NAV_QUERY = gql`
         count
         image {
           id
-          sourceUrl(size: MEDIUM_LARGE)
+          sourceUrl
           altText
         }
         products(
@@ -99,7 +99,7 @@ const NAV_QUERY = gql`
             image {
               id
               altText
-              sourceUrl(size: WOOCOMMERCE_SINGLE)
+              sourceUrl
             }
             name
             ... on SimpleProduct {

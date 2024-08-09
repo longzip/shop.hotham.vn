@@ -22,9 +22,8 @@ export default function Nav({
           {/* For md screen size */}
           <div
             id="md-searchbar"
-            className={`${
-              mdOptionsToggle ? "hidden" : "flex"
-            } bg-white lg:hidden py-5 px-6 items-center justify-between`}
+            className={`${mdOptionsToggle ? "hidden" : "flex"
+              } bg-white lg:hidden py-5 px-6 items-center justify-between`}
           >
             <div className="flex items-center space-x-3 text-gray-800">
               <div>
@@ -130,7 +129,7 @@ export default function Nav({
                     {logo ? (
                       <img
                         className="mr-2 h-24 w-auto"
-                        src={logo.sourceUrl}
+                        src={logo.sourceUrl.replace("https://", "https://i0.wp.com/")}
                         alt={`${siteName} logo`}
                       />
                     ) : (
@@ -142,15 +141,15 @@ export default function Nav({
               <ul className="hidden w-8/12 md:flex items-center justify-center space-x-8">
                 {mainMenu[0]?.menuItems?.nodes
                   ? mainMenu[0].menuItems.nodes.map((menuItem) => (
-                      <li>
-                        <Link key={menuItem.id} href={menuItem.url}>
-                          <a
-                            className="text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
-                            dangerouslySetInnerHTML={{ __html: menuItem.label }}
-                          />
-                        </Link>
-                      </li>
-                    ))
+                    <li>
+                      <Link key={menuItem.id} href={menuItem.url}>
+                        <a
+                          className="text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
+                          dangerouslySetInnerHTML={{ __html: menuItem.label }}
+                        />
+                      </Link>
+                    </li>
+                  ))
                   : null}
               </ul>
               <div className="md:w-2/12 justify-end flex items-center space-x-4 xl:space-x-8">
@@ -188,9 +187,8 @@ export default function Nav({
                     id="searchInput"
                     type="text"
                     placeholder="tìm kiếm"
-                    className={` ${
-                      searchInput ? "hidden" : ""
-                    } text-sm  text-gray-600 rounded ml-1 border border-transparent focus:outline-none focus:border-gray-400 px-1`}
+                    className={` ${searchInput ? "hidden" : ""
+                      } text-sm  text-gray-600 rounded ml-1 border border-transparent focus:outline-none focus:border-gray-400 px-1`}
                   />
                 </div>
                 <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
@@ -340,9 +338,8 @@ export default function Nav({
           {/* For small screen */}
           <div
             id="mobile-menu"
-            className={`${
-              showMenu ? "flex" : "hidden"
-            } absolute z-10 inset-0 md:hidden bg-white flex-col h-screen w-full`}
+            className={`${showMenu ? "flex" : "hidden"
+              } absolute z-10 inset-0 md:hidden bg-white flex-col h-screen w-full`}
           >
             <div className="flex items-center justify-between border-b border-gray-200 pb-4 p-4">
               <div className="flex items-center space-x-3">
@@ -409,32 +406,32 @@ export default function Nav({
               <ul className="flex flex-col space-y-6">
                 {mobileMenu[0]?.menuItems?.nodes
                   ? mobileMenu[0].menuItems.nodes.map((menuItem) => (
-                      <li>
-                        <Link key={menuItem.id} href={menuItem.url}>
-                          <a className=" flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
-                            {menuItem.label}
-                            <div>
-                              <svg
-                                className="fill-stroke text-black dark:text-white"
-                                width={12}
-                                height={12}
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M4.5 3L7.5 6L4.5 9"
-                                  stroke="currentColor"
-                                  strokeWidth="0.75"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                          </a>
-                        </Link>
-                      </li>
-                    ))
+                    <li>
+                      <Link key={menuItem.id} href={menuItem.url}>
+                        <a className=" flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
+                          {menuItem.label}
+                          <div>
+                            <svg
+                              className="fill-stroke text-black dark:text-white"
+                              width={12}
+                              height={12}
+                              viewBox="0 0 12 12"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M4.5 3L7.5 6L4.5 9"
+                                stroke="currentColor"
+                                strokeWidth="0.75"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </a>
+                      </Link>
+                    </li>
+                  ))
                   : null}
               </ul>
             </div>

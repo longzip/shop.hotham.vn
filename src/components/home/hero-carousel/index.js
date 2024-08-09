@@ -61,7 +61,7 @@ export default function Index({ heroCarousel }) {
                     >
                       <img
                         className="flex object-cover object-center w-full"
-                        src={item?.image?.sourceUrl}
+                        src={item?.image?.sourceUrl.replace("https://", "https://i0.wp.com/")}
                         alt={item?.image?.altText}
                       />
                     </a>

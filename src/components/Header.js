@@ -98,9 +98,8 @@ const Header = ({
                   {mainMenu[0].menuItems.nodes.map((menuItem) => (
                     <div key={menuItem.id} className="flow-root">
                       <Link
-                        href={`/danh-muc-san-pham/${
-                          menuItem.path.split("/").reverse()[1]
-                        }/`}
+                        href={`/danh-muc-san-pham/${menuItem.path.split("/").reverse()[1]
+                          }/`}
                       >
                         <a
                           className="-m-2 block p-2 font-medium text-gray-900"
@@ -145,7 +144,7 @@ const Header = ({
                   <span className="sr-only">{siteName}</span>
                   <img
                     className="h-8 w-auto"
-                    src={logo.sourceUrl}
+                    src={logo.sourceUrl.replace("https://", "https://i0.wp.com/")}
                     alt={`${siteName} logo`}
                   />
                 </a>
@@ -235,9 +234,8 @@ const Header = ({
                   {mainMenu[0].menuItems.nodes.map((menuItem) => (
                     <Link
                       key={menuItem.id}
-                      href={`/danh-muc-san-pham/${
-                        menuItem.path.split("/").reverse()[1]
-                      }/`}
+                      href={`/danh-muc-san-pham/${menuItem.path.split("/").reverse()[1]
+                        }/`}
                     >
                       <a
                         key={menuItem.id}

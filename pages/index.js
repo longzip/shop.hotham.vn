@@ -40,7 +40,7 @@ export default function Home({
             <a href={`/danh-muc-san-pham/${slug}/`}>
               <div className="mx-auto max-w-2xl lg:max-w-6xl">
                 <img
-                  src={image?.sourceUrl}
+                  src={image?.sourceUrl.replace("https://", "https://i0.wp.com/")}
                   alt={image?.altText}
                   className="h-full w-full object-cover object-center group-hover:opacity-75"
                 />
