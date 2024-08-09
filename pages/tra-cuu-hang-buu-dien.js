@@ -6,7 +6,6 @@ import { PAGE_BY_SLUG_QUERY } from "../src/queries/page-by-slug";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { keys } from "lodash";
 import PostBody from "../src/components/post-body";
 
 const TraCuuHangBuuDien = ({

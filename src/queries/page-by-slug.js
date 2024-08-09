@@ -28,6 +28,7 @@ export const PAGE_SLUGS = gql`
           "cG9zdDo2"
           "cG9zdDo0"
           "cG9zdDozNzcw"
+          "cG9zdDozNzcz"
         ]
       }
       first: 1

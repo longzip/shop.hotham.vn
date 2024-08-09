@@ -37,6 +37,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: "/tra-cuu-thong-tin-ghi-nhan-dong-bhxh-bhyt",
+        destination: "https://bhxh.hotham.vn/tra-cuu-thong-tin-ghi-nhan-dong-bhxh-bhyt",
+        permanent: true,
+      },
+      {
         source: "/ho-thi-tham/",
         destination: "/gioi-thieu/",
         permanent: true,
@@ -64,6 +69,11 @@ module.exports = {
       {
         source: "/gia-han-the-bhyt-tai-nha/",
         destination: "https://bhyt.hotham.vn/",
+        permanent: true,
+      },
+      {
+        source: "/mua-bao-hiem-y-te-o-buu-dien/",
+        destination: "https://blog.hotham.vn/cach-mua-bao-hiem-y-te-o-buu-dien-nhanh-chong-don-gian/",
         permanent: true,
       },
       {

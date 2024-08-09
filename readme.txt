@@ -29,3 +29,5 @@ gtag('config', 'G-QCN6S7BFNG')
 
 
  .replace("https://", "https://i0.wp.com/")  + '?fit=600%2C600&ssl=1'
+
+ 

@@ -281,32 +281,19 @@ const Footer1 = ({
 
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <p className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        © 2023{" "}
+        © 2021 - 2024{" "}
         <a href={homeUrl} className="hover:underline">
           {siteName}™
         </a>
-        . All Rights Reserved. Thiết kế website hiện đại cùng{" "}
+        . All Rights Reserved. Thiết kế website bán hàng cùng{" "}
         <a
           className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
           target="_blank"
           href="https://www.longwebstudio.net/"
         >
           Long Web Studio
-        </a>{" "}
-        <a
-          className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
-          target="_blank"
-          href="https://www.amycos.vn/"
-        >
-          Mỹ Phẩm Amycos
-        </a>{" "}
-        <a
-          className="text-underlinefont-semibold text-gray-900 underline dark:text-white decoration-indigo-500 hover:underline"
-          target="_blank"
-          href="https://www.dienmaythoantrong.vn/"
-        >
-          Điện máy Thoan Trọng
         </a>
+
         <a
           target="_blank"
           href="//www.dmca.com/Protection/Status.aspx?ID=05132829-ac23-4042-a235-aaf408f2e350"
